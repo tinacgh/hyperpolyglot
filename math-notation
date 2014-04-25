@@ -1,0 +1,431 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
+<link rel="icon" type="image/gif" href="/favicon.gif"/>
+<link rel="apple-touch-icon" sizes="120x120" href="touch-icon-iphone-retina.png" />
+<link rel="apple-touch-icon" sizes="152x152" href="touch-icon-ipad-retina.png" />
+<title>Mathematical Notation: LaTeX, Mathematica, HTML Entities, Unicode - Hyperpolyglot</title>
+<script type="text/javascript"
+  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+<style type="text/css" id="internal-style">
+@import url(hyperpolyglot.css);
+</style>
+<meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
+<meta http-equiv="content-language" content="en"/>
+</head>
+<body>
+<div id="container-wrap-wrap">
+  <div id="container-wrap">
+    <div id="container">
+      <div id="header">
+        <h1><a href="/"><span>Hyperpolyglot</span></a></h1>
+      </div>
+      <div id="content-wrap">
+        <div id="main-content">
+<div id="page-title">
+                            Mathematical Notation: LaTeX, Mathematica, HTML Entities, Unicode
+                        </div>
+<div id="page-content">
+                        
+
+<p><strong>mathematical notation:</strong> <a href="#math-notation" shape="rect">general</a> | <a href="#fractions-radicals" shape="rect">fractions and radicals</a> | <a href="#relations-operators" shape="rect">relations and operators</a> | <a href="#sets-logic" shape="rect">sets and logic</a> | <a href="#geometry" shape="rect">geometry</a> | <a href="#analysis" shape="rect">analysis</a> | <a href="#relational-algebra" shape="rect">relational algebra</a> | <a href="#matrices" shape="rect">matrices</a> | <a href="#algebra" shape="rect">algebra</a> | <a href="#arrows" shape="rect">arrows</a> | <a href="#math-accents" shape="rect">accents</a> | <a href="#greek-letters" shape="rect">greek letters</a> | <a href="#math-fonts" shape="rect">fonts</a></p>
+<p><strong>typesetting math:</strong> <a href="#latex" shape="rect">latex</a> | <a href="#mathematica" shape="rect">mathematica</a> | <a href="#mathjax" shape="rect">mathjax</a> | <a href="#google-charts" shape="rect">google charts</a> | <a href="#html-entities" shape="rect">html entities</a> | <a href="#unicode" shape="rect">unicode</a> | <a href="#mathml" shape="rect">mathml</a> | <a href="#word" shape="rect">word</a></p>
+<table class="wiki-content-table"><tr><th rowspan="1" colspan="1"></th><th rowspan="1" colspan="1"><a href="#latex" shape="rect">latex</a></th><th rowspan="1" colspan="1"><a href="#mathematica" shape="rect">mathematica</a></th><th rowspan="1" colspan="1"><a href="#html-entities" shape="rect">html entities</a></th><th rowspan="1" colspan="1"><a href="#unicode" shape="rect">unicode</a></th></tr><tr><td rowspan="1" colspan="1"><span class="math-inline">
+      $$x^2$$
+    </span></td><td rowspan="1" colspan="1">x^2</td><td rowspan="1" colspan="1">x^2</td><td rowspan="1" colspan="1">x&lt;sup&gt;2&lt;/sup&gt;</td><td rowspan="1" colspan="1">00B2: ²<br />
+OOB3: ³<br />
+2071: ⁱ<br />
+207F: ⁿ</td></tr><tr><td rowspan="1" colspan="1"><span class="math-inline">
+      $$x_2$$
+    </span></td><td rowspan="1" colspan="1">x_2</td><td rowspan="1" colspan="1"><span style="color: gray"><em>use ^_ keystroke to enter subscript</em></span></td><td rowspan="1" colspan="1">x&lt;sub&gt;2&lt;/sub&gt;</td><td rowspan="1" colspan="1">2080: ₀<br />
+2081: ₁<br />
+2082: ₂<br />
+2083: ₃</td></tr><tr><td rowspan="1" colspan="1">90<span style="white-space: pre-wrap;">°</span></td><td rowspan="1" colspan="1">90^\circ</td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1">90&amp;deg;</td><td rowspan="1" colspan="1">00B0: <span style="white-space: pre-wrap;">°</span></td></tr><tr><td rowspan="1" colspan="1"><span class="math-inline">
+      $$( \big( \Big( \bigg( \Bigg($$
+    </span></td><td rowspan="1" colspan="1">( \big( \Big( \bigg( \Bigg(</td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1"></td></tr><tr><td rowspan="1" colspan="1"><span style="color: gray"><em>spaces of decreasing width</em></span></td><td rowspan="1" colspan="1">\; \: \, \!</td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1"></td></tr><tr><td rowspan="1" colspan="1"><span class="math-inline">
+      $$\binom{n}{k}$$
+    </span></td><td rowspan="1" colspan="1">\binom{n}{k}</td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1"></td></tr><tr><td rowspan="1" colspan="1"><span class="math-inline">
+      $$\Re(z) \;\; \Im(z)$$
+    </span></td><td rowspan="1" colspan="1">\Re(z) \Im(z)</td><td rowspan="1" colspan="1">Re[z] Im[z]</td><td rowspan="1" colspan="1">&amp;real;<br />
+&amp;image;</td><td rowspan="1" colspan="1">211C: ℜ<br />
+2111: ℑ</td></tr><tr><th colspan="5" rowspan="1"><a name="fractions-radicals" shape="rect" id="fractions-radicals"></a><a href="#fractions-radicals-note" shape="rect">fractions and radicals</a></th></tr><tr><th rowspan="1" colspan="1"></th><th rowspan="1" colspan="1"><a href="#latex" shape="rect">latex</a></th><th rowspan="1" colspan="1"><a href="#mathematica" shape="rect">mathematica</a></th><th rowspan="1" colspan="1"><a href="#html-entities" shape="rect">html entities</a></th><th rowspan="1" colspan="1"><a href="#unicode" shape="rect">unicode</a></th></tr><tr><td rowspan="1" colspan="1"><span class="math-inline">
+      $$\frac{x+1}{y+1}$$
+    </span></td><td rowspan="1" colspan="1">\frac{x+1}{y+1}</td><td rowspan="1" colspan="1">(x+1)/(y+1)</td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1"></td></tr><tr><td rowspan="1" colspan="1"><span class="math-inline">
+      $$^3/_7$$
+    </span></td><td rowspan="1" colspan="1">^3/_7</td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1">&amp;frac12;<br />
+&amp;frac14;<br />
+&amp;frac34;</td><td rowspan="1" colspan="1">008D: ½<br />
+008C: ¼<br />
+00BE: ¾<br />
+2153: ⅓<br />
+2154: ⅔</td></tr><tr><td rowspan="1" colspan="1"><span class="math-inline">
+      $$\left( \frac{x+1}{y+1} \right)$$
+    </span></td><td rowspan="1" colspan="1">\left( \frac{x+1}{y+1} \right)</td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1"></td></tr><tr><td rowspan="1" colspan="1"><span class="math-inline">
+      $$\left| \frac{x}{1+x} \right|$$
+    </span></td><td rowspan="1" colspan="1">\left| \frac{x}{1+x} \right<span style="white-space: pre-wrap;">|</span></td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1"></td></tr><tr><td rowspan="1" colspan="1"><span class="math-inline">
+      $$\sqrt{2}$$
+    </span></td><td rowspan="1" colspan="1">\sqrt{2}</td><td rowspan="1" colspan="1">Sqrt[2]</td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1">221A: √</td></tr><tr><td rowspan="1" colspan="1"><span class="math-inline">
+      $$\sqrt[3]{x}$$
+    </span></td><td rowspan="1" colspan="1">\sqrt[3]{x}</td><td rowspan="1" colspan="1">x^(1/3)<br /><br />
+RadicalBox[x, 3] // DisplayForm</td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1">221B: ∛<br />
+221C: ∜</td></tr><tr><th colspan="5" rowspan="1"><a name="relations-operators" shape="rect" id="relations-operators"></a><a href="#relations-operators-note" shape="rect">relations and operators</a></th></tr><tr><th rowspan="1" colspan="1"></th><th rowspan="1" colspan="1"><a href="#latex" shape="rect">latex</a></th><th rowspan="1" colspan="1"><a href="#mathematica" shape="rect">mathematica</a></th><th rowspan="1" colspan="1"><a href="#html-entities" shape="rect">html entities</a></th><th rowspan="1" colspan="1"><a href="#unicode" shape="rect">unicode</a></th></tr><tr><td rowspan="1" colspan="1">≤ ≥</td><td rowspan="1" colspan="1">\le \ge</td><td rowspan="1" colspan="1">&lt;= &gt;=</td><td rowspan="1" colspan="1">&amp;le;<br />
+&amp;ge;</td><td rowspan="1" colspan="1">2264: ≤<br />
+2265: ≥</td></tr><tr><td rowspan="1" colspan="1">≠</td><td rowspan="1" colspan="1">\neq</td><td rowspan="1" colspan="1">!=</td><td rowspan="1" colspan="1">&amp;ne;</td><td rowspan="1" colspan="1">2260: ≠</td></tr><tr><td rowspan="1" colspan="1"><span class="math-inline">
+      $$\approx \;\; \not\approx$$
+    </span></td><td rowspan="1" colspan="1">\approx \not\approx</td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1">&amp;asymp;</td><td rowspan="1" colspan="1">2248: ≈<br />
+2249: ≉</td></tr><tr><td rowspan="1" colspan="1"><span class="math-inline">
+      $$\simeq \;\; \cong$$
+    </span></td><td rowspan="1" colspan="1">\simeq \cong</td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1"><span style="color: gray"><em>none</em></span><br />
+&amp;cong;</td><td rowspan="1" colspan="1">2243: ≃<br />
+2245: ≅</td></tr><tr><td rowspan="1" colspan="1"><span class="math-inline">
+      $$\equiv \;\; \not\equiv$$
+    </span></td><td rowspan="1" colspan="1">\equiv \not\equiv</td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1">&amp;equiv;</td><td rowspan="1" colspan="1">2261: ≡<br />
+2262: ≢</td></tr><tr><td rowspan="1" colspan="1">± ∓</td><td rowspan="1" colspan="1">\pm \mp</td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1">&amp;plusmn;<br /><span style="color: gray"><em>none</em></span></td><td rowspan="1" colspan="1">00B1: ±<br />
+2213: ∓</td></tr><tr><td rowspan="1" colspan="1">× ÷</td><td rowspan="1" colspan="1">\times \div</td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1">&amp;times;<br />
+&amp;divide;</td><td rowspan="1" colspan="1">00D7: ×<br />
+00F7: ÷</td></tr><tr><td rowspan="1" colspan="1"><span class="math-inline">
+      $$\mathbf{a} \cdot \mathbf{b}$$
+    </span></td><td rowspan="1" colspan="1">\mathbf{a} \cdot \mathbf{b}</td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1">&amp;sdot;</td><td rowspan="1" colspan="1">2219: ∙</td></tr><tr><td rowspan="1" colspan="1"><span class="math-inline">
+      $$(g \circ f)'(t) = g'(f(t))\;f'(t)$$
+    </span></td><td rowspan="1" colspan="1">(g \circ f)'(t) = g'(f(t)) f'(t)</td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1">2218: ∘</td></tr><tr><td rowspan="1" colspan="1">≮ ≯</td><td rowspan="1" colspan="1">\not&lt; \not&gt;</td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1">226E: ≮<br />
+226F: ≯</td></tr><tr><td rowspan="1" colspan="1">≰ ≱</td><td rowspan="1" colspan="1">\not\le \not\ge</td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1">2270: ≰<br />
+2271: ≱</td></tr><tr><th colspan="5" rowspan="1"><a name="sets-logic" shape="rect" id="sets-logic"></a><a href="#sets-logic-note" shape="rect">sets and logic</a></th></tr><tr><th rowspan="1" colspan="1"></th><th rowspan="1" colspan="1"><a href="#latex" shape="rect">latex</a></th><th rowspan="1" colspan="1"><a href="#mathematica" shape="rect">mathematica</a></th><th rowspan="1" colspan="1"><a href="#html-entities" shape="rect">html entities</a></th><th rowspan="1" colspan="1"><a href="#unicode" shape="rect">unicode</a></th></tr><tr><td rowspan="1" colspan="1">∅</td><td rowspan="1" colspan="1">\emptyset</td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1">&amp;empty;</td><td rowspan="1" colspan="1">2205: ∅</td></tr><tr><td rowspan="1" colspan="1">∈ ∉</td><td rowspan="1" colspan="1">\in \notin</td><td rowspan="1" colspan="1">Element NotElement</td><td rowspan="1" colspan="1">&amp;isin;<br />
+&amp;notin;</td><td rowspan="1" colspan="1">2208: ∈<br />
+2209: ∉</td></tr><tr><td rowspan="1" colspan="1">⊂ ⊆</td><td rowspan="1" colspan="1">\subset \subseteq</td><td rowspan="1" colspan="1">Subset SubsetEqual</td><td rowspan="1" colspan="1">&amp;sub;<br />
+&amp;sube;</td><td rowspan="1" colspan="1">2282: ⊂<br />
+2286: ⊆</td></tr><tr><td rowspan="1" colspan="1">⊄ ⊈</td><td rowspan="1" colspan="1">\not\subset \not\subseteq</td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1">&amp;nsub;<br /><span style="color: gray"><em>none</em></span></td><td rowspan="1" colspan="1">2284: ⊄<br />
+2288: ⊈</td></tr><tr><td rowspan="1" colspan="1">⊊ ⊋</td><td rowspan="1" colspan="1">\subsetneq \supsetneq</td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1">228A: ⊊<br />
+228B: ⊋</td></tr><tr><td rowspan="1" colspan="1">⊃ ⊇</td><td rowspan="1" colspan="1">\supset \supseteq</td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1">&amp;sup;<br />
+&amp;supe;</td><td rowspan="1" colspan="1">2283: ⊃<br />
+2287: ⊇</td></tr><tr><td rowspan="1" colspan="1"><span class="math-inline">
+      $$\cup \cap$$
+    </span></td><td rowspan="1" colspan="1">\cup \cap</td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1">&amp;cup;<br />
+&amp;cap;</td><td rowspan="1" colspan="1">222A: ∪<br />
+2229: ∩</td></tr><tr><td rowspan="1" colspan="1"><span class="math-inline">
+      $$\bigcup$$
+    </span></td><td rowspan="1" colspan="1">\bigcup</td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1"></td></tr><tr><td rowspan="1" colspan="1"><span class="math-inline">
+      $$\bigcap$$
+    </span></td><td rowspan="1" colspan="1">\bigcap</td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1"></td></tr><tr><td rowspan="1" colspan="1">∖</td><td rowspan="1" colspan="1">\setminus</td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1">2216: ∖</td></tr><tr><td rowspan="1" colspan="1">א</td><td rowspan="1" colspan="1">\aleph</td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1">05D0: א</td></tr><tr><td rowspan="1" colspan="1">¬</td><td rowspan="1" colspan="1">\neq</td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1">&amp;not;</td><td rowspan="1" colspan="1">00AC: ¬</td></tr><tr><td rowspan="1" colspan="1">∧ ∨</td><td rowspan="1" colspan="1">\wedge \vee</td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1">&amp;and;<br />
+&amp;or;</td><td rowspan="1" colspan="1">2227: ∧<br />
+2228: ∨</td></tr><tr><td rowspan="1" colspan="1">⊻</td><td rowspan="1" colspan="1">\veebar</td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1">22BB: ⊻</td></tr><tr><td rowspan="1" colspan="1">∀ ∃</td><td rowspan="1" colspan="1">\forall \exists</td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1">&amp;forall;<br />
+&amp;exist;</td><td rowspan="1" colspan="1">2200: ∀<br />
+2203: ∃</td></tr><tr><td rowspan="1" colspan="1">⊤ ⊥</td><td rowspan="1" colspan="1">\top \bot</td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1">22A4: ⊤<br />
+22A5: ⊥</td></tr><tr><td rowspan="1" colspan="1">∴</td><td rowspan="1" colspan="1">\therefore</td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1">&amp;there4;</td><td rowspan="1" colspan="1">2234: ∴</td></tr><tr><td rowspan="1" colspan="1">⊢ ⊨</td><td rowspan="1" colspan="1">\vdash \models</td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1">22A2: ⊢<br />
+22A8: ⊨</td></tr><tr><td rowspan="1" colspan="1">∎</td><td rowspan="1" colspan="1">\blacksquare</td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1">220E: ∎</td></tr><tr><th colspan="5" rowspan="1"><a name="geometry" shape="rect" id="geometry"></a><a href="#geometry-note" shape="rect">geometry</a></th></tr><tr><th rowspan="1" colspan="1"></th><th rowspan="1" colspan="1"><a href="#latex" shape="rect">latex</a></th><th rowspan="1" colspan="1"><a href="#mathematica" shape="rect">mathematica</a></th><th rowspan="1" colspan="1"><a href="#html-entities" shape="rect">html entities</a></th><th rowspan="1" colspan="1"><a href="#unicode" shape="rect">unicode</a></th></tr><tr><td rowspan="1" colspan="1"><span class="math-inline">
+      $$\overline{AB}$$
+    </span></td><td rowspan="1" colspan="1">\overline{AB}</td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1"></td></tr><tr><td rowspan="1" colspan="1"><span class="math-inline">
+      $$\overrightarrow{AB}$$
+    </span></td><td rowspan="1" colspan="1">\overrightarrow{AB}</td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1"></td></tr><tr><td rowspan="1" colspan="1"><span class="math-inline">
+      $$\overleftrightarrow{AB}$$
+    </span></td><td rowspan="1" colspan="1">\overleftrightarrow{AB}</td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1"></td></tr><tr><td rowspan="1" colspan="1"><span class="math-inline">
+      $$\angle ABC$$
+    </span></td><td rowspan="1" colspan="1">\angle ABC</td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1">2220: ∠</td></tr><tr><td rowspan="1" colspan="1"><span class="math-inline">
+      $$\triangle ABC$$
+    </span></td><td rowspan="1" colspan="1">\triangle ABC</td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1">25BC: △</td></tr><tr><td rowspan="1" colspan="1"><span class="math-inline">
+      $$\overline{AB} \perp \overline{XY}$$
+    </span></td><td rowspan="1" colspan="1">\overline{AB} \perp \overline{XY}</td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1">22A5: ⊥</td></tr><tr><td rowspan="1" colspan="1"><span class="math-inline">
+      $$\overline{AB} \parallel \overline{XY}$$
+    </span></td><td rowspan="1" colspan="1">\overline{AB} \parallel \overline{XY}</td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1">2016: ‖</td></tr><tr><td rowspan="1" colspan="1"><span class="math-inline">
+      $$\triangle ABC \cong \triangle XYZ$$
+    </span></td><td rowspan="1" colspan="1">\triangle ABC \cong \triangle XYZ</td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1">2245: ≅</td></tr><tr><td rowspan="1" colspan="1"><span class="math-inline">
+      $$\triangle ABC \sim \triangle XYZ$$
+    </span></td><td rowspan="1" colspan="1">\triangle ABC \sim \triangle XYZ</td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1"></td></tr><tr><th colspan="5" rowspan="1"><a name="analysis" shape="rect" id="analysis"></a><a href="#analysis-note" shape="rect">analysis</a></th></tr><tr><th rowspan="1" colspan="1"></th><th rowspan="1" colspan="1"><a href="#latex" shape="rect">latex</a></th><th rowspan="1" colspan="1"><a href="#mathematica" shape="rect">mathematica</a></th><th rowspan="1" colspan="1"><a href="#html-entities" shape="rect">html entities</a></th><th rowspan="1" colspan="1"><a href="#unicode" shape="rect">unicode</a></th></tr><tr><td rowspan="1" colspan="1"><span class="math-inline">
+      $$\begin{cases}x &amp; x \ge 0 \\ -x &amp; x &lt; 0 \end{cases}$$
+    </span></td><td rowspan="1" colspan="1">\begin{cases}<br />
+x &amp; x \ge 0 \\<br />
+-x &amp; x &lt; 0<br />
+\end{cases}</td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1"></td></tr><tr><td rowspan="1" colspan="1"><span class="math-inline">
+      $$\lfloor x \rfloor$$
+    </span></td><td rowspan="1" colspan="1">\lfloor x \rfloor</td><td rowspan="1" colspan="1">\[LeftFloor]x\[RightFloor]</td><td rowspan="1" colspan="1">&amp;lfloor; x &amp;rfloor;</td><td rowspan="1" colspan="1">230A:⌊<br />
+230B: ⌋</td></tr><tr><td rowspan="1" colspan="1"><span class="math-inline">
+      $$\lceil x \rceil$$
+    </span></td><td rowspan="1" colspan="1">\lceil x \rceil</td><td rowspan="1" colspan="1">\[LeftCeiling]x\[RightCeiling]</td><td rowspan="1" colspan="1">&amp;lceil; x &amp;rceil;</td><td rowspan="1" colspan="1">2308: ⌈<br />
+2309: ⌉</td></tr><tr><td rowspan="1" colspan="1"><span class="math-inline">
+      $$\|x\|$$
+    </span></td><td rowspan="1" colspan="1">\|x<span style="white-space: pre-wrap;">\|</span></td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1"></td></tr><tr><td rowspan="1" colspan="1"><span class="math-inline">
+      $$\langle x, y \rangle$$
+    </span></td><td rowspan="1" colspan="1">\langle x, y \rangle</td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1">&amp;lang; &amp;rang;</td><td rowspan="1" colspan="1">2329: 〈<br />
+232A: 〉</td></tr><tr><td rowspan="1" colspan="1">∞</td><td rowspan="1" colspan="1">\infty</td><td rowspan="1" colspan="1">Infinity</td><td rowspan="1" colspan="1">&amp;infin;</td><td rowspan="1" colspan="1">221E: ∞</td></tr><tr><td rowspan="1" colspan="1"><span class="math-inline">
+      $$\Delta x$$
+    </span></td><td rowspan="1" colspan="1">\Delta x</td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1">&amp;Delta; x</td><td colspan="2" rowspan="1">0394: Δ</td></tr><tr><td rowspan="1" colspan="1"><span class="math-inline">
+      $$\nabla f\:(x, y, z)$$
+    </span></td><td rowspan="1" colspan="1">\nabla f(x, y, z)</td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1">&amp;nabla; f(x, y, z)</td><td rowspan="1" colspan="1">2207: ∇</td></tr><tr><td rowspan="1" colspan="1"><span class="math-inline">
+      $$\frac{\partial f}{\partial x}$$
+    </span></td><td rowspan="1" colspan="1">\frac{\partial f}{\partial x}</td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1">&amp;part;f/&amp;part;x</td><td rowspan="1" colspan="1">2202: ∂</td></tr><tr><td rowspan="1" colspan="1"><span class="math-inline">
+      $$\sum_{i=1}^n i$$
+    </span></td><td rowspan="1" colspan="1">\sum_{i=1}^n i</td><td rowspan="1" colspan="1">Sum[i, {i, 0, n}] // HoldForm</td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1"></td></tr><tr><td rowspan="1" colspan="1"><span class="math-inline">
+      $$\prod_{i=1}^n i$$
+    </span></td><td rowspan="1" colspan="1">\prod_{i=1}^n i</td><td rowspan="1" colspan="1">Product[i, {i, 1, n}] // HoldForm</td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1"></td></tr><tr><td rowspan="1" colspan="1"><span class="math-inline">
+      $${\displaystyle \lim_{h \to 0} \frac{f(x+h) - f(x)}{h} }$$
+    </span></td><td rowspan="1" colspan="1">\lim_{h \to 0} \frac{f(x+h) - f(x)}{h}</td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1"></td></tr><tr><td rowspan="1" colspan="1"><span class="math-inline">
+      $$\int_0^{2\pi}\cos x\,dx$$
+    </span></td><td rowspan="1" colspan="1">\int_0^{2\pi}\cos x\,dx</td><td rowspan="1" colspan="1">Integrate[Cos[x], {x, 0, 2 Pi}]<br /><span style="white-space: pre-wrap;">  </span>// HoldForm // TraditionalForm</td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1"></td></tr><tr><td rowspan="1" colspan="1"><span class="math-inline">
+      $$\cos x |_{x=\pi}$$
+    </span></td><td rowspan="1" colspan="1">\cos x |_{x=\pi}</td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1"></td></tr><tr><td rowspan="1" colspan="1"><span class="math-inline">
+      $$\oint_C \frac{1}{z} dz$$
+    </span></td><td rowspan="1" colspan="1">\oint_C \frac{1}{z} dz</td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1"></td></tr><tr><th colspan="5" rowspan="1"><a name="relational-algebra" shape="rect" id="relational-algebra"></a><a href="#relational-algebra-note" shape="rect">relational algebra</a></th></tr><tr><th rowspan="1" colspan="1"></th><th rowspan="1" colspan="1"><a href="#latex" shape="rect">latex</a></th><th rowspan="1" colspan="1"><a href="#mathematica" shape="rect">mathematica</a></th><th rowspan="1" colspan="1"><a href="#html-entities" shape="rect">html entities</a></th><th rowspan="1" colspan="1"><a href="#unicode" shape="rect">unicode</a></th></tr><tr><td rowspan="1" colspan="1">⋈</td><td rowspan="1" colspan="1">\bowtie</td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1"></td></tr><tr><td rowspan="1" colspan="1">⋉ ⋊</td><td rowspan="1" colspan="1">\ltimes \rtimes</td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1"></td></tr><tr><td rowspan="1" colspan="1">▷</td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1"></td></tr><tr><td rowspan="1" colspan="1">⟕ ⟖</td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1"></td></tr><tr><td rowspan="1" colspan="1">⟗</td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1"></td></tr><tr><th colspan="5" rowspan="1"><a name="matrices" shape="rect" id="matrices"></a><a href="#matrices-note" shape="rect">matrices</a></th></tr><tr><th rowspan="1" colspan="1"></th><th rowspan="1" colspan="1"><a href="#latex" shape="rect">latex</a></th><th rowspan="1" colspan="1"><a href="#mathematica" shape="rect">mathematica</a></th><th rowspan="1" colspan="1"><a href="#html-entities" shape="rect">html entities</a></th><th rowspan="1" colspan="1"><a href="#unicode" shape="rect">unicode</a></th></tr><tr><td rowspan="1" colspan="1"><span class="math-inline">
+      $$\begin{matrix} 1 &amp; 2 \\ 3 &amp; 4 \end{matrix}$$
+    </span></td><td rowspan="1" colspan="1">\begin{matrix} 1 &amp; 2 \\ 3 &amp; 4 \end{matrix}</td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1"></td></tr><tr><td rowspan="1" colspan="1"><span class="math-inline">
+      $$\begin{bmatrix} 1 &amp; 2 \\ 3 &amp; 4 \end{bmatrix}$$
+    </span></td><td rowspan="1" colspan="1">\begin{bmatrix} 1 &amp; 2 \\ 3 &amp; 4 \end{bmatrix}</td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1"></td></tr><tr><td rowspan="1" colspan="1"><span class="math-inline">
+      $$\begin{pmatrix} 1 &amp; 2 \\ 3 &amp; 4 \end{pmatrix}$$
+    </span></td><td rowspan="1" colspan="1">\begin{pmatrix} 1 &amp; 2 \\ 3 &amp; 4 \end{pmatrix}</td><td rowspan="1" colspan="1"><span style="white-space: pre-wrap;">{{1, 2}, {3, 4}} // MatrixForm</span></td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1"></td></tr><tr><td rowspan="1" colspan="1"><span class="math-inline">
+      $$\begin{matrix} 0 &amp; \cdots &amp; 0 \\ \vdots &amp; \ddots &amp; \vdots \\ 0 &amp; \cdots &amp; 0 \end{matrix}$$
+    </span></td><td rowspan="1" colspan="1">\begin{matrix}<br />
+0 &amp; \cdots &amp; 0 \\<br />
+\vdots &amp; \ddots &amp; \vdots \\<br />
+0 &amp; \cdots &amp; 0<br />
+\end{matrix}</td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1"></td></tr><tr><th colspan="5" rowspan="1"><a name="algebra" shape="rect" id="algebra"></a><a href="#algebra-note" shape="rect">algebra</a></th></tr><tr><th rowspan="1" colspan="1"></th><th rowspan="1" colspan="1"><a href="#latex" shape="rect">latex</a></th><th rowspan="1" colspan="1"><a href="#mathematica" shape="rect">mathematica</a></th><th rowspan="1" colspan="1"><a href="#html-entities" shape="rect">html entities</a></th><th rowspan="1" colspan="1"><a href="#unicode" shape="rect">unicode</a></th></tr><tr><td rowspan="1" colspan="1"><span class="math-inline">
+      $$p \not|\; p + 1$$
+    </span></td><td rowspan="1" colspan="1">p \not| p + 1</td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1">2224: ∤</td></tr><tr><td rowspan="1" colspan="1"><span class="math-inline">
+      $$\oplus \otimes$$
+    </span></td><td rowspan="1" colspan="1">\oplus \otimes</td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1">&amp;oplus;<br />
+&amp;otimes;</td><td rowspan="1" colspan="1">2295: ⊕<br />
+2A01: ⨁</td></tr><tr><td rowspan="1" colspan="1"><span class="math-inline">
+      $$\bigoplus \bigotimes$$
+    </span></td><td rowspan="1" colspan="1">\bigoplus \bigotimes</td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1">2297: ⊗<br />
+2A02: ⨂</td></tr><tr><td rowspan="1" colspan="1"><span class="math-inline">
+      $$N \triangleleft G$$
+    </span><br /><br /><span class="math-inline">
+      $$N \unlhd G$$
+    </span></td><td rowspan="1" colspan="1">N \triangleleft G<br />
+N \unlhd G</td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1">25C1: ◁<br />
+22B4: ⊴</td></tr><tr><td rowspan="1" colspan="1"><span class="math-inline">
+      $$H\; \rtimes_\phi \;K$$
+    </span></td><td rowspan="1" colspan="1">H \rtimes_\phi K</td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1">22CA: ⋊</td></tr><tr><td rowspan="1" colspan="1"><span class="math-inline">
+      $$L \wr K$$
+    </span></td><td rowspan="1" colspan="1">L \wr K</td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1">2240: ≀</td></tr><tr><th colspan="5" rowspan="1"><a name="arrows" shape="rect" id="arrows"></a><a href="#arrows-note" shape="rect">arrows</a></th></tr><tr><th rowspan="1" colspan="1"></th><th rowspan="1" colspan="1"><a href="#latex" shape="rect">latex</a></th><th rowspan="1" colspan="1"><a href="#mathematica" shape="rect">mathematica</a></th><th rowspan="1" colspan="1"><a href="#html-entities" shape="rect">html entities</a></th><th rowspan="1" colspan="1"><a href="#unicode" shape="rect">unicode</a></th></tr><tr><td rowspan="1" colspan="1"><span class="math-inline">
+      $$\rightarrow \leftarrow \uparrow \downarrow$$
+    </span></td><td rowspan="1" colspan="1">\rightarrow \leftarrow \uparrow \downarrow</td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1">&amp;rarr; &amp;larr; &amp;uarr; &amp;darr;</td><td rowspan="1" colspan="1">2192: → 2190: ← 2191: ↑ 2193: ↓</td></tr><tr><td rowspan="1" colspan="1">↖↗↘↙</td><td rowspan="1" colspan="1">\nwarrow \nearrow \searrow \swarrow</td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1">2196: ↖ 2197: ↗ 2198: ↘ 2199: ↙</td></tr><tr><td rowspan="1" colspan="1"><span class="math-inline">
+      $$\Rightarrow \Leftarrow \Uparrow \Downarrow$$
+    </span></td><td rowspan="1" colspan="1">\Rightarrow \Leftarrow \Uparrow \Downarrow</td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1">&amp;rArr; &amp;lArr; &amp;uArr; &amp;dArr;</td><td rowspan="1" colspan="1"></td></tr><tr><td rowspan="1" colspan="1"><span class="math-inline">
+      $$\mapsto$$
+    </span></td><td rowspan="1" colspan="1">\mapsto</td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1"></td></tr><tr><td rowspan="1" colspan="1"><span class="math-inline">
+      $$\leftrightarrow$$
+    </span></td><td rowspan="1" colspan="1">\leftrightarrow</td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1">&amp;harr;</td><td rowspan="1" colspan="1"></td></tr><tr><td rowspan="1" colspan="1"><span class="math-inline">
+      $$\Leftrightarrow$$
+    </span></td><td rowspan="1" colspan="1">\Leftrightarrow</td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1">&amp;hArr;</td><td rowspan="1" colspan="1"></td></tr><tr><td rowspan="1" colspan="1">↣</td><td rowspan="1" colspan="1">\rightarrowtail</td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1">21A3: ↣</td></tr><tr><td rowspan="1" colspan="1">↠</td><td rowspan="1" colspan="1">\twoheadrightarrow</td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1">21A0: ↠</td></tr><tr><td rowspan="1" colspan="1">↪</td><td rowspan="1" colspan="1">\hookrightarrow</td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1">21AA: ↪</td></tr><tr><th colspan="5" rowspan="1"><a name="math-accents" shape="rect" id="math-accents"></a><a href="#math-accents-note" shape="rect">accents</a></th></tr><tr><th rowspan="1" colspan="1"></th><th rowspan="1" colspan="1"><a href="#latex" shape="rect">latex</a></th><th rowspan="1" colspan="1"><a href="#mathematica" shape="rect">mathematica</a></th><th rowspan="1" colspan="1"><a href="#html-entities" shape="rect">html entities</a></th><th rowspan="1" colspan="1"><a href="#unicode" shape="rect">unicode</a></th></tr><tr><td rowspan="1" colspan="1"><span class="math-inline">
+      $$x' \; x'' \; x'''$$
+    </span></td><td rowspan="1" colspan="1">x' x'' x'''</td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1"></td></tr><tr><td rowspan="1" colspan="1"><span class="math-inline">
+      $$\hat{x}$$
+    </span></td><td rowspan="1" colspan="1">\hat{x}</td><td rowspan="1" colspan="1">OverHat[x]</td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1"></td></tr><tr><td rowspan="1" colspan="1"><span class="math-inline">
+      $$\bar{x}$$
+    </span></td><td rowspan="1" colspan="1">\bar{x}</td><td rowspan="1" colspan="1">OverBar[x]</td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1"></td></tr><tr><td rowspan="1" colspan="1"><span class="math-inline">
+      $$\vec{x}$$
+    </span></td><td rowspan="1" colspan="1">\vec{x}</td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1"></td></tr><tr><td rowspan="1" colspan="1"><span class="math-inline">
+      $$\tilde{x}$$
+    </span></td><td rowspan="1" colspan="1">\tilde{x}</td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1"></td></tr><tr><td rowspan="1" colspan="1"><span class="math-inline">
+      $$\dot{x}$$
+    </span></td><td rowspan="1" colspan="1">\dot{x}</td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1"></td></tr><tr><td rowspan="1" colspan="1"><span class="math-inline">
+      $$\ddot{x}$$
+    </span></td><td rowspan="1" colspan="1">\ddot{x}</td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1"></td></tr><tr><th colspan="5" rowspan="1"><a name="greek-letters" shape="rect" id="greek-letters"></a><a href="#greek-letters-note" shape="rect">greek letters</a></th></tr><tr><th rowspan="1" colspan="1"></th><th rowspan="1" colspan="1"><a href="#latex" shape="rect">latex</a></th><th rowspan="1" colspan="1"><a href="#mathematica" shape="rect">mathematica</a></th><th rowspan="1" colspan="1"><a href="#html-entities" shape="rect">html entities</a></th><th rowspan="1" colspan="1"><a href="#unicode" shape="rect">unicode</a></th></tr><tr><td rowspan="1" colspan="1"><span style="white-space: pre-wrap;">Α α</span></td><td rowspan="1" colspan="1">\Alpha \alpha</td><td rowspan="1" colspan="1">\[CapitalAlpha] \[Alpha]</td><td rowspan="1" colspan="1">&amp;Alpha; &amp;alpha;</td><td rowspan="1" colspan="1">0391 03B1</td></tr><tr><td rowspan="1" colspan="1"><span style="white-space: pre-wrap;">Β β</span></td><td rowspan="1" colspan="1">\Beta \beta</td><td rowspan="1" colspan="1">\[CapitalBeta] \[Beta]</td><td rowspan="1" colspan="1">&amp;Beta; &amp;beta;</td><td rowspan="1" colspan="1">0392 03B2</td></tr><tr><td rowspan="1" colspan="1"><span style="white-space: pre-wrap;">Γ γ</span></td><td rowspan="1" colspan="1">\Gamma \gamma</td><td rowspan="1" colspan="1">\[CapitalGamma] \[Gamma]</td><td rowspan="1" colspan="1">&amp;Gamma; &amp;gamma;</td><td rowspan="1" colspan="1">0393 03B3</td></tr><tr><td rowspan="1" colspan="1"><span style="white-space: pre-wrap;">Δ δ</span></td><td rowspan="1" colspan="1">\Delta \delta</td><td rowspan="1" colspan="1">\[CapitalDelta] \[Delta]</td><td rowspan="1" colspan="1">&amp;Delta; &amp;delta;</td><td rowspan="1" colspan="1">0394 03B4</td></tr><tr><td rowspan="1" colspan="1"><span style="white-space: pre-wrap;">Ε ε</span></td><td rowspan="1" colspan="1">\Epsilon \epsilon</td><td rowspan="1" colspan="1">\[CapitalEpsilon] \[Epsilon]</td><td rowspan="1" colspan="1">&amp;Epsilon; &amp;epsilon;</td><td rowspan="1" colspan="1">0395 03B5</td></tr><tr><td rowspan="1" colspan="1"><span style="white-space: pre-wrap;">Ζ ζ</span></td><td rowspan="1" colspan="1">\Zeta \zeta</td><td rowspan="1" colspan="1">\[CapitalZeta] \[Zeta]</td><td rowspan="1" colspan="1">&amp;Zeta; &amp;zeta;</td><td rowspan="1" colspan="1">0396 03B6</td></tr><tr><td rowspan="1" colspan="1"><span style="white-space: pre-wrap;">Η η</span></td><td rowspan="1" colspan="1">\Eta \eta</td><td rowspan="1" colspan="1">\[CapitalEta] \[Eta]</td><td rowspan="1" colspan="1">&amp;Eta; &amp;eta;</td><td rowspan="1" colspan="1">0397 03B7</td></tr><tr><td rowspan="1" colspan="1"><span style="white-space: pre-wrap;">Θ θ</span></td><td rowspan="1" colspan="1">\Theta \theta</td><td rowspan="1" colspan="1">\[CapitalTheta] \[Theta]</td><td rowspan="1" colspan="1">&amp;Theta; &amp;theta;</td><td rowspan="1" colspan="1">0398 03B8</td></tr><tr><td rowspan="1" colspan="1"><span style="white-space: pre-wrap;">Ι ι</span></td><td rowspan="1" colspan="1">\Iota \iota</td><td rowspan="1" colspan="1">\[CapitalIota] \[Iota]</td><td rowspan="1" colspan="1">&amp;Iota; &amp;iota;</td><td rowspan="1" colspan="1">0399 03B9</td></tr><tr><td rowspan="1" colspan="1"><span style="white-space: pre-wrap;">Κ κ</span></td><td rowspan="1" colspan="1">\Kappa \kappa</td><td rowspan="1" colspan="1">\[CapitalKappa] \[Kappa]</td><td rowspan="1" colspan="1">&amp;Kappa; &amp;kappa;</td><td rowspan="1" colspan="1">039A 03BA</td></tr><tr><td rowspan="1" colspan="1"><span style="white-space: pre-wrap;">Λ λ</span></td><td rowspan="1" colspan="1">\Lambda \lambda</td><td rowspan="1" colspan="1">\[CapitalLambda] \[Lambda]</td><td rowspan="1" colspan="1">&amp;Lambda; &amp;lambda;</td><td rowspan="1" colspan="1">039B 03BB</td></tr><tr><td rowspan="1" colspan="1"><span style="white-space: pre-wrap;">Μ μ</span></td><td rowspan="1" colspan="1">\Mu \mu</td><td rowspan="1" colspan="1">\[CapitalMu] \[Mu]</td><td rowspan="1" colspan="1">&amp;Mu; &amp;mu;</td><td rowspan="1" colspan="1">039C 03BC</td></tr><tr><td rowspan="1" colspan="1"><span style="white-space: pre-wrap;">Ν ν</span></td><td rowspan="1" colspan="1">\Nu \nu</td><td rowspan="1" colspan="1">\[CapitalNu] \[Nu]</td><td rowspan="1" colspan="1">&amp;Nu; &amp;nu;</td><td rowspan="1" colspan="1">039D 03BD</td></tr><tr><td rowspan="1" colspan="1"><span style="white-space: pre-wrap;">Ξ ξ</span></td><td rowspan="1" colspan="1">\Xi \xi</td><td rowspan="1" colspan="1">\[CapitalXi] \[Xi]</td><td rowspan="1" colspan="1">&amp;Xi; &amp;xi;</td><td rowspan="1" colspan="1">039E 03BE</td></tr><tr><td rowspan="1" colspan="1"><span style="white-space: pre-wrap;">Ο ο</span></td><td rowspan="1" colspan="1">\Omicron \omicron</td><td rowspan="1" colspan="1">\[CapitalOmicron] \[Omicron]</td><td rowspan="1" colspan="1">&amp;Omicron; &amp;omicron;</td><td rowspan="1" colspan="1">039F 03BF</td></tr><tr><td rowspan="1" colspan="1"><span style="white-space: pre-wrap;">Π π</span></td><td rowspan="1" colspan="1">\Pi \pi</td><td rowspan="1" colspan="1">\[CapitalPi] \[Pi]</td><td rowspan="1" colspan="1">&amp;Pi; &amp;pi;</td><td rowspan="1" colspan="1">03A0 03C0</td></tr><tr><td rowspan="1" colspan="1"><span style="white-space: pre-wrap;">Ρ ρ</span></td><td rowspan="1" colspan="1">\Rho \rho</td><td rowspan="1" colspan="1">\[CapitalRho] \[Rho]</td><td rowspan="1" colspan="1">&amp;Rho; &amp;rho;</td><td rowspan="1" colspan="1">03A1 03C1</td></tr><tr><td rowspan="1" colspan="1"><span style="white-space: pre-wrap;">Σ σ</span></td><td rowspan="1" colspan="1">\Sigma \sigma</td><td rowspan="1" colspan="1">\[CapitalSigma] \[Sigma]</td><td rowspan="1" colspan="1">&amp;Sigma; &amp;sigma;</td><td rowspan="1" colspan="1">03A2 03C2</td></tr><tr><td rowspan="1" colspan="1"><span style="white-space: pre-wrap;">Τ τ</span></td><td rowspan="1" colspan="1">\Tau \tau</td><td rowspan="1" colspan="1">\[CapitalTau] \[Tau]</td><td rowspan="1" colspan="1">&amp;Tau; &amp;tau;</td><td rowspan="1" colspan="1">03A3 03C3</td></tr><tr><td rowspan="1" colspan="1"><span style="white-space: pre-wrap;">Υ υ</span></td><td rowspan="1" colspan="1">\Upsilon \upsilon</td><td rowspan="1" colspan="1">\[CapitalUpsilon] \[Upsilon]</td><td rowspan="1" colspan="1">&amp;Upsilon; &amp;upsilon;</td><td rowspan="1" colspan="1">03A4 03C4</td></tr><tr><td rowspan="1" colspan="1"><span style="white-space: pre-wrap;">Φ φ</span></td><td rowspan="1" colspan="1">\Phi \phi</td><td rowspan="1" colspan="1">\[CapitalPhi] \[Phi]</td><td rowspan="1" colspan="1">&amp;Phi; &amp;phi;</td><td rowspan="1" colspan="1">03A5 03C5</td></tr><tr><td rowspan="1" colspan="1"><span style="white-space: pre-wrap;">Χ χ</span></td><td rowspan="1" colspan="1">\Chi \chi</td><td rowspan="1" colspan="1">\[CapitalChi] \[Chi]</td><td rowspan="1" colspan="1">&amp;Chi; &amp;chi;</td><td rowspan="1" colspan="1">03A6 03C6</td></tr><tr><td rowspan="1" colspan="1"><span style="white-space: pre-wrap;">Ψ ψ</span></td><td rowspan="1" colspan="1">\Psi \psi</td><td rowspan="1" colspan="1">\[CapitalPsi] \[Psi]</td><td rowspan="1" colspan="1">&amp;Psi; &amp;psi;</td><td rowspan="1" colspan="1">03A7 03C7</td></tr><tr><td rowspan="1" colspan="1"><span style="white-space: pre-wrap;">Ω ω</span></td><td rowspan="1" colspan="1">\Omega \omega</td><td rowspan="1" colspan="1">\[CapitalOmega] \[Omega]</td><td rowspan="1" colspan="1">&amp;Omega; &amp;omega;</td><td rowspan="1" colspan="1">03A8 03C8</td></tr><tr><th colspan="5" rowspan="1"><a name="math-fonts" shape="rect" id="math-fonts"></a><a href="#math-fonts-note" shape="rect">fonts</a></th></tr><tr><th rowspan="1" colspan="1"></th><th rowspan="1" colspan="1"><a href="#latex" shape="rect">latex</a></th><th rowspan="1" colspan="1"><a href="#mathematica" shape="rect">mathematica</a></th><th rowspan="1" colspan="1"><a href="#html-entities" shape="rect">html entities</a></th><th rowspan="1" colspan="1"><a href="#unicode" shape="rect">unicode</a></th></tr><tr><td rowspan="1" colspan="1">roman</td><td rowspan="1" colspan="1">\textrm{roman}<br />
+\mathrm{roman}</td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1"></td></tr><tr><td rowspan="1" colspan="1"><em>italic</em></td><td rowspan="1" colspan="1">\textit{italic}<br />
+\mathit{italic}</td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1">&lt;em&gt;italic&lt;/em&gt;<br />
+&lt;i&gt;italic&lt;/i&gt;</td><td rowspan="1" colspan="1"></td></tr><tr><td rowspan="1" colspan="1"><strong>bold</strong></td><td rowspan="1" colspan="1">\textbf{bold}<br />
+\mathbf{bold}</td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1">&lt;strong&gt;bold&lt;/strong&gt;<br />
+&lt;b&gt;bold&lt;/b&gt;</td><td rowspan="1" colspan="1"></td></tr><tr><td rowspan="1" colspan="1"><tt>fixed width</tt></td><td rowspan="1" colspan="1">\texttt{fixed width}<br />
+\mathtt{fixed width}</td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1">&lt;tt&gt;fixed width&lt;/tt&gt;</td><td rowspan="1" colspan="1"></td></tr><tr><td rowspan="1" colspan="1"><span style="color: blue">predefined color</span></td><td rowspan="1" colspan="1">\usepackage{color}<br />
+\textcolor {blue}{blue text}</td><td rowspan="1" colspan="1">Style["blue text", Blue]</td><td rowspan="1" colspan="1">&lt;span style="color: blue"&gt;blue text&lt;/span&gt;</td><td rowspan="1" colspan="1"></td></tr><tr><td rowspan="1" colspan="1"><span style="color: red">RGB color</span></td><td rowspan="1" colspan="1">\usepackage{color}<br />
+\textcolor [rgb]{1,0,0}{red text}</td><td rowspan="1" colspan="1">Style["red text", RGBColor[1, 0, 0]]</td><td rowspan="1" colspan="1">&lt;span style="color: #FF0000"&gt;red text&lt;/span&gt;</td><td rowspan="1" colspan="1"></td></tr><tr><td rowspan="1" colspan="1">ℕ<br />
+ℤ<br />
+ℚ<br />
+ℝ<br />
+ℂ</td><td rowspan="1" colspan="1">\mathbb{N}<br />
+\mathbb{Z}<br />
+\mathbb{Q}<br />
+\mathbb{R}<br />
+\mathbb{C}</td><td rowspan="1" colspan="1">\[DoubleStruckCapitalN]<br />
+\[DoubleStruckCapitalZ]<br />
+\[DoubleStruckCapitalQ]<br />
+\[DoubleStruckCapitalR]<br />
+\[DoubleStruckCapitalC]</td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1">2115: ℕ<br />
+2124: ℤ<br />
+211A: ℚ<br />
+211D: ℝ<br />
+2102: ℂ</td></tr><tr><td rowspan="1" colspan="1"><span class="math-inline">
+      $$\mathcal{A, B, C, \ldots}$$
+    </span><br /><span class="math-inline">
+      $$\mathcal{a, b, c, \ldots}$$
+    </span></td><td rowspan="1" colspan="1">\mathcal{A, B, C, \ldots}<br />
+\mathcal{a, b, c, \ldots}</td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1"></td></tr><tr><td rowspan="1" colspan="1"><span class="math-inline">
+      $$\mathfrak{A, B, C, \ldots}$$
+    </span><br /><span class="math-inline">
+      $$\mathfrak{a, b, c, \ldots}$$
+    </span></td><td rowspan="1" colspan="1">\mathfrak{A, B, C, \ldots}<br />
+\mathfrak{a, b, c, \ldots}</td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1"></td><td rowspan="1" colspan="1"></td></tr><tr><th rowspan="1" colspan="1"><span style="color: #efefef"><span style="white-space: pre-wrap;">________________</span></span></th><th rowspan="1" colspan="1"><span style="color: #efefef"><span style="white-space: pre-wrap;">_________________________________________</span></span></th><th rowspan="1" colspan="1"><span style="color: #efefef"><span style="white-space: pre-wrap;">_________________________________________</span></span></th><th rowspan="1" colspan="1"><span style="color: #efefef"><span style="white-space: pre-wrap;">_________________________________________</span></span></th><th rowspan="1" colspan="1"><span style="color: #efefef"><span style="white-space: pre-wrap;">_________________________________________</span></span></th></tr></table><p><a name="latex" shape="rect" id="latex"></a></p>
+<h1 id="toc0"><span><a href="#top" shape="rect">LaTeX</a></span></h1>
+<ul><li><a href="http://tug.org/mactex/" shape="rect">MacTeX</a></li><li><a href="http://miktex.org/" shape="rect">MiKTeX</a></li></ul><p><a name="mathematica" shape="rect" id="mathematica"></a></p>
+<h1 id="toc1"><span><a href="#top" shape="rect">Mathematica</a></span></h1>
+<p><a href="http://reference.wolfram.com/mathematica/guide/Mathematica.html" shape="rect">Mathematica Documentation Center</a><br /><a href="http://reference.wolfram.com/mathematica/guide/MathematicalTypesetting.html" shape="rect">Mathematica: Mathematical Typesetting</a></p>
+<p>Using a Mathematica notebook to create a document has the advantage that the mathematical notation can be evaluated, reducing the possibility of error.  On a Mac use ⇧⌘S to save the notebook as a PDF or HTML.  If the notebook is saved as HTML the mathematical cells are rendered as GIF images.</p>
+<p>The cell brackets in the right margin of the notebook do not render in the final document.  Mathematica notebooks are a collection of input cell and output cell pairs.  Double click the cell bracket of the input cell to hide the output cell.  Conversely double click on the output cell bracket to hide the input cell.</p>
+<p>Click on the group bracket for a cell and hit ⌘7 to convert it to a text cell, ⌘9 to convert it back to an input cell.  Use copy-and-paste or ^( to insert mathematical notation into a text cell.  Use ^) to terminate editing the mathematical notation in a text cell.</p>
+<p><em>HoldForm[]</em> can be used to prevent Mathematica from evaluating a form to something simpler.  <em>TraditionalForm[]</em> will replace Mathematica notation such as <em>Sin[x]</em> with more traditional mathematical notation such as <em>sin(x)</em>.</p>
+<p>The <em>Postfix</em> operator (<span style="white-space: pre-wrap;">//</span>) in the following manner:</p>
+<div class="code">
+<pre xml:space="preserve">
+<code>Integrate[Cos[x], {x, 0, 2 Pi} ] // HoldForm // TraditionalForm</code>
+</pre></div>
+<p><a name="mathjax" shape="rect" id="mathjax"></a></p>
+<h1 id="toc2"><span><a href="#top" shape="rect">MathJax</a></span></h1>
+<p><a href="http://www.mathjax.org/docs/1.1/index.html" shape="rect">MathJax</a> is a JavaScript solution for putting LaTeX into HTML. The necessary JavaScript file is hosted at mathjax.org. Here is an example of how to use it:</p>
+<div class="code">
+<pre xml:space="preserve">
+<code>&lt;script type="text/javascript"
+  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"&gt;
+&lt;/script&gt;
+
+&lt;p&gt;
+The Greeks observed that \( \sqrt{2} \) cannot be expressed as a rational number.
+
+&lt;p&gt;
+Moreover, they knew that for a right triangle with hypotenuse &lt;em&gt;c&lt;/em&gt;:
+
+$$ c^2 = a^2 + b^2 $$</code>
+</pre></div>
+<p><a name="google-charts" shape="rect" id="google-charts"></a></p>
+<h1 id="toc3"><span><a href="#top" shape="rect">Google Charts</a></span></h1>
+<p><a href="http://code.google.com/apis/chart/docs/making_charts.html" shape="rect">Google Charts</a></p>
+<p>The feature is undocumented, but it is possible to send a GET request with url encoded LaTeX to the Google Charts API and get a PNG in return. Thus HTML like this is possible:</p>
+<div class="code">
+<div class="hl-main">
+<pre xml:space="preserve">
+<span class="hl-brackets">&lt;</span><span class="hl-reserved">img</span><span class="hl-code"> </span><span class="hl-var">src</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">http://chart.apis.google.com/chart?cht=tx&amp;chl=URLENCODED_LATEX</span><span class="hl-quotes">"</span><span class="hl-brackets">/&gt;</span>
+</pre></div>
+</div>
+<p>Url encoded LaTeX is unmaintainable, however. A better approach might use HTML like this:</p>
+<div class="code">
+<div class="hl-main">
+<pre xml:space="preserve">
+<span class="hl-code">Inline Math: </span><span class="hl-brackets">&lt;</span><span class="hl-reserved">span</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">latex</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">\int_0^\infty \cos x dx</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">span</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+Centered Math:
+ 
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">class</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">latex</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+\frac{1+x}{1+y}
+</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span>
+</pre></div>
+</div>
+<p>The above HTML must be processed by the following JavaScript, which should be put in the document after the tags it needs to process:</p>
+<div class="code">
+<div class="hl-main">
+<pre xml:space="preserve">
+<span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">LATEX</span><span class="hl-code"> = </span><span class="hl-brackets">{}</span><span class="hl-code">;
+ 
+</span><span class="hl-identifier">LATEX</span><span class="hl-code">.</span><span class="hl-identifier">url</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">http://chart.apis.google.com/chart?cht=tx&amp;chl=</span><span class="hl-quotes">"</span><span class="hl-code">;
+ 
+</span><span class="hl-identifier">LATEX</span><span class="hl-code">.</span><span class="hl-identifier">process</span><span class="hl-code"> = </span><span class="hl-reserved">function</span><span class="hl-brackets">()</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+ 
+  </span><span class="hl-identifier">elements</span><span class="hl-code"> = </span><span class="hl-builtin">document</span><span class="hl-code">.</span><span class="hl-identifier">getElementsByClassName</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">latex</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+ 
+  </span><span class="hl-reserved">for</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">i</span><span class="hl-code">=</span><span class="hl-number">0</span><span class="hl-code">; </span><span class="hl-identifier">i</span><span class="hl-code">&lt;</span><span class="hl-identifier">elements</span><span class="hl-code">.</span><span class="hl-identifier">length</span><span class="hl-code">; </span><span class="hl-identifier">i</span><span class="hl-code">++ </span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+    </span><span class="hl-identifier">element</span><span class="hl-code"> = </span><span class="hl-identifier">elements</span><span class="hl-brackets">[</span><span class="hl-identifier">i</span><span class="hl-brackets">]</span><span class="hl-code">;
+ 
+    </span><span class="hl-reserved">if</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">div</span><span class="hl-quotes">"</span><span class="hl-code"> == </span><span class="hl-identifier">element</span><span class="hl-code">.</span><span class="hl-identifier">tagName</span><span class="hl-code">.</span><span class="hl-identifier">toLowerCase</span><span class="hl-brackets">()</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+      </span><span class="hl-identifier">LATEX</span><span class="hl-code">.</span><span class="hl-identifier">replace_div</span><span class="hl-brackets">(</span><span class="hl-identifier">element</span><span class="hl-brackets">)</span><span class="hl-code">;
+    </span><span class="hl-brackets">}</span><span class="hl-code">
+    </span><span class="hl-reserved">else</span><span class="hl-code"> </span><span class="hl-reserved">if</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">span</span><span class="hl-quotes">"</span><span class="hl-code"> == </span><span class="hl-identifier">element</span><span class="hl-code">.</span><span class="hl-identifier">tagName</span><span class="hl-code">.</span><span class="hl-identifier">toLowerCase</span><span class="hl-brackets">()</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+      </span><span class="hl-identifier">LATEX</span><span class="hl-code">.</span><span class="hl-identifier">replace_span</span><span class="hl-brackets">(</span><span class="hl-identifier">element</span><span class="hl-brackets">)</span><span class="hl-code">;
+    </span><span class="hl-brackets">}</span><span class="hl-code">
+  </span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-brackets">}</span><span class="hl-code">;
+ 
+</span><span class="hl-identifier">LATEX</span><span class="hl-code">.</span><span class="hl-identifier">replace_span</span><span class="hl-code"> = </span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-identifier">element</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+  </span><span class="hl-identifier">img</span><span class="hl-code"> = </span><span class="hl-builtin">document</span><span class="hl-code">.</span><span class="hl-identifier">createElement</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">img</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code">;
+  </span><span class="hl-identifier">img</span><span class="hl-code">.</span><span class="hl-identifier">setAttribute</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">src</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-identifier">LATEX</span><span class="hl-code">.</span><span class="hl-identifier">url</span><span class="hl-code"> + </span><span class="hl-identifier">encodeURIComponent</span><span class="hl-brackets">(</span><span class="hl-identifier">element</span><span class="hl-code">.</span><span class="hl-identifier">innerHTML</span><span class="hl-brackets">))</span><span class="hl-code">;
+  </span><span class="hl-identifier">img</span><span class="hl-code">.</span><span class="hl-identifier">setAttribute</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">class</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-quotes">'</span><span class="hl-string">latex</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code">;
+  </span><span class="hl-identifier">img</span><span class="hl-code">.</span><span class="hl-identifier">setAttribute</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">style</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-quotes">'</span><span class="hl-string">vertical-align: bottom</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code">;
+  </span><span class="hl-identifier">element</span><span class="hl-code">.</span><span class="hl-identifier">parentNode</span><span class="hl-code">.</span><span class="hl-identifier">replaceChild</span><span class="hl-brackets">(</span><span class="hl-identifier">img</span><span class="hl-code">, </span><span class="hl-identifier">element</span><span class="hl-brackets">)</span><span class="hl-code">
+</span><span class="hl-brackets">}</span><span class="hl-code">
+ 
+</span><span class="hl-identifier">LATEX</span><span class="hl-code">.</span><span class="hl-identifier">replace_div</span><span class="hl-code"> = </span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-identifier">element</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+  </span><span class="hl-identifier">p</span><span class="hl-code"> = </span><span class="hl-builtin">document</span><span class="hl-code">.</span><span class="hl-identifier">createElement</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">p</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code">;
+  </span><span class="hl-identifier">p</span><span class="hl-code">.</span><span class="hl-identifier">setAttribute</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">class</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-quotes">'</span><span class="hl-string">latex</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code">;
+  </span><span class="hl-identifier">p</span><span class="hl-code">.</span><span class="hl-identifier">setAttribute</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">style</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-quotes">'</span><span class="hl-string">text-align: center</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code">;
+  </span><span class="hl-identifier">img</span><span class="hl-code"> = </span><span class="hl-builtin">document</span><span class="hl-code">.</span><span class="hl-identifier">createElement</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">img</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code">;
+  </span><span class="hl-identifier">img</span><span class="hl-code">.</span><span class="hl-identifier">setAttribute</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">src</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-identifier">LATEX</span><span class="hl-code">.</span><span class="hl-identifier">url</span><span class="hl-code"> + </span><span class="hl-identifier">encodeURIComponent</span><span class="hl-brackets">(</span><span class="hl-identifier">element</span><span class="hl-code">.</span><span class="hl-identifier">innerHTML</span><span class="hl-brackets">))</span><span class="hl-code">;
+  </span><span class="hl-identifier">p</span><span class="hl-code">.</span><span class="hl-identifier">appendChild</span><span class="hl-brackets">(</span><span class="hl-identifier">img</span><span class="hl-brackets">)</span><span class="hl-code">;  
+  </span><span class="hl-identifier">element</span><span class="hl-code">.</span><span class="hl-identifier">parentNode</span><span class="hl-code">.</span><span class="hl-identifier">replaceChild</span><span class="hl-brackets">(</span><span class="hl-identifier">p</span><span class="hl-code">, </span><span class="hl-identifier">element</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">;
+ 
+</span><span class="hl-identifier">LATEX</span><span class="hl-code">.</span><span class="hl-identifier">process</span><span class="hl-brackets">()</span><span class="hl-code">;</span>
+</pre></div>
+</div>
+<p><a name="html-entities" shape="rect" id="html-entities"></a></p>
+<h1 id="toc4"><span><a href="#top" shape="rect">HTML Entities</a></span></h1>
+<p><a href="http://www.w3.org/TR/html4/sgml/entities.html" shape="rect">HTML 4 Character Entities</a> (w3.org)<br /><a href="http://en.wikipedia.org/wiki/List_of_XML_and_HTML_character_entity_references" shape="rect">List of XML and HTML Character Entity References</a> (wikipedia.org)</p>
+<p><a name="unicode" shape="rect" id="unicode"></a></p>
+<h1 id="toc5"><span><a href="#top" shape="rect">Unicode</a></span></h1>
+<p><a href="http://en.wikipedia.org/wiki/Unicode_plane" shape="rect">Unicode Plane</a> (wikipedia.org)<br /><a href="http://www.unicode.org/charts/" shape="rect">Unicode Character Code Charts</a> (unicode.org)</p>
+<p><a name="mathml" shape="rect" id="mathml"></a></p>
+<h1 id="toc6"><span><a href="#top" shape="rect">MathML</a></span></h1>
+<p><a href="http://www.w3.org/Math/" shape="rect">MathML</a></p>
+<p>MathML can be rendered by Chrome, Safari, Firefox, and Opera. There is a plugin for IE.</p>
+<p>Mathematica can generate MathML. Instead of a saving a notebook as HTML, save it as XML+MathML. The XML in the document will be XHTML.</p>
+<p><a name="word" shape="rect" id="word"></a></p>
+<h1 id="toc7"><span><a href="#top" shape="rect">Word</a></span></h1>
+<p>To insert an equation into a Word document, select <em>Insert | Object…</em> and then choose <em>Equation Editor</em> to enter some mathematical notation. It isn't possible to adjust the size of the objects created by <em>Equation Editor</em> so professional looking results aren't possible.</p>
+<p>On Windows <em>Equation Editor</em> will accept <a href="http://www.reddit.com/r/math/comments/f9h2z/google_docs_and_latex/c1eaxca" shape="rect">LaTeX</a>. This doesn't work on Macintosh.</p>
+<p><a name="math-usage" shape="rect" id="math-usage"></a></p>
+<h1 id="toc8"><span><a href="#math-notation" shape="rect">Mathematical Usage</a></span></h1>
+<p><a name="fractions-radicals-note" shape="rect" id="fractions-radicals-note"></a></p>
+<h2 id="toc9"><span><a href="#fractions-radicals" shape="rect">fractions and radicals</a></span></h2>
+<p><a name="relations-operators-note" shape="rect" id="relations-operators-note"></a></p>
+<h2 id="toc10"><span><a href="#relations-operators" shape="rect">relations and operators</a></span></h2>
+<p>A relation <em>r</em> is symmetric if <em>r(x, y) = r(y, x)</em> for all <em>x</em> and <em>y</em>. For each relation <em>r</em>, we can define an inverse relation by switching the order of the arguments. If a relation is symmetric, it is identical to its inverse relation. Binary operator symbols for a non-symmetric relations conveniently lack vertical symmetry.</p>
+<p>In a total (aka linear) order, ≮ is a synonym for ≥, but this is not true in a partial order.</p>
+<p><a name="sets-logic-note" shape="rect" id="sets-logic-note"></a></p>
+<h2 id="toc11"><span><a href="#sets-logic" shape="rect">sets and logic</a></span></h2>
+<p>Every set is a subset of itself, and ⊂ and ⊆, which are both used for the subset relation, are synonyms. The ⊊ character is available for the strict subset relation.</p>
+<p><a name="geometry-note" shape="rect" id="geometry-note"></a></p>
+<h2 id="toc12"><span><a href="#geometry" shape="rect">geometry</a></span></h2>
+<p><a name="analysis-note" shape="rect" id="analysis-note"></a></p>
+<h2 id="toc13"><span><a href="#analysis" shape="rect">analysis</a></span></h2>
+<p><a name="relational-algebra-note" shape="rect" id="relational-algebra-note"></a></p>
+<h2 id="toc14"><span><a href="#relational-aglebra" shape="rect">relational algebra</a></span></h2>
+<p><a name="matrices-note" shape="rect" id="matrices-note"></a></p>
+<h2 id="toc15"><span><a href="#matrices" shape="rect">matrices</a></span></h2>
+<p><a name="algebra-note" shape="rect" id="algebra-note"></a></p>
+<h2 id="toc16"><span><a href="#algebra" shape="rect">algebra</a></span></h2>
+<p><a name="arrows-note" shape="rect" id="arrows-note"></a></p>
+<h2 id="toc17"><span><a href="#arrows" shape="rect">arrows</a></span></h2>
+<p><a name="math-accents-note" shape="rect" id="math-accents-note"></a></p>
+<h2 id="toc18"><span><a href="#math-accents" shape="rect">accents</a></span></h2>
+<p><a name="greek-letters-note" shape="rect" id="greek-letters-note"></a></p>
+<h2 id="toc19"><span><a href="#greek-letters" shape="rect">greek letters</a></span></h2>
+<p><a name="math-fonts-note" shape="rect" id="math-fonts-note"></a></p>
+<h2 id="toc20"><span><a href="#math-fonts" shape="rect">fonts</a></span></h2>
+<p>The fraktur script is used for the real and imaginary components of complex numbers. It is used for the Weierstrass elliptic function and the cardinality of the continuum. It is also used for Lie algebras.</p>
+<p>Here are some examples of how to write fraktur: <a href="http://www.math.cornell.edu/~sjamaar/pictures/german1.gif" shape="rect">one</a>, <a href="http://en.wikipedia.org/wiki/S%C3%BCtterlin#Overview_of_the_letters" shape="rect">two</a>.</p>
+
+                    </div>
+        </div>
+      </div>
+      <div id="license-area" class="license-area">
+        content of this page licensed under
+        <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">
+        creative commons attribution-sharealike 3.0</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-17129977-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</body>
+</html>

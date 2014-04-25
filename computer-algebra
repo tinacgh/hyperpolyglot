@@ -1,0 +1,1596 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
+<link rel="icon" type="image/gif" href="/favicon.gif"/>
+<link rel="apple-touch-icon" sizes="120x120" href="touch-icon-iphone-retina.png" />
+<link rel="apple-touch-icon" sizes="152x152" href="touch-icon-ipad-retina.png" />
+<title>Computer Algebra Software: Mathematica, SymPy, Pari/GP - Hyperpolyglot</title>
+<style type="text/css" id="internal-style">
+@import url(hyperpolyglot.css);
+</style>
+<meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
+<meta http-equiv="content-language" content="en"/>
+</head>
+<body>
+<div id="container-wrap-wrap">
+  <div id="container-wrap">
+    <div id="container">
+      <div id="header">
+        <h1><a href="/"><span>Hyperpolyglot</span></a></h1>
+      </div>
+      <div id="content-wrap">
+        <div id="main-content">
+<div id="page-title">
+                            Computer Algebra Software: Mathematica, SymPy, Pari/GP
+                        </div>
+<div id="page-content">
+                        
+
+<p><em>a side-by-side reference sheet</em></p>
+<p><a href="#grammar-invocation">grammar and invocation</a> | <a href="#var-expr">variables and expressions</a> | <a href="#arithmetic-logic">arithmetic and logic</a> | <a href="#strings">strings</a> | <a href="#regexes">regexes</a> | <a href="#arrays">arrays</a><br /><a href="#sequences">sequences</a> | <a href="#multidimensional-arrays">multidimensional arrays</a> | <a href="#dictionaries">dictionaries</a> | <a href="#functions">functions</a> | <a href="#execution-control">execution control</a> | <a href="#files">files</a> | <a href="#libraries-namespaces">libraries and namespaces</a> | <a href="#reflection">reflection</a><br /><br /><a href="#algebra">algebra</a> | <a href="#calculus">calculus</a> | <a href="#number-theory">number theory</a> | <a href="#vectors">vectors</a> | <a href="#matrices">matrices</a> | <a href="#distributions">distributions</a> | <a href="#univariate-charts">univariate charts</a> | <a href="#bivariate-charts">bivariate charts</a><br /><a href="#trivariate-charts">trivariate charts</a></p>
+<table class="wiki-content-table"><tr><th></th>
+<th><a href="#mathematica">mathematica</a></th>
+<th><a href="#sympy">sympy</a></th>
+<th><a href="#pari-gp">pari/gp</a></th>
+</tr><tr><td><a name="version-used" id="version-used"></a><a href="#version-used-note">version used</a><br /><span style="white-space: pre-wrap;"> </span></td>
+<td><span style="color: gray"><em>8.0</em></span></td>
+<td><span style="color: gray"><em>Python 2.7; SymPy 0.7</em></span></td>
+<td><span style="color: gray"><em>2.3</em></span></td>
+</tr><tr><td><a name="show-version" id="show-version"></a><a href="#show-version-note">show version</a><br /><span style="white-space: pre-wrap;"> </span></td>
+<td><span style="color: gray"><em>select</em> About Mathematica <em>in</em> Mathematica <em>menu</em></span></td>
+<td><span style="white-space: pre-wrap;">sympy.__version__</span></td>
+<td>$ gp <span style="white-space: pre-wrap;">--</span>version</td>
+</tr><tr><td><a name="implicit-prologue" id="implicit-prologue"></a><a href="#implicit-prologue-note">implicit prologue</a></td>
+<td></td>
+<td>from sympy import *<br /><br />
+x, y, z, w = symbols('x y z w')</td>
+<td></td>
+</tr><tr><th colspan="4"><a name="grammar-invocation" id="grammar-invocation"></a><a href="#grammar-invocation-note">grammar and invocation</a></th>
+</tr><tr><th></th>
+<th>mathematica</th>
+<th>sympy</th>
+<th>pari/gp</th>
+</tr><tr><td><a name="interpreter" id="interpreter"></a><a href="#interpreter-note">interpreter</a><br /><span style="white-space: pre-wrap;"> </span></td>
+<td></td>
+<td></td>
+<td>$ gp -q <span style="color: gray"><em>foo</em></span>.gp</td>
+</tr><tr><td><a name="repl" id="repl"></a><a href="#repl-note">repl</a><br /><span style="white-space: pre-wrap;"> </span></td>
+<td>$ math</td>
+<td></td>
+<td>$ gp</td>
+</tr><tr><td><a name="block-delimiters" id="block-delimiters"></a><a href="#block-delimiters-note">block delimiters</a><br /><span style="white-space: pre-wrap;"> </span></td>
+<td>( <span style="color: gray"><em>stmt</em></span>; <span style="color: gray"><em>…</em></span>)</td>
+<td></td>
+<td>{ <span style="color: gray"><em>…</em></span> }</td>
+</tr><tr><td><a name="stmt-separator" id="stmt-separator"></a><a href="#stmt-separator-note">statement separator</a></td>
+<td>; <span style="color: gray"><em>or sometimes newline</em></span><br /><br />
+; <span style="color: gray"><em>before a newline suppresses output</em></span></td>
+<td></td>
+<td><span style="color: gray"><em>newline or</em></span> ;<br /><br /><span style="color: gray"><em>a trailing semicolon suppresses output</em></span></td>
+</tr><tr><td><a name="eol-comment" id="eol-comment"></a><a href="#eol-comment-note">end-of-line comment</a><br /><span style="white-space: pre-wrap;"> </span></td>
+<td><span style="color: gray"><em>none</em></span></td>
+<td></td>
+<td>1 + 1 <span style="color: gray">\\ addition</span></td>
+</tr><tr><td><a name="multiple-line-comment" id="multiple-line-comment"></a><a href="#multiple-line-comment-note">multiple line comment</a><br /><span style="white-space: pre-wrap;"> </span></td>
+<td>1 + <span style="color: gray">(* addition *)</span> 1</td>
+<td></td>
+<td>1 + <span style="color: gray">/* addition */</span> 1</td>
+</tr><tr><th colspan="4"><a name="var-expr" id="var-expr"></a><a href="#var-expr-note">variables and expressions</a></th>
+</tr><tr><th></th>
+<th>mathematica</th>
+<th>sympy</th>
+<th>pari/gp</th>
+</tr><tr><td><a name="assignment" id="assignment"></a><a href="#assignment-note">assignment</a></td>
+<td>a = 3<br />
+Set[a, 3]</td>
+<td></td>
+<td>a = 3</td>
+</tr><tr><td><a name="parallel-assignment" id="parallel-assignment"></a><a href="#parallel-assignment-note">parallel assignment</a></td>
+<td>{a, b} = {3, 4}<br />
+Set[{a, b}, {3, 4}]</td>
+<td></td>
+<td><span style="color: gray"><em>none</em></span></td>
+</tr><tr><td><a name="compound-assignment" id="compound-assignment"></a><a href="#compound-assignment-note">compound assignment</a></td>
+<td>+= -= *= /=<br /><span style="color: gray"><em>corresponding functions:</em></span><br />
+AddTo SubtractFrom TimeBy DivideBy</td>
+<td></td>
+<td>+= -= *= /= %=</td>
+</tr><tr><td><a name="incr-decr" id="incr-decr"></a><a href="#incr-decr-note">increment and decrement</a></td>
+<td>++x <span style="white-space: pre-wrap;">--</span>x<br />
+PreIncrement[x] PreDecrement[x]<br />
+x++ x<span style="white-space: pre-wrap;">--</span><br />
+Increment[x] Decrement[x]</td>
+<td></td>
+<td><span style="color: gray"><em>return value after increment or decrement:</em></span><br />
+x++ x<span style="white-space: pre-wrap;">--</span></td>
+</tr><tr><td><a name="null" id="null"></a><a href="#null-note">null</a><br /><span style="white-space: pre-wrap;"> </span></td>
+<td>Null</td>
+<td></td>
+<td></td>
+</tr><tr><td><a name="null-test" id="null-test"></a><a href="#null-test-note">null test</a><br /><span style="white-space: pre-wrap;"> </span></td>
+<td></td>
+<td></td>
+<td></td>
+</tr><tr><td><a name="undef-var" id="undef-var"></a><a href="#undef-var-note">undefined variable access</a><br /><span style="white-space: pre-wrap;"> </span></td>
+<td><span style="color: gray"><em>treated as an unknown number</em></span></td>
+<td></td>
+<td><span style="color: gray"><em>treated as an unknown number</em></span></td>
+</tr><tr><td><a name="rm-var-binding" id="rm-var-binding"></a><a href="#rm-var-binding-note">remove variable binding</a></td>
+<td>Clear[x]<br />
+Remove[x]</td>
+<td></td>
+<td>kill(x)</td>
+</tr><tr><td><a name="cond-expr" id="cond-expr"></a><a href="#cond-expr-note">conditional expression</a><br /><span style="white-space: pre-wrap;"> </span></td>
+<td>If[x &gt; 0, x, -x]</td>
+<td></td>
+<td>if(x &gt; 0, x, -x)</td>
+</tr><tr><th colspan="4"><a name="arithmetic-logic" id="arithmetic-logic"></a><a href="#arithmetic-logic-note">arithmetic and logic</a></th>
+</tr><tr><th></th>
+<th>mathematica</th>
+<th>sympy</th>
+<th>pari/gp</th>
+</tr><tr><td><a name="true-false" id="true-false"></a><a href="#true-false-note">true and false</a><br /><span style="white-space: pre-wrap;"> </span></td>
+<td>True False</td>
+<td></td>
+<td>1 0</td>
+</tr><tr><td><a name="falsehoods" id="falsehoods"></a><a href="#falsehoods-note">falsehoods</a><br /><span style="white-space: pre-wrap;"> </span></td>
+<td>False</td>
+<td></td>
+<td>0</td>
+</tr><tr><td><a name="logical-op" id="logical-op"></a><a href="#logical-op-note">logical operators</a></td>
+<td>! True <span style="white-space: pre-wrap;">||</span> (True &amp;&amp; False)<br />
+Or[Not[True], And[True, False]]</td>
+<td></td>
+<td>! 1 <span style="white-space: pre-wrap;">||</span> (1 <span style="white-space: pre-wrap;">&amp;&amp;</span> 0)</td>
+</tr><tr><td><a name="relational-op" id="relational-op"></a><a href="#relational-op-note">relational operators</a></td>
+<td>== != &gt; &lt; &gt;= &lt;=<br /><span style="color: gray"><em>corresponding functions:</em></span><br />
+Equal Unequal Greater Less GreaterEqual LessEqual</td>
+<td></td>
+<td>== != &gt; &lt; &gt;= &lt;=</td>
+</tr><tr><td><a name="arith-op" id="arith-op"></a><a href="#arith-op-note">arithmetic operators</a></td>
+<td>+ - * / Quotient Mod<br /><span style="color: gray"><em>adjacent terms are multiplied, so * is not necessary.</em> Quotient <em>and</em> Mod <em>are functions, not binary infix operators. These functions are also available:</em></span><br />
+Plus Subtract Times Divide</td>
+<td></td>
+<td>+ - * / <span style="color: gray"><em>none</em></span> %</td>
+</tr><tr><td><a name="int-div" id="int-div"></a><a href="#int-div-note">integer division</a><br /><span style="white-space: pre-wrap;"> </span></td>
+<td>Quotient[a, b]</td>
+<td></td>
+<td>divrem(a, b)[1]</td>
+</tr><tr><td><a name="int-div-zero" id="int-div-zero"></a><a href="#int-div-zero-note">integer division by zero</a></td>
+<td><span style="color: gray"><em>dividend is zero:</em></span><br />
+Indeterminate<br /><span style="color: gray"><em>otherwise:</em></span><br />
+ComplexInfinity</td>
+<td></td>
+<td><span style="color: gray"><em>error</em></span></td>
+</tr><tr><td><a name="float-div" id="float-div"></a><a href="#float-div-note">float division</a></td>
+<td><span style="color: gray"><em>exact division:</em></span><br />
+a / b</td>
+<td></td>
+<td><span style="color: gray"><em>exact division:</em></span><br />
+a / b</td>
+</tr><tr><td><a name="float-div-zero" id="float-div-zero"></a><a href="#float-div-zero-note">float division by zero</a></td>
+<td><span style="color: gray"><em>dividend is zero:</em></span><br />
+Indeterminate<br /><span style="color: gray"><em>otherwise:</em></span><br />
+ComplexInfinity</td>
+<td></td>
+<td><span style="color: gray"><em>error</em></span></td>
+</tr><tr><td><a name="power" id="power"></a><a href="#power-note">power</a></td>
+<td>2 ^ 16<br />
+Power[2, 16]</td>
+<td></td>
+<td>2 ^ 16</td>
+</tr><tr><td><a name="sqrt" id="sqrt"></a><a href="#sqrt-note">sqrt</a></td>
+<td><span style="color: gray"><em>returns symbolic expression:</em></span><br />
+Sqrt[2]</td>
+<td></td>
+<td><span style="color: gray"><em>returns float:</em></span><br />
+sqrt(2)</td>
+</tr><tr><td><a name="sqrt-negative-one" id="sqrt-negative-one"></a><a href="#sqrt-negative-one-note">sqrt -1</a><br /><span style="white-space: pre-wrap;"> </span></td>
+<td>I</td>
+<td></td>
+<td>1.000 * I</td>
+</tr><tr><td><a name="transcendental-func" id="transcendental-func"></a><a href="#transcendental-func-note">transcendental functions</a></td>
+<td>Exp Log Sin Cos Tan ArcSin ArcCos ArcTan ArcTan<br /><span style="color: gray">ArcTan <em>accepts 1 or 2 arguments</em></span></td>
+<td></td>
+<td>exp log sin cos tan asin acos atan <span style="color: gray"><em>none</em></span></td>
+</tr><tr><td><a name="transcendental-const" id="transcendental-const"></a><a href="#transcendental-const-note">transcendental constants</a><br /><span style="color: gray"><em>pi and the euler constant</em></span></td>
+<td>Pi E</td>
+<td>pi e</td>
+<td>Pi exp(1)</td>
+</tr><tr><td><a name="float-truncation" id="float-truncation"></a><a href="#float-truncation-note">float truncation</a><br /><span style="color: gray"><em>round towards zero, round to nearest integer, round down, round up</em></span></td>
+<td>IntegerPart Round Floor Ceiling</td>
+<td></td>
+<td>truncate round floor ceil</td>
+</tr><tr><td><a name="absolute-val" id="absolute-val"></a><a href="#absolute-val-note">absolute value</a><br /><span style="color: gray"><em>and signum</em></span></td>
+<td>Abs Sign</td>
+<td></td>
+<td>abs sign</td>
+</tr><tr><td><a name="int-overflow" id="int-overflow"></a><a href="#int-overflow-note">integer overflow</a><br /><span style="white-space: pre-wrap;"> </span></td>
+<td><span style="color: gray"><em>none, has arbitrary length integer type</em></span></td>
+<td></td>
+<td><span style="color: gray"><em>none, has arbitrary length integer type</em></span></td>
+</tr><tr><td><a name="float-overflow" id="float-overflow"></a><a href="#float-overflow-note">float overflow</a><br /><span style="white-space: pre-wrap;"> </span></td>
+<td><span style="color: gray"><em>none</em></span></td>
+<td></td>
+<td><span style="color: gray"><em>error</em></span></td>
+</tr><tr><td><a name="rational-construction" id="rational-construction"></a><a href="#rational-construction-note">rational construction</a></td>
+<td><span style="color: gray"><em>use integer division:</em></span><br />
+1 / 7</td>
+<td></td>
+<td><span style="color: gray"><em>use integer division:</em></span><br />
+1 / 7</td>
+</tr><tr><td><a name="rational-decomposition" id="rational-decomposition"></a><a href="#rational-decomposition-note">rational decomposition</a><br /><span style="white-space: pre-wrap;"> </span></td>
+<td>Numerator Denominator</td>
+<td></td>
+<td>numerator denominator</td>
+</tr><tr><td><a name="complex-construction" id="complex-construction"></a><a href="#complex-construction-note">complex construction</a><br /><span style="white-space: pre-wrap;"> </span></td>
+<td>1 + 3I</td>
+<td></td>
+<td>1 + 3 * I</td>
+</tr><tr><td><a name="complex-decomposition" id="complex-decomposition"></a><a href="#complex-decomposition-note">complex decomposition</a><br /><span style="color: gray"><em>real and imaginary part, argument and modulus, conjugate</em></span></td>
+<td>Re Im<br />
+Arg Abs<br />
+Conjugate</td>
+<td></td>
+<td>real imag<br /><span style="color: gray"><em>??</em></span> abs<br />
+conj</td>
+</tr><tr><td><a name="random-num" id="random-num"></a><a href="#random-num-note">random number</a><br /><span style="color: gray"><em>uniform integer, uniform float</em></span></td>
+<td>RandomInteger[{0, 99}]<br />
+RandomReal[]</td>
+<td></td>
+<td>random(100)<br /><span style="color: gray"><em>??</em></span></td>
+</tr><tr><td><a name="random-seed" id="random-seed"></a><a href="#random-seed-note">random seed</a><br /><span style="color: gray"><em>set, get</em></span></td>
+<td>SeedRandom[17]<br /><span style="color: gray"><em>??</em></span></td>
+<td></td>
+<td>setrand(17)<br />
+getrand()</td>
+</tr><tr><td><a name="binary-octal-hex-literals" id="binary-octal-hex-literals"></a><a href="#binary-octal-hex-literals-note">binary, octal, and hex literals</a></td>
+<td>2<span style="white-space: pre-wrap;">^^</span>101010<br />
+8<span style="white-space: pre-wrap;">^^</span>52<br />
+16<span style="white-space: pre-wrap;">^^</span>2a</td>
+<td></td>
+<td></td>
+</tr><tr><td><a name="radix" id="radix"></a><a href="#radix-note">radix</a></td>
+<td>BaseForm[42, 7]<br />
+BaseForm[7^^60, 10]</td>
+<td></td>
+<td><span style="color: gray">\\ 42 as powers of 7 up to 9th power:</span><br />
+42 + O(7^10)</td>
+</tr><tr><th colspan="4"><a name="strings" id="strings"></a><a href="#strings-note">strings</a></th>
+</tr><tr><th></th>
+<th>mathematica</th>
+<th>sympy</th>
+<th>pari/gp</th>
+</tr><tr><td><a href="#string-literals">string literals</a></td>
+<td>"don't say \"no\""</td>
+<td></td>
+<td>"don't say \"no\""</td>
+</tr><tr><td><a href="#string-newline">newline in literal</a></td>
+<td><span style="color: gray"><em>yes</em></span></td>
+<td></td>
+<td><span style="color: gray"><em>no; use \n escape</em></span></td>
+</tr><tr><td><a href="#string-escapes">string literal escapes</a></td>
+<td>\\ \" \b \f \n \r \t \<span style="color: gray"><em>ooo</em></span></td>
+<td></td>
+<td>\n \t \" \\</td>
+</tr><tr><td><a href="#character-access">character access</a></td>
+<td>Characters["hello"][[1]]</td>
+<td></td>
+<td></td>
+</tr><tr><td><a href="#chr-ord">chr and ord</a></td>
+<td>FromCharacterCode[{65}]<br />
+ToCharacterCode["A"][[1]]</td>
+<td></td>
+<td></td>
+</tr><tr><td><a href="#string-length">length</a></td>
+<td>StringLength["hello"]</td>
+<td></td>
+<td>length("hello")</td>
+</tr><tr><td><a href="#string-concatenate">concatenate</a></td>
+<td>"one " &lt;&gt; "two " &lt;&gt; "three"</td>
+<td></td>
+<td>Str("one", "two", "three")</td>
+</tr><tr><td><a href="#index-substring">index of substring</a></td>
+<td>StringPosition["hello", "el"][[1]][[1]]<br /><span style="color: gray">StringPosition <em>returns an array of pairs, one for each occurrence of the substring. Each pair contains the index of the first and last character of the occurrence.</em></span></td>
+<td></td>
+<td></td>
+</tr><tr><td><a href="#extract-substring">extract substring</a></td>
+<td>StringTake["hello", {1, 4}]</td>
+<td></td>
+<td></td>
+</tr><tr><td><a href="#split">split</a></td>
+<td>StringSplit["foo,bar,baz", ","]</td>
+<td></td>
+<td></td>
+</tr><tr><td><a href="#join">join</a></td>
+<td>StringJoin[Riffle[{"foo", "bar", "baz"}, ","]]</td>
+<td></td>
+<td></td>
+</tr><tr><td><a href="#trim">trim</a></td>
+<td>StringTrim[" foo "]</td>
+<td></td>
+<td></td>
+</tr><tr><td><a href="#number-string-conversion">convert from string, to string</a></td>
+<td>7 + ToExpression["12"]<br />
+73.9 + ToExpression[".037"]<br />
+"value: " &lt;&gt; ToString[8]</td>
+<td></td>
+<td></td>
+</tr><tr><td><a href="#case-manipulation">case manipulation</a></td>
+<td>ToUpperCase["foo"]<br />
+ToLowerCase["FOO"]</td>
+<td></td>
+<td></td>
+</tr><tr><th colspan="4"><a name="regexes" id="regexes"></a><a href="#regexes-note">regular expressions</a></th>
+</tr><tr><th></th>
+<th>mathematica</th>
+<th>sympy</th>
+<th>pari/gp</th>
+</tr><tr><td><a href="#regex-match">regex test</a></td>
+<td>re = RegularExpression["[a-z]+"]<br />
+sc = StringCases["hello", re]<br />
+Length[sc] &gt; 0</td>
+<td></td>
+<td></td>
+</tr><tr><td><a href="#regex-substitute">regex substitution</a></td>
+<td>s = "foo bar bar"<br />
+re = RegularExpression["bar"]<br />
+StringReplace[s, re -&gt; "baz", 1]<br />
+StringReplace[s, re -&gt; "baz"]</td>
+<td></td>
+<td></td>
+</tr><tr><th colspan="4"><a name="arrays" id="arrays"></a><a href="#arrays-note">arrays</a></th>
+</tr><tr><th></th>
+<th>mathematica</th>
+<th>sympy</th>
+<th>pari/gp</th>
+</tr><tr><td><a name="array-literal" id="array-literal"></a><a href="#array-literal-note">literal</a></td>
+<td>{1, 2, 3}<br /><br />
+List[1, 2, 3]</td>
+<td></td>
+<td><span style="color: gray">\\ [1, 2, 3] is a vector literal:</span><br />
+List([1, 2, 3])</td>
+</tr><tr><td><a name="array-size" id="array-size"></a><a href="#array-size-note">size</a><br /><span style="white-space: pre-wrap;"> </span></td>
+<td>Length[{1, 2, 3}]</td>
+<td></td>
+<td>length(List([1, 2, 3]))</td>
+</tr><tr><td><a name="empty-array-test" id="empty-array-test"></a><a href="#empty-array-test-note">empty test</a><br /><span style="white-space: pre-wrap;"> </span></td>
+<td>Length[{}] == 0</td>
+<td></td>
+<td>length(List([])) == 0</td>
+</tr><tr><td><a name="array-lookup" id="array-lookup"></a><a href="#array-lookup-note">lookup</a></td>
+<td><span style="color: gray">(* access time is O(1) *)</span><br /><span style="color: gray">(* indices start at one: *)</span><br />
+{1, 2, 3}[[1]]<br /><br />
+Part[{1, 2, 3}, 1]</td>
+<td></td>
+<td><span style="color: gray">\\ access time is O(1).</span><br /><span style="color: gray">\\ indices start at one:</span><br />
+List([1, 2, 3])[1]</td>
+</tr><tr><td><a name="array-update" id="array-update"></a><a href="#array-update-note">update</a><br /><span style="white-space: pre-wrap;"> </span></td>
+<td>a[[1]] = 7</td>
+<td></td>
+<td>listput(a, 7, 1)</td>
+</tr><tr><td><a name="array-out-of-bounds" id="array-out-of-bounds"></a><a href="#array-out-of-bounds-note">out-of-bounds behavior</a></td>
+<td><span style="color: gray"><em>left as unevaluated</em> Part[] <em>expression</em></span></td>
+<td></td>
+<td><span style="color: gray"><em>out of allowed range error</em></span></td>
+</tr><tr><td><a name="array-element-index" id="array-element-index"></a><a href="#array-element-index-note">element index</a></td>
+<td><span style="color: gray">(* returns list of all positions: *)</span><br />
+First /@ Position[{7, 8, 9, 9}, 9]</td>
+<td></td>
+<td><span style="color: gray"><em>none</em></span></td>
+</tr><tr><td><a name="array-slice" id="array-slice"></a><a href="#array-slice-note">slice</a><br /><span style="white-space: pre-wrap;"> </span></td>
+<td>{1, 2, 3}[[1 ;; 2]]</td>
+<td></td>
+<td><span style="color: gray"><em>none</em></span></td>
+</tr><tr><td><a name="array-of-integers-as-index" id="array-of-integers-as-index"></a><a href="#array-of-integers-as-index-note">array of integers as index</a></td>
+<td><span style="color: gray">(* evaluates to {7, 9, 9} *)</span><br />
+{7, 8, 9}[[{1, 3, 3}]]</td>
+<td></td>
+<td><span style="color: gray"><em>none</em></span></td>
+</tr><tr><td><a name="array-back" id="array-back"></a><a href="#array-back-note">manipulate back</a></td>
+<td>a = {6,7,8}<br />
+AppendTo[a, 9]<br />
+elem = a[[Length[a]]]<br />
+a = Delete[a, Length[a]]<br />
+elem</td>
+<td></td>
+<td>a = List([6, 7, 8])<br />
+listput(a, 9)<br />
+elem = listpop(a)</td>
+</tr><tr><td><a name="array-front" id="array-front"></a><a href="#array-front-note">manipulate front</a></td>
+<td>a = {6,7,8}<br />
+PrependTo[a, 5]<br />
+elem = a[[1]]<br />
+a = Delete[a, 1]<br />
+elem</td>
+<td></td>
+<td>a = List([6, 7, 8]);<br />
+listinsert(a, 5, 1);<br />
+elem = a[1];<br />
+listpop(a, 1);</td>
+</tr><tr><td><a name="array-head" id="array-head"></a><a href="#array-head-note">head</a><br /><span style="white-space: pre-wrap;"> </span></td>
+<td>First[{1, 2, 3}]</td>
+<td></td>
+<td>List([1, 2, 3])[1]</td>
+</tr><tr><td><a name="array-tail" id="array-tail"></a><a href="#array-tail-note">tail</a><br /><span style="white-space: pre-wrap;"> </span></td>
+<td>Rest[{1, 2, 3}]</td>
+<td></td>
+<td><span style="color: gray"><em>none</em></span></td>
+</tr><tr><td><a name="array-cons" id="array-cons"></a><a href="#array-cons-note">cons</a></td>
+<td><span style="color: gray">(* first arg must be an array *)</span><br />
+Prepend[{2, 3}, 1]</td>
+<td></td>
+<td>a = List([1, 2, 3]);<br />
+listinsert(a, 1, 1);</td>
+</tr><tr><td><a name="array-concatenate" id="array-concatenate"></a><a href="#array-concatenate-note">concatenate</a><br /><span style="white-space: pre-wrap;"> </span></td>
+<td>Join[{1, 2, 3}, {4, 5, 6}]</td>
+<td></td>
+<td>concat(List([1, 2, 3]), List([4, 5, 6]))</td>
+</tr><tr><td><a name="array-replicate" id="array-replicate"></a><a href="#array-replicate-note">replicate</a><br /><span style="white-space: pre-wrap;"> </span></td>
+<td>ten_zeros = Table[0, {i, 0, 9}]</td>
+<td></td>
+<td></td>
+</tr><tr><td><a name="copy-array" id="copy-array"></a><a href="#copy-array-note">copy</a><br /><span style="white-space: pre-wrap;"> </span></td>
+<td>a2 = a</td>
+<td></td>
+<td>a2 = a</td>
+</tr><tr><td><a name="iterate-over-array" id="iterate-over-array"></a><a href="#iterate-over-array-note">iterate</a><br /><span style="white-space: pre-wrap;"> </span></td>
+<td>Function[x, Print[x]] /@ {1, 2, 3}</td>
+<td></td>
+<td>a = List([1, 2, 3])<br /><br />
+for(i=1, length(a), print(a[i]))</td>
+</tr><tr><td><a name="reverse-array" id="reverse-array"></a><a href="#reverse-array-note">reverse</a><br /><span style="white-space: pre-wrap;"> </span></td>
+<td>Reverse[{1, 2, 3}]</td>
+<td></td>
+<td>a = List([1, 2, 3])<br />
+a2 = listcreate()<br />
+while(i &gt; 0, listput(a2, a[i]); i—)</td>
+</tr><tr><td><a name="sort-array" id="sort-array"></a><a href="#sort-array-note">sort</a></td>
+<td>Sort[{3, 1, 4, 2}]</td>
+<td></td>
+<td>a = List([3,1,4,2])<br />
+listsort(a)<br />
+a</td>
+</tr><tr><td><a name="dedupe-array" id="dedupe-array"></a><a href="#dedupe-array-note">dedupe</a><br /><span style="white-space: pre-wrap;"> </span></td>
+<td>Union[{1, 2, 2, 3}]</td>
+<td></td>
+<td></td>
+</tr><tr><td><a name="membership" id="membership"></a><a href="#membership-note">membership</a><br /><span style="white-space: pre-wrap;"> </span></td>
+<td>MemberQ[{1, 2, 3}, 2]</td>
+<td></td>
+<td><span style="color: gray">/* The Set() constructor takes an array or vector as<br /><span style="white-space: pre-wrap;">  </span>an argument. It converts the elements to strings<br /><span style="white-space: pre-wrap;">  </span>and sorts them, discarding duplicates.<br /><span style="white-space: pre-wrap;">  </span>setsearch() returns the index of the element or zero<br /><span style="white-space: pre-wrap;">  </span>if not in the set. */</span><br />
+setsearch(Set([1, 2, 3]), 2)</td>
+</tr><tr><td><a name="intersection" id="intersection"></a><a href="#intersection-note">intersection</a></td>
+<td>Intersect[{1, 2}, {2, 3, 4}]</td>
+<td></td>
+<td>setintersect(Set([1, 2]), Set([2, 3, 4]))</td>
+</tr><tr><td><a name="union" id="union"></a><a href="#union-note">union</a><br /><span style="white-space: pre-wrap;"> </span></td>
+<td>Union[{1, 2}, {2, 3, 4}]</td>
+<td></td>
+<td>setunion(Set([1, 2]), Set([2, 3, 4]))</td>
+</tr><tr><td><a name="set-diff" id="set-diff"></a><a href="#set-diff-note">relative complement, symmetric difference</a></td>
+<td>Complement[{1, 2, 3}, {2}]<br /><span style="color: gray"><em>none</em></span></td>
+<td></td>
+<td>setminus(Set([1, 2, 3]), Set([2]))</td>
+</tr><tr><td><a name="map" id="map"></a><a href="#map-note">map</a></td>
+<td>Function[x, x x] /@ {1, 2, 3}<br /><br />
+Map[Function[x, x x], {1, 2, 3}]</td>
+<td></td>
+<td></td>
+</tr><tr><td><a name="filter" id="filter"></a><a href="#filter-note">filter</a><br /><span style="white-space: pre-wrap;"> </span></td>
+<td>Select[{1, 2, 3}, # &gt; 2 &amp;]</td>
+<td></td>
+<td></td>
+</tr><tr><td><a name="reduce" id="reduce"></a><a href="#reduce-note">reduce</a></td>
+<td>Fold[Plus, 0, {1, 2, 3}]</td>
+<td></td>
+<td></td>
+</tr><tr><td><a name="universal-existential-test" id="universal-existential-test"></a><a href="#universal-existential-test-note">universal and existential tests</a></td>
+<td><span style="color: gray"><em>none</em></span></td>
+<td></td>
+<td></td>
+</tr><tr><td><a name="min-max-elem" id="min-max-elem"></a><a href="#min-max-elem-note">min and max element</a></td>
+<td>Min[{1, 2, 3}]<br />
+Max[{1, 2, 3}]</td>
+<td></td>
+<td></td>
+</tr><tr><td><a name="shuffle-sample" id="shuffle-sample"></a><a href="#shuffle-sample-note">shuffle and sample</a></td>
+<td>x = {3, 7, 5, 12, 19, 8, 4}<br /><br />
+RandomSample[x]<br />
+RandomSample[x, 3]</td>
+<td></td>
+<td></td>
+</tr><tr><td><a name="zip" id="zip"></a><a href="#zip-note">zip</a></td>
+<td><span style="color: gray">(* list of six elements: *)</span><br />
+Riffle[{1, 2, 3}, {"a", "b", "c"}]</td>
+<td></td>
+<td></td>
+</tr><tr><th colspan="4"><a name="sequences" id="sequences"></a><a href="#sequences-note">sequences</a></th>
+</tr><tr><th></th>
+<th>mathematica</th>
+<th>sympy</th>
+<th>pari/gp</th>
+</tr><tr><td><a href="#range">range</a></td>
+<td>Range[1, 100]</td>
+<td></td>
+<td></td>
+</tr><tr><td><a href="#arithmetic-sequence-integer">arithmetic sequence of integers with difference 10</a></td>
+<td>Range[1, 100, 10]</td>
+<td></td>
+<td></td>
+</tr><tr><td><a href="#airthmetic-sequence-float">arithmetic sequence of floats with difference 0.1</a></td>
+<td>Range[1, 100, .1]</td>
+<td></td>
+<td></td>
+</tr><tr><th colspan="4"><a name="multidimensional-arrays" id="multidimensional-arrays"></a><a href="#multidimensional-arrays-note">multidimensional-arrays</a></th>
+</tr><tr><th></th>
+<th>mathematica</th>
+<th>sympy</th>
+<th>pari/gp</th>
+</tr><tr><th colspan="4"><a name="dictionaries" id="dictionaries"></a><a href="#dictionaries-note">dictionaries</a></th>
+</tr><tr><th></th>
+<th>mathematica</th>
+<th>sympy</th>
+<th>pari/gp</th>
+</tr><tr><td><a href="#record-literal">record literal</a></td>
+<td>r = { n -&gt; 10, avg -&gt; 3.7, sd -&gt; 0.4}</td>
+<td></td>
+<td></td>
+</tr><tr><td><a href="#record-access">record member access</a></td>
+<td>n /. r</td>
+<td></td>
+<td></td>
+</tr><tr><th colspan="4"><a name="functions" id="functions"></a><a href="#functions-note">functions</a></th>
+</tr><tr><th></th>
+<th>mathematica</th>
+<th>sympy</th>
+<th>pari/gp</th>
+</tr><tr><td><a href="#function-definition">definition</a></td>
+<td>add[a_, b_] := a + b<br /><br /><span style="color: gray">(* alternate syntax: *)</span><br />
+add = Function[{a, b}, a + b]</td>
+<td></td>
+<td>add(x, y) = x + y</td>
+</tr><tr><td><a href="#function-invocation">invocation</a></td>
+<td>add[3, 7]<br /><br />
+add <span style="white-space: pre-wrap;">@@</span> {3, 7}</td>
+<td></td>
+<td>add(3, 7)</td>
+</tr><tr><td><a href="#return-value">return value</a></td>
+<td></td>
+<td></td>
+<td></td>
+</tr><tr><td><a href="#function-value">function value</a></td>
+<td></td>
+<td></td>
+<td></td>
+</tr><tr><td><a href="#anonymous-function">anonymous function</a></td>
+<td>Function[{a, b}, a + b]<br /><br />
+(#1 + #2) &amp;</td>
+<td></td>
+<td></td>
+</tr><tr><td><a href="#missing-argument">missing argument</a></td>
+<td></td>
+<td></td>
+<td></td>
+</tr><tr><td><a href="#extra-argument">extra argument</a></td>
+<td></td>
+<td></td>
+<td></td>
+</tr><tr><td><a href="#default-argument">default argument</a></td>
+<td></td>
+<td></td>
+<td></td>
+</tr><tr><td><a href="#variable-number-arguments">variable number of arguments</a></td>
+<td></td>
+<td></td>
+<td></td>
+</tr><tr><th colspan="4"><a name="execution-control" id="execution-control"></a><a href="#execution-control-note">execution control</a></th>
+</tr><tr><th></th>
+<th>mathematica</th>
+<th>sympy</th>
+<th>pari/gp</th>
+</tr><tr><td><a href="#if">if</a></td>
+<td>If[x &gt; 0,<br /><span style="white-space: pre-wrap;">  </span>Print["positive"],<br /><span style="white-space: pre-wrap;">  </span>If[x &lt; 0,<br /><span style="white-space: pre-wrap;">  </span><span style="white-space: pre-wrap;">  </span>Print["negative"],<br /><span style="white-space: pre-wrap;">  </span><span style="white-space: pre-wrap;">  </span>Print["zero"]]]</td>
+<td></td>
+<td>if(x &gt; 0, \<br /><span style="white-space: pre-wrap;">  </span>print("positive"), \<br /><span style="white-space: pre-wrap;">  </span>if(x &lt; 0, \<br /><span style="white-space: pre-wrap;">  </span><span style="white-space: pre-wrap;">  </span>print("negative"), \<br /><span style="white-space: pre-wrap;">  </span><span style="white-space: pre-wrap;">  </span>print("zero")))</td>
+</tr><tr><td><a href="#while">while</a></td>
+<td>i = 0<br />
+While[i &lt; 10, Print[i]; i++]</td>
+<td></td>
+<td>i = 0<br />
+while(i &lt; 10, print(i); i++)</td>
+</tr><tr><td><a href="#for">for</a></td>
+<td>For[i = 0, i &lt; 10, i++, Print[i]]</td>
+<td></td>
+<td>for(i=0, 9, print(i))</td>
+</tr><tr><td><a href="#break-continue">break/continue</a></td>
+<td>Break[] Continue[]</td>
+<td></td>
+<td>break continue</td>
+</tr><tr><td><a href="#raise-exception">raise exception</a></td>
+<td>Throw["failed"]</td>
+<td></td>
+<td>error("failed")</td>
+</tr><tr><td><a href="#handle-exception">handle exception</a></td>
+<td>Print[Catch[Throw["failed"]]]</td>
+<td></td>
+<td></td>
+</tr><tr><td><a href="#finally">finally block</a></td>
+<td><span style="color: gray"><em>none</em></span></td>
+<td></td>
+<td></td>
+</tr><tr><th colspan="4"><a name="files" id="files"></a><a href="#files-note">files</a></th>
+</tr><tr><th></th>
+<th>mathematica</th>
+<th>sympy</th>
+<th>pari/gp</th>
+</tr><tr><td><a href="#write-stdout">write to stdout</a></td>
+<td>Print["hello"]</td>
+<td></td>
+<td>print("hello")</td>
+</tr><tr><td><a href="#read-file-string-array">read entire file into string or array</a></td>
+<td>s = Import["/etc/hosts"]<br />
+a = StringSplit[s, "\n"]</td>
+<td></td>
+<td></td>
+</tr><tr><td><a href="#redirect-to-file">redirect to file</a></td>
+<td></td>
+<td></td>
+<td></td>
+</tr><tr><th colspan="4"><a name="libraries-namespaces" id="libraries-namespaces"></a><a href="#libraries-namespaces-note">libraries and namespaces</a></th>
+</tr><tr><th></th>
+<th>mathematica</th>
+<th>sympy</th>
+<th>pari/gp</th>
+</tr><tr><td><a href="#load">load</a></td>
+<td></td>
+<td></td>
+<td></td>
+</tr><tr><th colspan="4"><a name="reflection" id="reflection"></a><a href="#reflection-note">reflection</a></th>
+</tr><tr><th></th>
+<th>mathematica</th>
+<th>sympy</th>
+<th>pari/gp</th>
+</tr><tr><td><a href="#list-function-documentation">list function documentation</a></td>
+<td></td>
+<td></td>
+<td>?</td>
+</tr><tr><td><a href="#function-documentation">get function documentation</a></td>
+<td>?Tan<br />
+Information[Tan]</td>
+<td></td>
+<td>? tan</td>
+</tr><tr><td><a href="#grep-documentation">grep documentation</a></td>
+<td></td>
+<td></td>
+<td></td>
+</tr><tr><td><a href="#data-type">query data type</a></td>
+<td>Head[x]</td>
+<td></td>
+<td>type(x)</td>
+</tr><tr><td><a href="#list-variables">list variables in scope</a></td>
+<td></td>
+<td></td>
+<td>? 0</td>
+</tr><tr><th colspan="4"><a name="algebra" id="algebra"></a><a href="#algebra-note">algebra</a></th>
+</tr><tr><th></th>
+<th>mathematica</th>
+<th>sympy</th>
+<th>pari/gp</th>
+</tr><tr><td><a href="#solution">solution to an equation</a></td>
+<td>Solve[x^3 + x + 3 == 0, x]</td>
+<td>solve(x<span style="white-space: pre-wrap;">**</span>3 + x + 3, x)</td>
+<td></td>
+</tr><tr><td><a href="#solution-two-eqn">solution to two equations</a></td>
+<td>Solve[x + y == 3 &amp;&amp; x == 2y,<br /><span style="white-space: pre-wrap;">  </span>{x, y}]</td>
+<td>solve([x + y - 3, 3*x - 2*y], [x, y])</td>
+<td></td>
+</tr><tr><td><a href="#numerical-approximation">numerical approximation</a></td>
+<td>N[Exp[1]]<br />
+Exp[1] + 0.<br />
+N[Exp[1], 10]</td>
+<td>N(exp(1))<br />
+N(exp(1), 10)</td>
+<td>1/7 + 0.</td>
+</tr><tr><td><a href="#expand-polynomial">expand polynomial</a></td>
+<td>Expand[(1 + x)^5]</td>
+<td>expand((1+x)<span style="white-space: pre-wrap;">**</span>5)</td>
+<td></td>
+</tr><tr><td><a href="#factor-polynomial">factor polynomial</a></td>
+<td>Factor[3 + 10 x + 9 x^2 + 2 x^3]</td>
+<td>factor(3 + 10*x + 9*x<span style="white-space: pre-wrap;">**</span>2 + 2*x<span style="white-space: pre-wrap;">**</span>3)</td>
+<td></td>
+</tr><tr><td><a href="#add-fractions">add fractions</a></td>
+<td>Together[a/b + c/d]</td>
+<td>together(x/y + z/w)</td>
+<td></td>
+</tr><tr><td><a href="#decompose-fraction">decompose fraction</a></td>
+<td>Apart[(b c + a d)/(b d)]</td>
+<td></td>
+<td></td>
+</tr><tr><th colspan="4"><a name="calculus" id="calculus"></a><a href="#calculus-note">calculus</a></th>
+</tr><tr><th></th>
+<th>mathematica</th>
+<th>sympy</th>
+<th>pari/gp</th>
+</tr><tr><td><a href="#differentiation">differentiation</a></td>
+<td>D[x^3 + x + 3, x]</td>
+<td>diff(x<span style="white-space: pre-wrap;">**</span>3 + x + 3, x)</td>
+<td>P = x^3 + x + 3<br />
+P'<br />
+sin(x)'</td>
+</tr><tr><td><a href="#higher-order-differentiation">higher order differentiation</a></td>
+<td>D[Log[x], {x, 3}]</td>
+<td>diff(log(x), x, 3)</td>
+<td></td>
+</tr><tr><td><a href="#antiderivative">antiderivative</a></td>
+<td>Integrate[x^3 + x + 3, x]</td>
+<td>integrate(x<span style="white-space: pre-wrap;">**</span>3 + x + 3, x)</td>
+<td></td>
+</tr><tr><td><a href="#integration">definite integral</a></td>
+<td>Integrate[x^3 + x + 3, {x, 0, 1}]</td>
+<td>integrate(x**3 + x + 3, [x, 0, 1])</td>
+<td></td>
+</tr><tr><td><a href="#improper-integral">improper integral</a></td>
+<td></td>
+<td></td>
+<td></td>
+</tr><tr><td><a href="#minimize">find minimal value</a></td>
+<td>Minimize[Sqrt[a^2 + x^2] + Sqrt[(b - x)^2 + c^2], x]</td>
+<td></td>
+<td></td>
+</tr><tr><th colspan="4"><a name="number-theory" id="number-theory"></a><a href="#number-theory-note">number theory</a></th>
+</tr><tr><th></th>
+<th>mathematica</th>
+<th>sympy</th>
+<th>pari/gp</th>
+</tr><tr><td><a href="#number-tests">number tests</a></td>
+<td>IntegerQ[7]<br />
+PrimeQ[7]<br /><span style="color: gray"><em>rational test?</em></span><br /><span style="color: gray"><em>real test?</em></span></td>
+<td></td>
+<td></td>
+</tr><tr><td><a href="#solve-diophantine">solve diophantine equation</a></td>
+<td>Solve[a^2 + b^2 == c^2 &amp;&amp;<br />
+a &gt; 0 &amp;&amp; a &lt; 10 &amp;&amp;<br />
+b &gt; 0 &amp;&amp; b &lt; 10 &amp;&amp;<br />
+c &gt; 0 &amp;&amp; c &lt; 10,<br />
+{a, b, c}, Integers]</td>
+<td></td>
+<td></td>
+</tr><tr><td><a href="#factorial">factorial</a></td>
+<td>10!</td>
+<td>factorial(10)</td>
+<td>10!</td>
+</tr><tr><td><a href="#binomial-coefficient">binomial coefficient</a></td>
+<td>Binomial[10,3]</td>
+<td>binomial(10, 3)</td>
+<td></td>
+</tr><tr><td><a href="#gcd">greatest common divisor</a></td>
+<td>GCD[14, 21]</td>
+<td>gcd(14, 21)</td>
+<td>gcd(14, 21)</td>
+</tr><tr><td><a href="#prime-factors">prime factors</a></td>
+<td><span style="color: gray"><em>returns</em> <span style="white-space: pre-wrap;">{{</span>2, 2}, {3, 1}, {7, 1}}</span><br />
+FactorInteger[84]</td>
+<td>factorint(84)</td>
+<td><span style="color: gray"><em>returns</em> [2,2; 3,1; 7,1]</span><br />
+factor(84)</td>
+</tr><tr><td><a href="#euler-totient">Euler totient</a></td>
+<td>EulerPhi[256]</td>
+<td></td>
+<td></td>
+</tr><tr><th colspan="4"><a name="vectors" id="vectors"></a><a href="#vectors-note">vectors</a></th>
+</tr><tr><th></th>
+<th>mathematica</th>
+<th>sympy</th>
+<th>pari/gp</th>
+</tr><tr><td><a name="vec-literal" id="vec-literal"></a><a href="#vec-literal-note">vector literal</a></td>
+<td><span style="color: gray">(* same as array: *)</span><br />
+{1, 2, 3}</td>
+<td></td>
+<td>[1, 2, 3]</td>
+</tr><tr><td><a name="vec-coordinate" id="vec-coordinate"></a><a href="#vec-coordinate-note">vector coordinate</a></td>
+<td><span style="color: gray"><em>indices start at one:</em></span><br />
+{1,v2, 3}[[1]]</td>
+<td></td>
+<td><span style="color: gray"><em>indices start at one:</em></span><br />
+[1, 2, 3][1]</td>
+</tr><tr><td><a name="vec-dim" id="vec-dim"></a><a href="#vec-dim-note">vector dimension</a><br /><span style="white-space: pre-wrap;"> </span></td>
+<td>Length[{1, 2, 3}]</td>
+<td></td>
+<td>length([1, 2, 3])</td>
+</tr><tr><td><a name="vec-element-wise" id="vec-element-wise"></a><a href="#vec-element-wise-note">element-wise arithmetic operators</a></td>
+<td>+ - * /<br /><span style="color: gray"><em>adjacent lists are multiplied element-wise</em></span></td>
+<td></td>
+<td>+ -</td>
+</tr><tr><td><a name="vec-length-mismatch" id="vec-length-mismatch"></a><a href="#vec-length-mismatch-note">vector length mismatch</a><br /><span style="white-space: pre-wrap;"> </span></td>
+<td><span style="color: gray"><em>error</em></span></td>
+<td></td>
+<td><span style="color: gray"><em>error</em></span></td>
+</tr><tr><td><a name="vec-scalar" id="vec-scalar"></a><a href="#vec-scalar-note">scalar multiplication</a></td>
+<td>3 {1, 2, 3}<br />
+{1, 2, 3} 3<br /><span style="color: gray"><em>* may also be used</em></span></td>
+<td></td>
+<td>3 * [1, 2, 3]<br />
+[1, 2, 3] * 3</td>
+</tr><tr><td><a name="vec-dot" id="vec-dot"></a><a href="#vec-dot-note">dot product</a></td>
+<td>{1, 1, 1} . {2, 2, 2}<br />
+Dot[{1, 1, 1}, {2, 2, 2}]</td>
+<td></td>
+<td></td>
+</tr><tr><td><a name="vec-cross" id="vec-cross"></a><a href="#vec-cross-note">cross product</a></td>
+<td>Cross[{1, 0, 0}, {0, 1, 0}]</td>
+<td></td>
+<td></td>
+</tr><tr><td><a name="vec-norms" id="vec-norms"></a><a href="#vec-norms-note">norms</a></td>
+<td>Norm[{1, 2, 3}, 1]<br />
+Norm[{1, 2, 3}]<br />
+Norm[{1, 2, 3}, Infinity]</td>
+<td></td>
+<td></td>
+</tr><tr><th colspan="4"><a name="matrices" id="matrices"></a><a href="#matrices-note">matrices</a></th>
+</tr><tr><th></th>
+<th>mathematica</th>
+<th>sympy</th>
+<th>pari/gp</th>
+</tr><tr><td><a href="#matrix-literal-constructor">literal or constructor</a></td>
+<td>A = <span style="white-space: pre-wrap;">{{</span>1, 2}, {3, 4}}<br />
+B = <span style="white-space: pre-wrap;">{{</span>4, 3}, {2, 1}}</td>
+<td></td>
+<td>A = [1, 2; 3, 4]<br />
+B = [4, 3; 2, 1]</td>
+</tr><tr><td><a href="#common-matrices">zero, identity, ones, diagonal matrix</a></td>
+<td>ConstantArray[0, {3, 3}]<br />
+IdentityMatrix[3]<br />
+ConstantArray[1, {3, 3}]<br />
+DiagonalMatrix[{1, 2, 3}]</td>
+<td></td>
+<td></td>
+</tr><tr><td><a href="#matrix-dimensions">dimensions</a><br /><span style="color: gray"><em>rows, columns</em></span></td>
+<td>Length[A]<br />
+Length[A[[1]]]</td>
+<td></td>
+<td></td>
+</tr><tr><td><a href="#matrix-access">element access</a></td>
+<td>A[[1, 1]]</td>
+<td></td>
+<td>A[1, 1]</td>
+</tr><tr><td><a href="#matrix-row-access">row access</a></td>
+<td>A[[1]]</td>
+<td></td>
+<td></td>
+</tr><tr><td><a href="#matrix-column-access">column access</a></td>
+<td></td>
+<td></td>
+<td></td>
+</tr><tr><td><a href="#submatrix-access">submatrix access</a></td>
+<td># [[1]] &amp; /@ A</td>
+<td></td>
+<td></td>
+</tr><tr><td><a href="#matrix-scalar-multiplication">scalar multiplication</a></td>
+<td>3 A<br />
+A 3<br /><span style="color: gray"><em>* can also be used</em></span></td>
+<td></td>
+<td></td>
+</tr><tr><td><a href="#matrix-element-wise-operators">element-wise operators</a></td>
+<td>+ - * /<br /><span style="color: gray"><em>adjacent matrices are multiplied element-wise</em></span></td>
+<td></td>
+<td></td>
+</tr><tr><td><a href="#matrix-multiplication">multiplication</a></td>
+<td>A . B</td>
+<td></td>
+<td></td>
+</tr><tr><td><a href="#kronecker-product">kronecker product</a></td>
+<td>KroneckerProduct[A, B]</td>
+<td></td>
+<td></td>
+</tr><tr><td><a href="#matrix-comparison">comparison</a></td>
+<td>A == B<br />
+A != B</td>
+<td></td>
+<td></td>
+</tr><tr><td><a href="#matrix-norms">norms</a></td>
+<td>Norm[A, 1]<br />
+Norm[A]<br />
+Norm[A, Infinity]<br />
+Norm[A, "Frobenius"]</td>
+<td></td>
+<td></td>
+</tr><tr><td><a href="#matrix-transpose">transpose</a></td>
+<td>Transpose[A]</td>
+<td></td>
+<td></td>
+</tr><tr><td><a href="#matrix-conjugate-transpose">conjugate transpose</a></td>
+<td>A = <span style="white-space: pre-wrap;">{{</span>I, 2 I}, {3 I, 4 I}}<br />
+ConjugateTranspose[A]</td>
+<td></td>
+<td></td>
+</tr><tr><td><a href="#matrix-inverse">inverse</a></td>
+<td>Inverse[A]</td>
+<td></td>
+<td></td>
+</tr><tr><td><a href="#matrix-determinant">determinant</a></td>
+<td>Det[A]</td>
+<td></td>
+<td>matdet(A)</td>
+</tr><tr><td><a href="#matrix-trace">trace</a></td>
+<td>Tr[A]</td>
+<td></td>
+<td>trace(A)</td>
+</tr><tr><td><a href="#matrix-eigenvalues">eigenvalues</a></td>
+<td>Eigenvalues[A]</td>
+<td></td>
+<td></td>
+</tr><tr><td><a href="#matrix-eigenvectors">eigenvectors</a></td>
+<td>Eigenvectors[A]</td>
+<td></td>
+<td></td>
+</tr><tr><td><a href="#matrix-solution">system of equations</a></td>
+<td>Solve[A. {x, y} == { 2, 3}, {x, y}]</td>
+<td></td>
+<td></td>
+</tr><tr><th colspan="4"><a name="distributions" id="distributions"></a><a href="#distribution-note">distributions</a></th>
+</tr><tr><th></th>
+<th>mathematica</th>
+<th>sympy</th>
+<th>pari/gp</th>
+</tr><tr><td><a href="#random-normal">normal</a></td>
+<td>nd = NormalDistribution[0,1]<br />
+RandomVariate[nd]</td>
+<td></td>
+<td></td>
+</tr><tr><td><a href="#random-exponential">exponential</a></td>
+<td>ed = ExponentialDistribution[1]<br />
+RandomVariate[ed]</td>
+<td></td>
+<td></td>
+</tr><tr><td><a href="#random-poisson">poisson</a></td>
+<td>pd = PoissonDistribution[1]<br />
+RandomVariate[pd]</td>
+<td></td>
+<td></td>
+</tr><tr><th colspan="4"><a name="univariate-charts" id="univariate-charts"></a><a href="#univariate-chart-note">univariate charts</a></th>
+</tr><tr><th></th>
+<th>mathematica</th>
+<th>sympy</th>
+<th>pari/gp</th>
+</tr><tr><td><img src="http://farm5.static.flickr.com/4090/5039793334_f76edece33_m.jpg" alt="5039793334_f76edece33_m.jpg" class="image" /><a href="#bar-chart">vertical bar chart</a></td>
+<td>BarChart[{7, 3, 8, 5, 5},<br /><span style="white-space: pre-wrap;">  </span>ChartLegends-&gt;<br /><span style="white-space: pre-wrap;">    </span>{"a","b","c","d","e"}]</td>
+<td></td>
+<td></td>
+</tr><tr><td><img src="http://farm5.static.flickr.com/4092/5039776078_cc38a4ff5f_m.jpg" alt="5039776078_cc38a4ff5f_m.jpg" class="image" /><br /><a href="#horizontal-bar-chart">horizontal bar chart</a></td>
+<td>BarChart[{7, 3, 8, 5, 5}, BarOrigin -&gt; Left]</td>
+<td></td>
+<td></td>
+</tr><tr><td><img src="http://farm5.static.flickr.com/4145/5037819710_d932767cd5_m.jpg" alt="5037819710_d932767cd5_m.jpg" class="image" /><a href="#pie-chart">pie chart</a></td>
+<td>PieChart[{7, 3, 8, 5, 5}]</td>
+<td></td>
+<td></td>
+</tr><tr><td><img src="http://farm5.static.flickr.com/4089/5037399669_13c8e585e0_m.jpg" alt="5037399669_13c8e585e0_m.jpg" class="image" /><br /><a href="#stem-and-leaf-plot">stem-and-leaf plot</a></td>
+<td>Needs["StatisticalPlots<span style="white-space: pre-wrap;">`</span>"]<br />
+nd = NormalDistribution[0, 1]<br />
+n100 = RandomVariate[nd, 100]<br />
+StemLeafPlot[20 * n100]</td>
+<td></td>
+<td></td>
+</tr><tr><td><img src="http://farm5.static.flickr.com/4106/5037415497_4c6fbfcab2_m.jpg" alt="5037415497_4c6fbfcab2_m.jpg" class="image" /><a href="#histogram">histogram</a></td>
+<td>nd = NormalDistribution[0, 1]<br />
+Histogram[RandomReal[nd, 100], 10]</td>
+<td></td>
+<td></td>
+</tr><tr><td><img src="http://farm5.static.flickr.com/4106/5037525393_7ac86e81c3_m.jpg" alt="5037525393_7ac86e81c3_m.jpg" class="image" /><a href="#box-and-whisker-plot">box-and-whisker plot</a></td>
+<td>nd = NormalDistribution[0, 1]<br />
+n100 = RandomVariate[nd, 100]<br />
+BoxWhiskerChart[d]<br /><br />
+ed = ExponentialDistribution[1]<br />
+e100 = RandomVariate[ed, 100]<br />
+u100 = RandomReal[1, 100]<br />
+d = {n100, e100, u100}<br />
+BoxWhiskerChart[d]</td>
+<td></td>
+<td></td>
+</tr><tr><td><a href="#univariate-title">set chart title</a></td>
+<td>BoxWhiskerChart[data,<br /><span style="white-space: pre-wrap;">  </span>PlotLabel -&gt; "chart example"]</td>
+<td></td>
+<td></td>
+</tr><tr><td><a href="#chart-options">chart options</a></td>
+<td>PlotLabel -&gt; "an example"<br /><br />
+AxisLabel -&gt; {"time", "distance"}</td>
+<td></td>
+<td></td>
+</tr><tr><th colspan="4"><a name="bivariate-charts" id="bivariate-charts"></a><a href="#bivariate-chart-note">bivariate charts</a></th>
+</tr><tr><th></th>
+<th>mathematica</th>
+<th>sympy</th>
+<th>pari/gp</th>
+</tr><tr><td><img src="http://farm5.static.flickr.com/4154/5039126187_e340b3f4aa_m.jpg" alt="5039126187_e340b3f4aa_m.jpg" class="image" /><br /><a href="#stacked-bar-chart">stacked bar chart</a></td>
+<td>d = <span style="white-space: pre-wrap;">{{</span>7, 1}, {3, 2}, {8, 1},<br /><span style="white-space: pre-wrap;">  </span>{5, 3}, {5, 1}}<br />
+BarChart[d, ChartLayout -&gt;<br /><span style="white-space: pre-wrap;">  </span>"Stacked"]</td>
+<td></td>
+<td></td>
+</tr><tr><td><img src="http://farm6.static.flickr.com/5044/5267212089_a7749bbe3e_s.jpg" alt="5267212089_a7749bbe3e_s.jpg" class="image" /><a href="#scatterplot">scatter plot</a></td>
+<td>nd = NormalDistribution[0, 1]<br />
+rn = Function[RandomReal[nd]]<br />
+d = {rn[],rn[]} &amp; /@ Range[1,50]<br />
+ListPlot[d]</td>
+<td></td>
+<td></td>
+</tr><tr><td><img src="http://farm6.static.flickr.com/5089/5267975488_2216ae147e_s.jpg" alt="5267975488_2216ae147e_s.jpg" class="image" /><a href="#linear-regression-line">linear regression line</a></td>
+<td>d = Table[{i,<br /><span style="white-space: pre-wrap;">  </span>2 i + RandomReal[{-5, 5}]},<br /><span style="white-space: pre-wrap;">  </span>{i, 0, 20}]<br />
+model = LinearModelFit[d, x, x]<br />
+Show[ListPlot[d],<br /><span style="white-space: pre-wrap;">  </span>Plot[model["BestFit"],<br /><span style="white-space: pre-wrap;">  </span><span style="white-space: pre-wrap;">  </span>{x, 0, 20}]]</td>
+<td></td>
+<td></td>
+</tr><tr><td><img src="http://farm6.static.flickr.com/5125/5267434941_f8537c9d26_s.jpg" alt="5267434941_f8537c9d26_s.jpg" class="image" /><a href="#polygonal-plot">polygonal line plot</a></td>
+<td>f = Function[i, {i, rn[]}]<br />
+d = f /@ Range[1, 20]<br />
+ListLinePlot[d]</td>
+<td></td>
+<td></td>
+</tr><tr><td><img src="http://farm6.static.flickr.com/5041/5268071368_75c3aee42e_t.jpg" alt="5268071368_75c3aee42e_t.jpg" class="image" /><a href="#area-chart">area chart</a></td>
+<td>d = <span style="white-space: pre-wrap;">{{</span>7, 1, 3, 2, 8},<br /><span style="white-space: pre-wrap;">  </span>{1, 5, 3, 5, 1}}<br />
+sd = {d[[1]], d[[1]] + d[[2]]}<br />
+ListLinePlot[sd, Filling -&gt;<br /><span style="white-space: pre-wrap;">  </span>{1 -&gt; {Axis, LightBlue},<br /><span style="white-space: pre-wrap;">   </span>2 -&gt; <span style="white-space: pre-wrap;">{{</span>1}, LightRed}}]</td>
+<td></td>
+<td></td>
+</tr><tr><td><img src="http://farm6.static.flickr.com/5049/5268229340_0b96b5e223_s.jpg" alt="5268229340_0b96b5e223_s.jpg" class="image" /><a href="#cubic-spline">cubic spline</a></td>
+<td>d = Table[{i, RandomReal[nd]},<br /><span style="white-space: pre-wrap;">  </span>{i, 0, 20}]<br />
+f = Interpolation[d,<br /><span style="white-space: pre-wrap;">  </span>InterpolationOrder -&gt; 3]<br />
+Show[ListPlot[d],<br /><span style="white-space: pre-wrap;">  </span>Plot[f[x], {x, 0, 20}]]</td>
+<td></td>
+<td></td>
+</tr><tr><td><img src="http://farm6.static.flickr.com/5204/5268208606_b745646ea6_s.jpg" alt="5268208606_b745646ea6_s.jpg" class="image" /><a href="#function-plot">function plot</a></td>
+<td>Plot[Sin[x], {x, -4, 4}]</td>
+<td></td>
+<td>ploth(x=-4, 4, sin(x))</td>
+</tr><tr><td><img src="http://farm6.static.flickr.com/5048/5267567389_27a19429e4_s.jpg" alt="5267567389_27a19429e4_s.jpg" class="image" /><a href="#qq-plot">quantile-quantile plot</a></td>
+<td>nd = NormalDistribution[0, 1]<br />
+d1 = RandomReal[1, 50]<br />
+d2 = RandomReal[nd, 50]<br />
+QuantilePlot[d1, d2]</td>
+<td></td>
+<td></td>
+</tr><tr><td><a href="#axis-label">axis label</a></td>
+<td>d = Table[{i, i^2}, {i, 1, 20}]<br />
+ListLinePlot[d,<br /><span style="white-space: pre-wrap;">  </span>AxesLabel -&gt; {x, x^2}]</td>
+<td></td>
+<td></td>
+</tr><tr><td><a href="#logarithmic-y-axis">logarithmic y-axis</a></td>
+<td>LogPlot[{x^2, x^3, x^4, x^5},<br /><span style="white-space: pre-wrap;">  </span>{x, 0, 20}]</td>
+<td></td>
+<td></td>
+</tr><tr><th colspan="4"><a name="trivariate-charts" id="trivariate-charts"></a><a href="#trivariate-chart-note">trivariate charts</a></th>
+</tr><tr><th></th>
+<th>mathematica</th>
+<th>sympy</th>
+<th>pari/gp</th>
+</tr><tr><td><a href="#3d-scatter-plot">3d scatter plot</a></td>
+<td>nd = NormalDistribution[0,1]<br />
+d = RandomReal[nd, {50, 3}]<br />
+ListPointPlot3D[d]</td>
+<td></td>
+<td></td>
+</tr><tr><td><img src="http://farm6.static.flickr.com/5245/5268191292_a75a367c39_s.jpg" alt="5268191292_a75a367c39_s.jpg" class="image" /><a href="#additional-data">additional data set</a></td>
+<td>nd = NormalDistribution[0, 1]<br />
+x1 = RandomReal[nd, 20]<br />
+x2 = RandomReal[nd, 20]<br />
+ListLinePlot[{x1, x2}]</td>
+<td></td>
+<td></td>
+</tr><tr><td><a href="#bubble-chart">bubble chart</a></td>
+<td>nd = NormalDistribution[0,1]<br />
+d = RandomReal[nd, {50, 3}]<br />
+BubbleChart[d]</td>
+<td></td>
+<td></td>
+</tr><tr><td><a href="#surface-plot">surface plot</a></td>
+<td>Plot3D[Sinc[Sqrt[x^2 + y^2]],<br /><span style="white-space: pre-wrap;">  </span>{x, -25, 25},<br /><span style="white-space: pre-wrap;">  </span>{y, -25, 25}]</td>
+<td></td>
+<td></td>
+</tr><tr><th></th>
+<th><span style="color: #efefef"><span style="white-space: pre-wrap;">__________________________________________________________</span></span></th>
+<th><span style="color: #efefef"><span style="white-space: pre-wrap;">__________________________________________________________</span></span></th>
+<th><span style="color: #efefef"><span style="white-space: pre-wrap;">__________________________________________________________</span></span></th>
+</tr></table><p><a name="version-used-note" id="version-used-note"></a></p>
+<h2 id="toc0"><span><a href="#version-used">version used</a></span></h2>
+<p>The version of software used to check the examples in the reference sheet.</p>
+<p><a name="show-version-note" id="show-version-note"></a></p>
+<h2 id="toc1"><span><a href="#show-version">show version</a></span></h2>
+<p>How to determine the version of an installation.</p>
+<p><a name="grammar-invocation-note" id="grammar-invocation-note"></a></p>
+<h1 id="toc2"><span><a href="#grammar-invocation">Grammar and Invocation</a></span></h1>
+<p><a name="interpreter-note" id="interpreter-note"></a></p>
+<h2 id="toc3"><span><a href="#interpreter">interpreter</a></span></h2>
+<p>How to execute a script.</p>
+<p><strong>pari/gp</strong></p>
+<p>The shebang style notation doesn't work because GP doesn't recognize the hash tag # as the start of a comment.</p>
+<p>The <tt>-q</tt> option suppresses the GP startup message.</p>
+<p>After the script finishes it will drop the user into the REPL unless there is a quit statement in the script:</p>
+<div class="code">
+<pre>
+<code>print("Hello, World!")
+
+quit</code>
+</pre></div>
+<p><a name="repl-note" id="repl-note"></a></p>
+<h2 id="toc4"><span><a href="#repl">repl</a></span></h2>
+<p>How to launch a command line read-eval-print loop for the language.</p>
+<p><strong>mathematica:</strong></p>
+<p>One can create a REPL called <em>math</em> on Mac OS X with the following command:</p>
+<div class="code">
+<pre>
+<code>$ sudo ln -s /Applications/Mathematica.app/Contents/MacOS/MathKernel /usr/local/bin/math
+
+$ math</code>
+</pre></div>
+<p><a name="block-delimiters-note" id="block-delimiters-note"></a></p>
+<h2 id="toc5"><span><a href="#block-delimiters">block delimiters</a></span></h2>
+<p>How blocks are delimited.</p>
+<p><a name="stmt-separator-note" id="stmt-separator-note"></a></p>
+<h2 id="toc6"><span><a href="#stmt-separator">statement separator</a></span></h2>
+<p>How statements are separated.</p>
+<p><a name="eol-comment-note" id="eol-comment-note"></a></p>
+<h2 id="toc7"><span><a href="#eol-comment">end-of-line comment</a></span></h2>
+<p>Character used to start a comment that goes to the end of the line.</p>
+<p><a name="multiple-line-comment-note" id="multiple-line-comment-note"></a></p>
+<h2 id="toc8"><span><a href="#multiple-line-comment">multiple line comment</a></span></h2>
+<p><a name="var-expr-note" id="var-expr-note"></a></p>
+<h1 id="toc9"><span><a href="#var-expr">Variables and Expressions</a></span></h1>
+<p><a name="assignment-note" id="assignment-note"></a></p>
+<h2 id="toc10"><span><a href="#assignment">assignment</a></span></h2>
+<p>How to perform assignment.</p>
+<p>In all three languages an assignment is an expression that evaluates to the right side of the expression. Assignments can be chained to assign the same value to multiple variables.</p>
+<p><strong>mathematica:</strong></p>
+<p>The <tt>Set</tt> function behaves identically to assignment and can be nested:</p>
+<div class="code">
+<pre>
+<code>Set[a, Set[b, 3]]</code>
+</pre></div>
+<p><a name="parallel-assignment-note" id="parallel-assignment-note"></a></p>
+<h2 id="toc11"><span><a href="#parallel-assignment">parallel assignment</a></span></h2>
+<p>How to assign values in parallel.</p>
+<p>Parallel assignment can be used to swap the values held in two variables.</p>
+<p><a name="compound-assignment-note" id="compound-assignment-note"></a></p>
+<h2 id="toc12"><span><a href="#compound-assignment">compound assignment</a></span></h2>
+<p>The compound assignment operators.</p>
+<p><a name="incr-decr-note" id="incr-decr-note"></a></p>
+<h2 id="toc13"><span><a href="#incr-decr">increment and decrement</a></span></h2>
+<p><a name="null-note" id="null-note"></a></p>
+<h2 id="toc14"><span><a href="#null">null</a></span></h2>
+<p><a name="null-test-note" id="null-test-note"></a></p>
+<h2 id="toc15"><span><a href="#null-test">null test</a></span></h2>
+<p>How to test if a value is null.</p>
+<p><a name="undef-var-note" id="undef-var-note"></a></p>
+<h2 id="toc16"><span><a href="#undef-var">undefined variable access</a></span></h2>
+<p><a name="rm-var-binding-note" id="rm-var-binding-note"></a></p>
+<h2 id="toc17"><span><a href="#rm-var-binding">remove variable binding</a></span></h2>
+<p>How to remove a variable. Subsequent references to the variable will be treated as if the variable were undefined.</p>
+<p><a name="cond-expr-note" id="cond-expr-note"></a></p>
+<h2 id="toc18"><span><a href="#cond-expr">conditional expression</a></span></h2>
+<p>A conditional expression.<br /><a name="arithmetic-logic-note" id="arithmetic-logic-note"></a></p>
+<h1 id="toc19"><span><a href="#arithmetic-logic">Arithmetic and Logic</a></span></h1>
+<p><a name="true-false-note" id="true-false-note"></a></p>
+<h2 id="toc20"><span><a href="#true-false">true and false</a></span></h2>
+<p>The boolean literals.</p>
+<p><a name="falsehoods-note" id="falsehoods-note"></a></p>
+<h2 id="toc21"><span><a href="#falsehoods">falsehoods</a></span></h2>
+<p>Values which evaluate to false in a conditional test.</p>
+<p><a name="logical-op-note" id="logical-op-note"></a></p>
+<h2 id="toc22"><span><a href="#logical-op">logical operators</a></span></h2>
+<p>The boolean operators.</p>
+<p><a name="relational-op-note" id="relational-op-note"></a></p>
+<h2 id="toc23"><span><a href="#relational-op">relational operators</a></span></h2>
+<p>The relational operators.</p>
+<p><a name="arith-op-note" id="arith-op-note"></a></p>
+<h2 id="toc24"><span><a href="#arith-op">arithmetic operators</a></span></h2>
+<p>The arithmetic operators.</p>
+<p><a name="int-div-note" id="int-div-note"></a></p>
+<h2 id="toc25"><span><a href="#int-div">integer division</a></span></h2>
+<p>How to compute the quotient of two integers.</p>
+<p><a name="int-div-zero-note" id="int-div-zero-note"></a></p>
+<h2 id="toc26"><span><a href="#int-div-zero">integer division by zero</a></span></h2>
+<p>The result of dividing an integer by zero.</p>
+<p><a name="float-div-note" id="float-div-note"></a></p>
+<h2 id="toc27"><span><a href="#float-div">float division</a></span></h2>
+<p>How to perform float division, even if the arguments are integers.</p>
+<p><a name="float-div-zero-note" id="float-div-zero-note"></a></p>
+<h2 id="toc28"><span><a href="#float-div-zero">float division by zero</a></span></h2>
+<p>The result of dividing a float by zero.</p>
+<p><a name="power-note" id="power-note"></a></p>
+<h2 id="toc29"><span><a href="#power">power</a></span></h2>
+<p>How to compute exponentiation.</p>
+<p>Note that zero to a negative power is equivalent to division by zero, and negative numbers to a fractional power may have multiple complex solutions.</p>
+<p><a name="sqrt-note" id="sqrt-note"></a></p>
+<h2 id="toc30"><span><a href="#sqrt">sqrt</a></span></h2>
+<p>The square root function.</p>
+<p>For positive arguments the positive square root is returned.</p>
+<p><a name="sqrt-negative-one-note" id="sqrt-negative-one-note"></a></p>
+<h2 id="toc31"><span><a href="#sqrt-negative-one">sqrt -1</a></span></h2>
+<p>How the square root function handles negative arguments.</p>
+<p><strong>mathematica:</strong></p>
+<p>An uppercase <tt>I</tt> is used to enter the imaginary unit, but Mathematica displays it as a lowercase <tt>i</tt>.</p>
+<p><a name="transcendental-func-note" id="transcendental-func-note"></a></p>
+<h2 id="toc32"><span><a href="#transcendental-func">transcendental functions</a></span></h2>
+<p>The standard transcendental functions such as one might find on a scientific calculator.</p>
+<p>The functions are the exponential (not to be confused with exponentiation), natural logarithm, sine, cosine, tangent, arcsine, arccosine, arctangent, and the two argument arctangent.</p>
+<p><a name="transcendental-const-note" id="transcendental-const-note"></a></p>
+<h2 id="toc33"><span><a href="#transcendental-const">transcendental constants</a></span></h2>
+<p>The transcendental constants <em>pi</em> and <em>e</em>.</p>
+<p>The transcendental functions can used to computed to compute the transcendental constants:</p>
+<div class="code">
+<pre>
+<code>pi = acos(-1)
+pi = 4 * atan(1)
+e = exp(1)</code>
+</pre></div>
+<p><a name="float-truncation-note" id="float-truncation-note"></a></p>
+<h2 id="toc34"><span><a href="#float-truncation">float truncation</a></span></h2>
+<p>Ways to convert a float to a nearby integer.</p>
+<p><a name="absolute-val-note" id="absolute-val-note"></a></p>
+<h2 id="toc35"><span><a href="#absolute-val">absolute value</a></span></h2>
+<p>How to get the absolute value and signum of a number.</p>
+<p><a name="int-overflow-note" id="int-overflow-note"></a></p>
+<h2 id="toc36"><span><a href="#int-overflow">integer overflow</a></span></h2>
+<p>What happens when the value of an integer expression cannot be stored in an integer.</p>
+<p>The languages in this sheet all support arbitrary length integers so the situation does not happen.</p>
+<p><a name="float-overflow-note" id="float-overflow-note"></a></p>
+<h2 id="toc37"><span><a href="#float-overflow">float overflow</a></span></h2>
+<p>What happens when the value of a floating point expression cannot be stored in a float.</p>
+<p><a name="rational-construction-note" id="rational-construction-note"></a></p>
+<h2 id="toc38"><span><a href="#rational-construction">rational construction</a></span></h2>
+<p>How to construct a rational number.</p>
+<p><a name="rational-decomposition-note" id="rational-decomposition-note"></a></p>
+<h2 id="toc39"><span><a href="#rational-decomposition">rational decomposition</a></span></h2>
+<p>How to extract the numerator and denominator from a rational number.</p>
+<p><a name="complex-construction-note" id="complex-construction-note"></a></p>
+<h2 id="toc40"><span><a href="#complex-construction">complex construction</a></span></h2>
+<p>How to construct a complex number.</p>
+<p><a name="complex-decomposition-note" id="complex-decomposition-note"></a></p>
+<h2 id="toc41"><span><a href="#complex-decomposition">complex decomposition</a></span></h2>
+<p>How to extract the real and imaginary part from a complex number; how to extract the argument and modulus; how to get the complex conjugate.</p>
+<p><a name="random-num-note" id="random-num-note"></a></p>
+<h2 id="toc42"><span><a href="#random-num">random number</a></span></h2>
+<p>How to generate a random integer or a random float.</p>
+<p><a name="random-seed-note" id="random-seed-note"></a></p>
+<h2 id="toc43"><span><a href="#random-seed">random seed</a></span></h2>
+<p>How to set or get the random seed.</p>
+<p><strong>pari/gip:</strong></p>
+<p>The seed is set to a fixed value at start up.</p>
+<p><strong>mathematica:</strong></p>
+<p>The seed is not set to the same value at start up.</p>
+<p><a name="binary-octal-hex-literals-note" id="binary-octal-hex-literals-note"></a></p>
+<h2 id="toc44"><span><a href="#binary-octal-hex-literals">binary, octal, and hex literals</a></span></h2>
+<p>Binary, octal, and hex integer literals.</p>
+<p><strong>mathematica:</strong></p>
+<p>The notation works for any base from 2 to 36.</p>
+<p><a name="strings-note" id="strings-note"></a></p>
+<h1 id="toc45"><span><a href="#strings">Strings</a></span></h1>
+<p><a name="string-literals" id="string-literals"></a></p>
+<h2 id="toc46"><span>string literals</span></h2>
+<p><a name="string-newline" id="string-newline"></a></p>
+<h2 id="toc47"><span>newline in literal</span></h2>
+<p><a name="character-access" id="character-access"></a></p>
+<h2 id="toc48"><span>character access</span></h2>
+<p><a name="chr-ord" id="chr-ord"></a></p>
+<h2 id="toc49"><span>chr and ord</span></h2>
+<p><a name="string-length" id="string-length"></a></p>
+<h2 id="toc50"><span>length</span></h2>
+<p><a name="string-concatenate" id="string-concatenate"></a></p>
+<h2 id="toc51"><span>concatenate</span></h2>
+<p><a name="index-substring" id="index-substring"></a></p>
+<h2 id="toc52"><span>index of substring</span></h2>
+<p><a name="extract-substring" id="extract-substring"></a></p>
+<h2 id="toc53"><span>extract substring</span></h2>
+<p><a name="split" id="split"></a></p>
+<h2 id="toc54"><span>split</span></h2>
+<p><a name="number-string-conversion" id="number-string-conversion"></a></p>
+<h2 id="toc55"><span>convert from string, to string</span></h2>
+<p>How to convert strings to numbers and vice versa.</p>
+<p><a name="join" id="join"></a></p>
+<h2 id="toc56"><span>join</span></h2>
+<p><a name="trim" id="trim"></a></p>
+<h2 id="toc57"><span>trim</span></h2>
+<p><a name="case-manipulation" id="case-manipulation"></a></p>
+<h2 id="toc58"><span>case manipulation</span></h2>
+<p><a name="sprintf" id="sprintf"></a></p>
+<h2 id="toc59"><span>sprintf</span></h2>
+<p><a name="regexes-note" id="regexes-note"></a></p>
+<h1 id="toc60"><span><a href="#regexes">Regular Expressions</a></span></h1>
+<p><a name="regex-match" id="regex-match"></a></p>
+<h2 id="toc61"><span>regex test</span></h2>
+<p>How to test whether a string matches a regular expression.</p>
+<p><a name="regex-substitute" id="regex-substitute"></a></p>
+<h2 id="toc62"><span>regex substitution</span></h2>
+<p>How to replace substrings which match a regular expression.</p>
+<p><a name="arrays-note" id="arrays-note"></a></p>
+<h1 id="toc63"><span><a href="#arrays">Arrays</a></span></h1>
+<p><a name="array-literal-note" id="array-literal-note"></a></p>
+<h2 id="toc64"><span><a href="#array-literal">literal</a></span></h2>
+<p>The notation for an array literal.</p>
+<p><a name="array-size-note" id="array-size-note"></a></p>
+<h2 id="toc65"><span><a href="#array-size">size</a></span></h2>
+<p>The number of elements in the array.</p>
+<p><a name="empty-array-test-note" id="empty-array-test-note"></a></p>
+<h2 id="toc66"><span><a href="#empty-array-test">empty test</a></span></h2>
+<p>How to test whether an array is empty.</p>
+<p><a name="array-lookup-note" id="array-lookup-note"></a></p>
+<h2 id="toc67"><span><a href="#array-lookup">lookup</a></span></h2>
+<p>How to access an array element by its index.</p>
+<p><a name="array-update-note" id="array-update-note"></a></p>
+<h2 id="toc68"><span><a href="#array-update">update</a></span></h2>
+<p>How to change the value stored at an array index.</p>
+<p><a name="array-out-of-bounds-note" id="array-out-of-bounds-note"></a></p>
+<h2 id="toc69"><span><a href="#array-out-of-bounds">out-of-bounds behavior</a></span></h2>
+<p>What happens when an attempt is made to access an element at an out-of-bounds index.</p>
+<p><a name="array-element-index-note" id="array-element-index-note"></a></p>
+<h2 id="toc70"><span><a href="#array-element-index">element index</a></span></h2>
+<p>How to get the index of an element in an array.</p>
+<p><a name="array-slice-note" id="array-slice-note"></a></p>
+<h2 id="toc71"><span><a href="#array-slice">slice</a></span></h2>
+<p>How to extract a subset of the elements. The indices for the elements must be contiguous.</p>
+<p><a name="array-of-integers-as-index-note" id="array-of-integers-as-index-note"></a></p>
+<h2 id="toc72"><span><a href="#array-of-integers-as-index">array of integers as index</a></span></h2>
+<p><a name="array-back-note" id="array-back-note"></a></p>
+<h2 id="toc73"><span><a href="#array-back">manipulate back</a></span></h2>
+<p><a name="array-front-note" id="array-front-note"></a></p>
+<h2 id="toc74"><span><a href="#array-front">manipulate front</a></span></h2>
+<p><a name="array-head-note" id="array-head-note"></a></p>
+<h2 id="toc75"><span><a href="#array-head">head</a></span></h2>
+<p><a name="array-tail-note" id="array-tail-note"></a></p>
+<h2 id="toc76"><span><a href="#array-tail">tail</a></span></h2>
+<p><a name="array-cons-note" id="array-cons-note"></a></p>
+<h2 id="toc77"><span><a href="#array-cons">cons</a></span></h2>
+<p><a name="array-concatenate-note" id="array-concatenate-note"></a></p>
+<h2 id="toc78"><span><a href="#array-concatenate">concatenate</a></span></h2>
+<p><a name="array-replicate-note" id="array-replicate-note"></a></p>
+<h2 id="toc79"><span><a href="#array-replicate">replicate</a></span></h2>
+<p><a name="copy-array-note" id="copy-array-note"></a></p>
+<h2 id="toc80"><span><a href="#copy-array">copy</a></span></h2>
+<p>How to copy an array. Updating the copy will not alter the original.</p>
+<p><a name="iterate-over-array-note" id="iterate-over-array-note"></a></p>
+<h2 id="toc81"><span><a href="#iterate-over-array">iterate</a></span></h2>
+<p><a name="reverse-array-note" id="reverse-array-note"></a></p>
+<h2 id="toc82"><span><a href="#reverse-array">reverse</a></span></h2>
+<p><a name="sort-array-note" id="sort-array-note"></a></p>
+<h2 id="toc83"><span><a href="#sort-array">sort</a></span></h2>
+<p><a name="dedupe-array-note" id="dedupe-array-note"></a></p>
+<h2 id="toc84"><span><a href="#dedupe-array">dedupe</a></span></h2>
+<p><a name="membership-note" id="membership-note"></a></p>
+<h2 id="toc85"><span><a href="#membership">membership</a></span></h2>
+<p>How to test whether a value is an element of a list.</p>
+<p><a name="intersection-note" id="intersection-note"></a></p>
+<h2 id="toc86"><span><a href="#intersection">intersection</a></span></h2>
+<p>How to to find the intersection of two lists.</p>
+<p><a name="union-note" id="union-note"></a></p>
+<h2 id="toc87"><span><a href="#union">union</a></span></h2>
+<p>How to find the union of two lists.</p>
+<p><a name="set-diff-note" id="set-diff-note"></a></p>
+<h2 id="toc88"><span><a href="#set-diff">relative complement, symmetric difference</a></span></h2>
+<p>How to find all elements in one list which are not in another; how to find all elements which are in one of two lists but not both.</p>
+<p><a name="map-note" id="map-note"></a></p>
+<h2 id="toc89"><span><a href="#map">map</a></span></h2>
+<p><a name="filter-note" id="filter-note"></a></p>
+<h2 id="toc90"><span><a href="#filter">filter</a></span></h2>
+<p><a name="reduce-note" id="reduce-note"></a></p>
+<h2 id="toc91"><span><a href="#reduce">reduce</a></span></h2>
+<p><a name="universal-existential-test-note" id="universal-existential-test-note"></a></p>
+<h2 id="toc92"><span><a href="#universal-existential-test">universal and existential tests</a></span></h2>
+<p><a name="min-max-elem-note" id="min-max-elem-note"></a></p>
+<h2 id="toc93"><span><a href="#min-max-elem">min and max element</a></span></h2>
+<p><a name="shuffle-sample-note" id="shuffle-sample-note"></a></p>
+<h2 id="toc94"><span><a href="#shuffle-sample">shuffle and sample</a></span></h2>
+<p>How to shuffle an array. How to extract a random sample from an array without replacement.</p>
+<p><a name="zip-note" id="zip-note"></a></p>
+<h2 id="toc95"><span><a href="#zip">zip</a></span></h2>
+<p>How to interleave two arrays.<br /><a name="sequences-note" id="sequences-note"></a></p>
+<h1 id="toc96"><span><a href="#sequences">Sequences</a></span></h1>
+<p><a name="multidimensional-arrays-note" id="multidimensional-arrays-note"></a></p>
+<h1 id="toc97"><span><a href="#multidimensional-arrays">Multidimensional Arrays</a></span></h1>
+<p><a name="dictionaries-note" id="dictionaries-note"></a></p>
+<h1 id="toc98"><span><a href="#dictionaries">Dictionaries</a></span></h1>
+<p><a name="record-literal" id="record-literal"></a></p>
+<h2 id="toc99"><span>record literal</span></h2>
+<p><a name="record-access" id="record-access"></a></p>
+<h2 id="toc100"><span>record member access</span></h2>
+<p><a name="functions-note" id="functions-note"></a></p>
+<h1 id="toc101"><span><a href="#functions">Functions</a></span></h1>
+<p><a name="definition" id="definition"></a></p>
+<h2 id="toc102"><span>definition</span></h2>
+<p><a name="invocation" id="invocation"></a></p>
+<h2 id="toc103"><span>invocation</span></h2>
+<p><a name="function-value" id="function-value"></a></p>
+<h2 id="toc104"><span>function value</span></h2>
+<p><a name="execution-control-note" id="execution-control-note"></a></p>
+<h1 id="toc105"><span><a href="#execution-control">Execution Control</a></span></h1>
+<p><a name="if" id="if"></a></p>
+<h2 id="toc106"><span>if</span></h2>
+<p>How to write a branch statement.</p>
+<p><strong>mathematica:</strong></p>
+<p>The 3rd argument (the else clause) of an <em>If</em> expression is optional.</p>
+<p><a name="while" id="while"></a></p>
+<h2 id="toc107"><span>while</span></h2>
+<p>How to write a conditional loop.</p>
+<p><strong>mathematica:</strong></p>
+<p><em>Do</em> can be used for a finite unconditional loop:</p>
+<div class="code">
+<pre>
+<code>Do[Print[foo], {10}]</code>
+</pre></div>
+<p><a name="for" id="for"></a></p>
+<h2 id="toc108"><span>for</span></h2>
+<p>How to write a C-style for statement.</p>
+<p><a name="break-continue" id="break-continue"></a></p>
+<h2 id="toc109"><span>break/continue</span></h2>
+<p>How to break out of a loop. How to jump to the next iteration of a loop.</p>
+<p><a name="raise-exception" id="raise-exception"></a></p>
+<h2 id="toc110"><span>raise exception</span></h2>
+<p>How to raise an exception.</p>
+<p><a name="handle-exception" id="handle-exception"></a></p>
+<h2 id="toc111"><span>handle exception</span></h2>
+<p>How to handle an exception.</p>
+<p><a name="finally" id="finally"></a></p>
+<h2 id="toc112"><span>finally block</span></h2>
+<p>How to write code that executes even if an exception is raised.</p>
+<p><a name="files-note" id="files-note"></a></p>
+<h1 id="toc113"><span><a href="#files">Files</a></span></h1>
+<p><a name="libraries-namespaces-note" id="libraries-namespaces-note"></a></p>
+<h1 id="toc114"><span><a href="#libraries-namespaces">Libraries and Namespaces</a></span></h1>
+<p><a name="reflection-note" id="reflection-note"></a></p>
+<h1 id="toc115"><span><a href="#reflection">Reflection</a></span></h1>
+<p><a name="function-documentation" id="function-documentation"></a></p>
+<h2 id="toc116"><span>function documentation</span></h2>
+<p>How to get the documentation for a function.</p>
+<p><a name="algebra-note" id="algebra-note"></a></p>
+<h1 id="toc117"><span><a href="#algebra">Algebra</a></span></h1>
+<p><a name="calculus-note" id="calculus-note"></a></p>
+<h1 id="toc118"><span><a href="#calculus">Calculus</a></span></h1>
+<p><a name="number-theory-note" id="number-theory-note"></a></p>
+<h1 id="toc119"><span><a href="#number-theory">Number Theory</a></span></h1>
+<p><a name="vectors-note" id="vectors-note"></a></p>
+<h1 id="toc120"><span><a href="#vectors">Vectors</a></span></h1>
+<p><a name="vec-literal-note" id="vec-literal-note"></a></p>
+<h2 id="toc121"><span><a href="#vec-literal">vector literal</a></span></h2>
+<p>The notation for a vector literal.</p>
+<p><a name="vec-coordinate-note" id="vec-coordinate-note"></a></p>
+<h2 id="toc122"><span><a href="#vec-coordinate">vector coordinate</a></span></h2>
+<p>How to get one of the coordinates of a vector.</p>
+<p><a name="vec-dim-note" id="vec-dim-note"></a></p>
+<h2 id="toc123"><span><a href="#vec-dim">vector dimension</a></span></h2>
+<p>How to get the number of coordinates of a vector.</p>
+<p><a name="vec-element-wise-note" id="vec-element-wise-note"></a></p>
+<h2 id="toc124"><span><a href="#vec-element-wise">element-wise arithmetic operators</a></span></h2>
+<p>How to perform an element-wise arithmetic operation on vectors.</p>
+<p><a name="vec-length-mismatch-note" id="vec-length-mismatch-note"></a></p>
+<h2 id="toc125"><span><a href="#vec-length-mismatch">vector length mismatch</a></span></h2>
+<p>What happens when an element-wise arithmetic operation is performed on vectors of different dimension.</p>
+<p><a name="vec-scalar-note" id="vec-scalar-note"></a></p>
+<h2 id="toc126"><span><a href="#vec-scalar">scalar multiplication</a></span></h2>
+<p>How to multiply a scalar with a vector.</p>
+<p><a name="vec-dot-note" id="vec-dot-note"></a></p>
+<h2 id="toc127"><span><a href="#vec-dot">dot product</a></span></h2>
+<p>How to compute the dot product of two vectors.</p>
+<p><a name="vec-cross-note" id="vec-cross-note"></a></p>
+<h2 id="toc128"><span><a href="#vec-cross">cross product</a></span></h2>
+<p>How to compute the cross product of two three-dimensional vectors.</p>
+<p><a name="vec-norms-note" id="vec-norms-note"></a></p>
+<h2 id="toc129"><span><a href="#vec-norms">norms</a></span></h2>
+<p>How to compute the norm of a vector.</p>
+<p><a name="matrices-note" id="matrices-note"></a></p>
+<h1 id="toc130"><span><a href="#matrices">Matrices</a></span></h1>
+<p><a name="matrix-literal-constructor" id="matrix-literal-constructor"></a></p>
+<h2 id="toc131"><span>literal or constructor</span></h2>
+<p>Literal syntax or constructor for creating a matrix.</p>
+<p><strong>mathematica:</strong></p>
+<p>Matrices are represented as lists of lists. No error is generated if one of the rows contains too many or two few elements. The <em>MatrixQ</em> predicate can be used to test whether a list of lists is matrix: i.e. all of the sublists contain numbers and are of the same length.</p>
+<p>Matrices are displayed by Mathematica using list notation. To see a matrix as it would be displayed in mathematical notation, use the <em>MatrixForm</em> function.</p>
+<p><a name="matrix-dimensions" id="matrix-dimensions"></a></p>
+<h2 id="toc132"><span>dimensions</span></h2>
+<p>How to get the dimensions of a matrix.</p>
+<p><a name="matrix-access" id="matrix-access"></a></p>
+<h2 id="toc133"><span>element access</span></h2>
+<p>How to access an element of a matrix. All languages described here follow the convention from mathematics of specifying the row index before the column index.</p>
+<p><a name="matrix-row-access" id="matrix-row-access"></a></p>
+<h2 id="toc134"><span>row access</span></h2>
+<p>How to access a row.</p>
+<p><a name="matrix-column-access" id="matrix-column-access"></a></p>
+<h2 id="toc135"><span>column access</span></h2>
+<p>How to access a column.</p>
+<p><a name="submatrix-access" id="submatrix-access"></a></p>
+<h2 id="toc136"><span>submatrix access</span></h2>
+<p>How to access a submatrix.</p>
+<p><a name="matrix-scalar-multiplication" id="matrix-scalar-multiplication"></a></p>
+<h2 id="toc137"><span>scalar multiplication</span></h2>
+<p>How to multiply a matrix by a scalar.</p>
+<p><a name="matrix-element-wise-operators" id="matrix-element-wise-operators"></a></p>
+<h2 id="toc138"><span>element-wise operators</span></h2>
+<p>Operators which act on two identically sized matrices element by element. Note that element-wise multiplication of two matrices is used less frequently in mathematics than matrix multiplication.</p>
+<p><a name="matrix-multiplication" id="matrix-multiplication"></a></p>
+<h2 id="toc139"><span>multiplication</span></h2>
+<p>How to multiply matrices. Matrix multiplication should not be confused with element-wise multiplication of matrices. Matrix multiplication in non-commutative and only requires that the number of columns of the matrix on the left match the number of rows of the matrix. Element-wise multiplication, by contrast, is commutative and requires that the dimensions of the two matrices be equal.</p>
+<p><a name="kronecker-product" id="kronecker-product"></a></p>
+<h2 id="toc140"><span>kronecker product</span></h2>
+<p>The <a href="http://en.wikipedia.org/wiki/Kronecker_product">Kronecker product</a> is a non-commutative operation defined on any two matrices. If A is m x n and B is p x q, then the Kronecker product is a matrix with dimensions mp x nq.</p>
+<p><a name="matrix-comparison" id="matrix-comparison"></a></p>
+<h2 id="toc141"><span>comparison</span></h2>
+<p>How to test two matrices for equality.</p>
+<p><a name="matrix-norms" id="matrix-norms"></a></p>
+<h2 id="toc142"><span>norms</span></h2>
+<p>How to compute the 1-norm, the 2-norm, the infinity norm, and the frobenius norm.</p>
+<p><a name="distribution-note" id="distribution-note"></a></p>
+<h1 id="toc143"><span><a href="#distributions">Distributions</a></span></h1>
+<p><a name="univariate-chart-note" id="univariate-chart-note"></a></p>
+<h1 id="toc144"><span><a href="javascript:;">univariate-charts Univariate Charts</a></span></h1>
+<p>A univariate chart can be used to display a list or array of numerical values. Univariate data can be displayed in a table with a single column or two columns if each numerical value is given a name. A multivariate chart, by contrast, is used to display a list or array of <em>tuples</em> of numerical values.</p>
+<p>In order for a list of numerical values to be meaningfully displayed in a univariate chart, it must be meaningful to perform comparisons (&lt;, &gt;, =) on the values. Hence the values should have the same unit of measurement.</p>
+<p><a name="bar-chart" id="bar-chart"></a></p>
+<h2 id="toc145"><span>vertical bar chart</span></h2>
+<p>A chart which represents values with rectangular bars which line up on the bottom. It is a deceptive practice for the bottom not to represent zero, even if a y-axis with labelled tick marks or grid lines is provided. A cut in the vertical axis and one of the bars may be desirable if the cut value is a large outlier. Putting such a cut all of the bars near the bottom is a deceptive practice similar not taking to the base of the bars to be zero, however.</p>
+<p>Another bad practice is the 3D bar chart. In such a chart heights are represented by the height of what appear to be three dimensional blocks. Such charts impress an undiscriminating audience but make it more difficult to make a visual comparison of the charted quantities.</p>
+<p><strong>mathematica</strong></p>
+<p><a name="horizontal-bar-chart" id="horizontal-bar-chart"></a></p>
+<h2 id="toc146"><span>horizontal bar chart</span></h2>
+<p>A bar chart in which zero is the y-axis and the bars extend to the right.</p>
+<p><a name="pie-chart" id="pie-chart"></a></p>
+<h2 id="toc147"><span>pie chart</span></h2>
+<p>A bar chart displays values using the areas of circular sectors or equivalently, the lengths of the arcs of those sectors. A pie chart implies that the values are percentages of a whole. The viewer is likely to make an assumption about what the whole circle represents. Thus, using a pie chart to show the revenue of some companies in a line of business could be regarded as deceptive if there are other companies in the same line of business which are left out. The viewer may mistakenly assume the whole circle represents the total market.</p>
+<p>If two values are close in value, people cannot determine visually which of the corresponding sectors in a pie chart is larger without the aid of a protractor. For this reason many consider bar charts superior to pie charts.</p>
+<p>Many software packages make 3D versions of pie charts which communicate no additional information and in fact make it harder to interpret the data.</p>
+<p><a name="stem-and-leaf-plot" id="stem-and-leaf-plot"></a></p>
+<h2 id="toc148"><span>stem-and-leaf plot</span></h2>
+<p><a name="histogram" id="histogram"></a></p>
+<h2 id="toc149"><span>histogram</span></h2>
+<p><a name="box-and-whisker-plot" id="box-and-whisker-plot"></a></p>
+<h2 id="toc150"><span>box-and-whisker plot</span></h2>
+<p><a name="univariate-title" id="univariate-title"></a></p>
+<h2 id="toc151"><span>set chart title</span></h2>
+<p><a name="bivariate-chart-note" id="bivariate-chart-note"></a></p>
+<h1 id="toc152"><span><a href="#bivariate-charts">Bivariate Charts</a></span></h1>
+<p><a name="stacked-bar-chart" id="stacked-bar-chart"></a></p>
+<h2 id="toc153"><span>stacked bar chart</span></h2>
+<p><a name="trivariate-chart-note" id="trivariate-chart-note"></a></p>
+<h1 id="toc154"><span><a href="#trivariate-charts">Trivariate Charts</a></span></h1>
+<p><a name="mathematica" id="mathematica"></a></p>
+<h1 id="toc155"><span>Mathematica</span></h1>
+<p><a href="http://reference.wolfram.com/mathematica/guide/Mathematica.html">Mathematica Documentation Center</a><br /><a href="http://wolframalpha.com">WolframAlpha</a></p>
+<p><a name="sympy" id="sympy"></a></p>
+<h1 id="toc156"><span>SymPy</span></h1>
+<p><a href="http://docs.sympy.org/latest/index.html">Welcome to SymPy’s documentation!</a></p>
+<p>When using SymPy in IPython, the following command enables LaTeX formatted output:</p>
+<div class="code">
+<pre>
+<code>from sympy import *
+interactive.printing.init_printing(use_latex=True)</code>
+</pre></div>
+<p><a name="pari-gp" id="pari-gp"></a></p>
+<h1 id="toc157"><span>Pari/GP</span></h1>
+<p><a href="http://pari.math.u-bordeaux.fr/pub/pari/manuals/2.5.0/tutorial.pdf">A Tutorial for Pari/GP (pdf)</a><br /><a href="http://pari.math.u-bordeaux.fr/dochtml/html.stable/">Pari/GP Functions by Category</a><br /><a href="http://www.staff.science.uu.nl/~beuke106/boek/refcard.pdf">Pari/GP Reference Card (pdf)</a></p>
+
+                    </div>
+        </div>
+      </div>
+      <div id="license-area" class="license-area">
+        content of this page licensed under
+        <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">
+        creative commons attribution-sharealike 3.0</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-17129977-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</body>
+</html>

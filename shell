@@ -1,0 +1,1654 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
+<link rel="icon" type="image/gif" href="/favicon.gif"/>
+<link rel="apple-touch-icon" sizes="120x120" href="touch-icon-iphone-retina.png" />
+<link rel="apple-touch-icon" sizes="152x152" href="touch-icon-ipad-retina.png" />
+<title>Operating System Automation: POSIX Shell, AppleScript, PowerShell - Hyperpolyglot</title>
+<style type="text/css" id="internal-style">
+@import url(hyperpolyglot.css);
+</style>
+<meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
+<meta http-equiv="content-language" content="en"/>
+</head>
+<body>
+<div id="container-wrap-wrap">
+  <div id="container-wrap">
+    <div id="container">
+      <div id="header">
+        <h1><a href="/"><span>Hyperpolyglot</span></a></h1>
+      </div>
+      <div id="content-wrap">
+        <div id="main-content">
+<div id="page-title">
+                            Operating System Automation: POSIX Shell, AppleScript, PowerShell
+                        </div>
+<div id="page-content">
+                        
+
+<p><em>a side-by-side reference sheet</em></p>
+<p><a href="#grammar-invocation">grammar and invocation</a> | <a href="#var-expr">variables and expression</a> | <a href="#arithmetic-logic">arithmetic and logic</a> | <a href="#strings">strings</a> | <a href="#regexes">regexes</a> | <a href="#dates-time">dates and time</a><br /><a href="#arrays">arrays</a> | <a href="#functions">functions</a> | <a href="#execution-control">execution control</a> | <a href="#exceptions">exceptions</a> | <a href="#files">files</a> | <a href="#directories">directories</a> | <a href="#processes-environment">processes and environment</a><br /><a href="#libraries-namespaces">libraries and namespaces</a> | <a href="#objects">objects</a> | <a href="#reflection">reflection</a></p>
+<table class="wiki-content-table"><tr><th><a name="general" id="general"></a></th>
+<th><a href="#posix">posix shell</a></th>
+<th><a href="#applescript">applescript</a></th>
+<th><a href="#powershell">powershell</a></th>
+</tr><tr><td><a name="version-used" id="version-used"></a><a href="#version-used-note">version used</a><br /><span style="white-space: pre-wrap;"> </span></td>
+<td><span style="color: gray"><em>dash; POSIX 2008</em></span></td>
+<td><span style="color: gray"><em>2.1</em></span></td>
+<td><span style="color: gray"><em>2.0</em></span></td>
+</tr><tr><td><a name="version" id="version"></a><a href="#version-note">show version</a><br /><span style="white-space: pre-wrap;"> </span></td>
+<td></td>
+<td>$ osascript -e \<br /><span style="white-space: pre-wrap;">  </span>"AppleScript's version"</td>
+<td>$host.version</td>
+</tr><tr><th colspan="4"><a name="grammar-invocation" id="grammar-invocation"></a><a href="#grammar-invocation-note">grammar and invocation</a></th>
+</tr><tr><th></th>
+<th><a href="#posix">posix shell</a></th>
+<th><a href="#applescript">applescript</a></th>
+<th><a href="#powershell">powershell</a></th>
+</tr><tr><td><a name="interpreter" id="interpreter"></a><a href="#interpreter-note">interpreter</a><br /><span style="white-space: pre-wrap;"> </span></td>
+<td>$ dash foo.sh</td>
+<td>$ osascript foo.scpt</td>
+<td><span style="white-space: pre-wrap;">PS&gt;</span> .\foo.ps1<br /><br /><span style="white-space: pre-wrap;">DOS&gt;</span> powershell -file foo.ps1</td>
+</tr><tr><td><a name="repl" id="repl"></a><a href="#repl-note">repl</a><br /><span style="white-space: pre-wrap;"> </span></td>
+<td>$ dash</td>
+<td><span style="color: gray"><em>none</em></span></td>
+<td><span style="white-space: pre-wrap;">&gt;</span> powershell</td>
+</tr><tr><td><a name="exec-and-exit" id="exec-and-exit"></a><a href="#exec-and-exit-note">execute command and exit</a></td>
+<td>$ dash -c 'echo hi'</td>
+<td>$ osascript -e 'say "hi"'</td>
+<td><span style="white-space: pre-wrap;">&gt;</span> powershell -command 'write-host "hi"'</td>
+</tr><tr><td><a name="stmt-separator" id="stmt-separator"></a><a href="#stmt-separator-note">statement separator</a></td>
+<td><span style="color: gray"><em>pipelines separated by</em></span><br />
+; &amp; &amp;&amp; <span style="white-space: pre-wrap;">||</span><br /><br /><span style="color: gray"><em>lists of pipelines separated by newlines unless newline is preceded by a backslash or inside these characters:</em></span><br />
+"" '' <span style="white-space: pre-wrap;">``</span> ()</td>
+<td><span style="color: gray"><em>newline; use ⌥l (option lowercase L) to escape newline and continue statement on following line</em></span></td>
+<td>; <span style="color: gray"><em>or newline; a newline can be escaped with a backtick:</em></span> <span style="white-space: pre-wrap;">`</span> <span style="color: gray"><em>newlines are permitted in double quotes and after a pipe:</em></span> |</td>
+</tr><tr><td><a name="word-separator" id="word-separator"></a><a href="#word-separator-note">word separators</a></td>
+<td>| &amp; ; ( ) &lt; &gt; <span style="color: gray"><em>space tab</em></span></td>
+<td></td>
+<td></td>
+</tr><tr><td><a name="block-delimiters" id="block-delimiters"></a><a href="#block-delimiters-note">block delimiters</a></td>
+<td>{<span style="color: gray"><em>…</em></span>}<br />
+(<span style="color: gray"><em>…</em></span>)<br />
+do <span style="color: gray"><em>…</em></span> done</td>
+<td><span style="color: gray"><em>keyword</em></span> <span style="color: gray"><em>…</em></span> end <span style="color: gray"><em>keyword</em></span><br />
+on <span style="color: gray"><em>funcName</em></span> <span style="color: gray"><em>…</em></span> end <span style="color: gray"><em>funcName</em></span></td>
+<td>{ <span style="color: gray"><em>…</em></span> }</td>
+</tr><tr><td><a href="#expression-statement">are expressions statements</a></td>
+<td><span style="color: gray"><em>no</em></span></td>
+<td><span style="color: gray"><em>yes</em></span></td>
+<td><span style="color: gray"><em>yes</em></span></td>
+</tr><tr><td><a name="comment" id="comment"></a><a href="#comment-note">end-of-line comment</a><br /><span style="white-space: pre-wrap;"> </span></td>
+<td># <span style="color: gray"><em>comment</em></span></td>
+<td><span style="white-space: pre-wrap;">--</span> <span style="color: gray"><em>comment</em></span></td>
+<td># <span style="color: gray"><em>comment</em></span></td>
+</tr><tr><td><a name="multiline-comment" id="multiline-comment"></a><a href="#multiline-comment-note">comment out multiple lines</a></td>
+<td><span style="white-space: pre-wrap;">&lt;&lt;</span>EOF<br /><span style="color: gray"><em>comment</em></span><br /><span style="color: gray"><em>another comment</em></span><br />
+EOF</td>
+<td>(* <span style="color: gray"><em>comment</em></span><br /><span style="color: gray"><em>another comment</em></span> *)</td>
+<td>&lt;# <span style="color: gray"><em>comment</em></span><br /><span style="color: gray"><em>another comment</em></span> #&gt;</td>
+</tr><tr><th colspan="4"><a name="var-expr" id="var-expr"></a><a href="#var-expr-note">variables and expressions</a></th>
+</tr><tr><th></th>
+<th><a href="#posix">posix shell</a></th>
+<th><a href="#applescript">applescript</a></th>
+<th><a href="#powershell">powershell</a></th>
+</tr><tr><td><a name="assignment" id="assignment"></a><a href="#assignment-note">assignment</a></td>
+<td>a=1<br /><span style="color: gray"><em>whitespace next to</em></span> = <span style="color: gray"><em>not permitted</em></span></td>
+<td>set a to 1<br />
+copy 1 to a</td>
+<td>$a = 1</td>
+</tr><tr><td><a name="parallel-assignment" id="parallel-assignment"></a><a href="#parallel-assignment-note">parallel assignment</a><br /><span style="white-space: pre-wrap;"> </span></td>
+<td><span style="color: gray"><em>none</em></span></td>
+<td>set {a,b} to {1,2}</td>
+<td>$a, $b = 1, 2</td>
+</tr><tr><td><a name="swap" id="swap"></a><a href="#swap-note">swap</a></td>
+<td>tmp=$a<br />
+a=$b<br />
+b=$tmp</td>
+<td>set {a,b} to {b,a}</td>
+<td>$a, $b = $b, $a</td>
+</tr><tr><td><a name="compound-assignment" id="compound-assignment"></a><a href="#compound-assignment-note">compound assignment operators: arithmetic, string, bit</a></td>
+<td><span style="color: gray"><em>none</em></span></td>
+<td><span style="color: gray"><em>none</em></span></td>
+<td>+= -= *= /= %=<br />
++= *=<br /><span style="color: gray"><em>none</em></span></td>
+</tr><tr><td><a name="incr-decr" id="incr-decr"></a><a href="#incr-decr-note">increment and decrement</a></td>
+<td><span style="color: gray"><em>none</em></span></td>
+<td><span style="color: gray"><em>none</em></span></td>
+<td>$x = 1<br />
+$x<span style="white-space: pre-wrap;">++</span><br />
+$x<span style="white-space: pre-wrap;">--</span></td>
+</tr><tr><td><a name="var-decl" id="var-decl"></a><a href="#var-decl-note">variable declaration</a><br /><span style="white-space: pre-wrap;"> </span></td>
+<td><span style="color: gray"><em>assignment</em></span>, export, readonly</td>
+<td><span style="color: gray"><em>assignment</em></span>, local, global</td>
+<td><span style="color: gray"><em>assignment</em></span></td>
+</tr><tr><td><a name="identifiers-case-sensitive" id="identifiers-case-sensitive"></a><a href="#identifiers-case-sensitive-note">are identifiers case sensitive?</a></td>
+<td><span style="color: gray"><em>yes</em></span></td>
+<td><span style="color: gray"><em>no</em></span></td>
+<td><span style="color: gray"><em>no</em></span></td>
+</tr><tr><td><a name="null" id="null"></a><a href="#null-note">null</a><br /><span style="white-space: pre-wrap;"> </span></td>
+<td>''</td>
+<td>null</td>
+<td>$null</td>
+</tr><tr><td><a name="null-test" id="null-test"></a><a href="#null-test-note">null test</a><br /><span style="white-space: pre-wrap;"> </span></td>
+<td>[ -z $v ]</td>
+<td>v = null</td>
+<td>$v -eq $null</td>
+</tr><tr><td><a name="undef-access" id="undef-access"></a><a href="#undef-access-note">undefined variable access</a></td>
+<td>''</td>
+<td><span style="color: gray"><em>error to access uninitialized variable</em></span></td>
+<td>$null</td>
+</tr><tr><td><a name="undef-test" id="undef-test"></a><a href="#undef-test-note">undefined test</a></td>
+<td>f [ ${foo+1} ]; then<br /><span style="white-space: pre-wrap;">  </span>echo "defined"<br />
+else<br /><span style="white-space: pre-wrap;">  </span>echo "undefined"<br />
+fi</td>
+<td>try<br /><span style="white-space: pre-wrap;">  </span>set t to foo<br /><span style="white-space: pre-wrap;">  </span>display dialog ("defined")<br />
+on error<br /><span style="white-space: pre-wrap;">  </span>display dialog ("undefined")<br />
+end try</td>
+<td>test-path variable:\foo</td>
+</tr><tr><th colspan="4"><a name="arithmetic-logic" id="arithmetic-logic"></a><a href="#arithmetic-logic-note">arithmetic and logic</a></th>
+</tr><tr><th></th>
+<th><a href="#posix">posix shell</a></th>
+<th><a href="#applescript">applescript</a></th>
+<th><a href="#powershell">powershell</a></th>
+</tr><tr><td><a name="true-false" id="true-false"></a><a href="#true-false-note">true and false</a><br /><span style="white-space: pre-wrap;"> </span></td>
+<td><span style="color: gray"><em>status codes:</em></span><br />
+true false<br /><br /><span style="color: gray"><em>inside</em> [ ]:</span><br />
+1 ''</td>
+<td>true false</td>
+<td>$true $false</td>
+</tr><tr><td><a name="falsehoods" id="falsehoods"></a><a href="#falsehoods-note">falsehoods</a></td>
+<td><span style="color: gray"><em>status codes:<br />
+nonzero integers</em></span><br /><br /><span style="color: gray"><em>inside</em> [ ]:</span><br />
+''</td>
+<td><span style="color: gray"><em>only integers convert to booleans:</em></span><br />
+false 0</td>
+<td>0 0.0 "" ''</td>
+</tr><tr><td><a name="logical-ops" id="logical-ops"></a><a href="#logical-ops-note">logical operators</a><br /><span style="white-space: pre-wrap;"> </span></td>
+<td><span style="color: gray"><em>status codes:</em></span><br />
+&amp;&amp; <span style="white-space: pre-wrap;">||</span> !<br /><br /><span style="color: gray"><em>inside</em> [ ]:</span><br />
+-a -o !</td>
+<td>and or not</td>
+<td>-and -or -not</td>
+</tr><tr><td><a name="conditional-expr" id="conditional-expr"></a><a href="#conditional-expr-note">conditional expression</a><br /><span style="white-space: pre-wrap;"> </span></td>
+<td>$(( x&gt;0 ? x : -x ))</td>
+<td><span style="color: gray"><em>none</em></span></td>
+<td><span style="color: gray"><em>none</em></span></td>
+</tr><tr><td><a href="#relational-expr">relational expression</a><br /><span style="white-space: pre-wrap;"> </span></td>
+<td>[ $a -gt 3 ]</td>
+<td>a &gt; 3</td>
+<td>$a -gt 3</td>
+</tr><tr><td><a href="#relational-operators">relational operators</a><br /><span style="white-space: pre-wrap;"> </span></td>
+<td><span style="color: gray"><em>integers:</em></span><br />
+-eq -ne -gt -lt -ge -le<br /><br /><span style="color: gray"><em>strings:</em></span><br /><span style="white-space: pre-wrap;">=</span> != &gt; &lt; <span style="color: gray"><em>none</em></span> <span style="color: gray"><em>none</em></span></td>
+<td><span style="white-space: pre-wrap;">=</span> /= &gt; &lt; &gt;= &lt;=</td>
+<td>-eq -ne -gt -lt -ge -le</td>
+</tr><tr><td><a href="#arithmetic-expr">arithmetic expression</a><br /><span style="white-space: pre-wrap;"> </span></td>
+<td>$(( 1 + 3 ))</td>
+<td>1 + 3</td>
+<td>1 + 3</td>
+</tr><tr><td><a href="#arithmetic-operators">arithmetic operators</a><br /><span style="white-space: pre-wrap;"> </span></td>
+<td>+ - * <span style="color: gray"><em>none</em></span> / % <span style="white-space: pre-wrap;">**</span></td>
+<td>+ - * / div mod ^</td>
+<td>+ - * / <span style="color: gray"><em>??</em></span> % <span style="color: gray"><em>??</em></span></td>
+</tr><tr><td><a href="#integer-division">integer division</a><br /><span style="white-space: pre-wrap;"> </span></td>
+<td>$(( $a / $b ))</td>
+<td>a div b</td>
+<td>$rem = $null<br />
+$quot = [Math]::DivRem($a, $b, [ref] $rem)</td>
+</tr><tr><td><a name="int-div-zero" id="int-div-zero"></a><a href="#int-div-zero-note">integer division by zero</a></td>
+<td><span style="color: gray"><em>writes "division by 0" error message; statement terminates with a 1 status</em></span></td>
+<td></td>
+<td><span style="color: gray"><em>error: Attempted to divide by zero</em></span></td>
+</tr><tr><td><a href="#float-division">float division</a><br /><span style="white-space: pre-wrap;"> </span></td>
+<td><span style="white-space: pre-wrap;">`</span>echo " scale=5; $a / $b " | bc<span style="white-space: pre-wrap;">`</span></td>
+<td>a / b</td>
+<td>$a / $b</td>
+</tr><tr><td><a name="float-div-zero" id="float-div-zero"></a><a href="#float-div-zero-note">float division by zero</a></td>
+<td><span style="color: gray"><em>writes "division by 0" error message; statement terminates with a 1 status</em></span></td>
+<td></td>
+<td><span style="color: gray"><em>evaluates to</em> Infinity <em>which is not a float literal</em></span></td>
+</tr><tr><td><a name="power" id="power"></a><a href="#power-note">power</a><br /><span style="white-space: pre-wrap;"> </span></td>
+<td></td>
+<td></td>
+<td>[Math]::pow(2, 32)</td>
+</tr><tr><td><a name="sqrt" id="sqrt"></a><a href="#sqrt-note">sqrt</a><br /><span style="white-space: pre-wrap;"> </span></td>
+<td></td>
+<td></td>
+<td>[Math]::sqrt(2)</td>
+</tr><tr><td><a href="#sqrt-negative-two">sqrt -2</a><br /><span style="white-space: pre-wrap;"> </span></td>
+<td><span style="color: gray"><em>no sqrt</em></span></td>
+<td></td>
+<td><span style="color: gray"><em>evaluates to</em> NaN <em>which is not a float literal</em></span></td>
+</tr><tr><td><a href="#transcendental-func">transcendental functions</a></td>
+<td>e l s c <span style="color: gray"><em>none</em></span> <span style="color: gray"><em>none</em></span> <span style="color: gray"><em>none</em></span> a <span style="color: gray"><em>none</em></span><br /><span style="color: gray"><em>how to use:</em></span><br /><span style="white-space: pre-wrap;">`</span>echo 'e(2)' | bc -l<span style="white-space: pre-wrap;">`</span></td>
+<td></td>
+<td>[Math]::exp [Math]::log<br />
+[Math]::sin [Math]::cos [Math]::tan<br />
+[Math]::asin [Math]::acos [Math]::atan<br />
+[Math]::atan2</td>
+</tr><tr><td><a href="#float-truncation">float truncation</a><br /><span style="color: gray"><em>round towards zero, round to nearest integer, round down, round up</em></span></td>
+<td><span style="color: gray"><em>none and no floats</em></span></td>
+<td></td>
+<td>[Math]::truncate(3.14)<br />
+[Math]::round(3.14)<br />
+[Math]::floor(3.14)<br />
+[Math]::ceiling(3.14)</td>
+</tr><tr><td><a name="abs-val" id="abs-val"></a><a href="#abs-val-note">absolute value</a><br /><span style="color: gray"><em>and signum</em></span></td>
+<td></td>
+<td></td>
+<td>[Math]::abs(-7)<br />
+[Math]::sign(-7)</td>
+</tr><tr><td><a href="#integer-overflow">integer overflow</a><br /><span style="white-space: pre-wrap;"> </span></td>
+<td><span style="color: gray"><em>modular arithmetic</em></span></td>
+<td></td>
+<td><span style="color: gray"><em>converts to float</em></span></td>
+</tr><tr><td><a href="#float-overflow">float overflow</a><br /><span style="white-space: pre-wrap;"> </span></td>
+<td><span style="color: gray"><em>no floats</em></span></td>
+<td></td>
+<td><span style="color: gray"><em>evaluates to</em> Infinity <em>which is not a float literal</em></span></td>
+</tr><tr><td><a href="#random">random integer, uniform float</a></td>
+<td>echo $RANDOM <span style="color: gray"><em>15 bit integer</em></span></td>
+<td>random number from 0 to 99<br />
+random number from 0.0 to 1.0</td>
+<td>random 100<br />
+random 1.0</td>
+</tr><tr><td><a href="#seed-random">seed random numbers</a></td>
+<td>RANDOM=17<br />
+r=$RANDOM</td>
+<td>set r to random number with seed 17</td>
+<td>$r = random -setseed 17</td>
+</tr><tr><td><a href="#bit-operators">bit operators</a><br /><span style="white-space: pre-wrap;"> </span></td>
+<td><span style="white-space: pre-wrap;">&lt;&lt; &gt;&gt; &amp; | ^ ~</span></td>
+<td><span style="color: gray"><em>none</em></span></td>
+<td><span style="color: gray"><em>none</em></span> <span style="color: gray"><em>none</em></span> -band -bor -bxor -bnot<br /><br /><span style="color: gray"># powershell 3.0:</span><br />
+-lsl -lsr</td>
+</tr><tr><th colspan="4"><a name="strings" id="strings"></a><a href="#strings-note">strings</a></th>
+</tr><tr><th></th>
+<th><a href="#posix">posix shell</a></th>
+<th><a href="#applescript">applescript</a></th>
+<th><a href="#powershell">powershell</a></th>
+</tr><tr><td><a href="#string-literal">string literal</a></td>
+<td>'don'\''t say "no"'<br />
+"don't say \"no\""<br />
+$'don\'t say "no"'</td>
+<td>"don't say \"no\""</td>
+<td>'don''t say "no"'<br />
+"don't say <span style="white-space: pre-wrap;">`</span>"no<span style="white-space: pre-wrap;">`</span>""</td>
+</tr><tr><td><a href="#string-literal-newline">newline in literal</a></td>
+<td><span style="color: gray"><em>yes</em></span></td>
+<td><span style="color: gray"><em>yes</em></span></td>
+<td><span style="color: gray"><em>yes</em></span></td>
+</tr><tr><td><a href="#barewords">barewords</a></td>
+<td></td>
+<td></td>
+<td></td>
+</tr><tr><td><a href="#string-escapes">escapes</a></td>
+<td><span style="color: gray"><em>in double quotes</em></span><br />
+\\ \"<br /><span style="color: gray"><em>in</em></span> $' ' <span style="color: gray"><em>quotes:</em></span><br />
+\a \b \e \f \n \r \t \v \\ \' \c<span style="color: gray"><em>c</em></span> \x<span style="color: gray"><em>hh</em></span> \<span style="color: gray"><em>ooo</em></span></td>
+<td>\\ \"<br />
+\n \t \r<br /><span style="color: gray"><em>other backslash sequences cause syntax error</em></span></td>
+<td><span style="white-space: pre-wrap;">`</span>' <span style="white-space: pre-wrap;">`</span>" <span style="white-space: pre-wrap;">``</span><br /><span style="white-space: pre-wrap;">`</span>0 <span style="white-space: pre-wrap;">`</span>a <span style="white-space: pre-wrap;">`</span>b <span style="white-space: pre-wrap;">`</span>f <span style="white-space: pre-wrap;">`</span>n <span style="white-space: pre-wrap;">`</span>r <span style="white-space: pre-wrap;">`</span>t <span style="white-space: pre-wrap;">`</span>v<br /><span style="color: gray"><em>in other backtick sequences the backtick is ignored</em></span></td>
+</tr><tr><td><a href="#variable-interpolation">variable interpolation</a></td>
+<td>count=3<br />
+item=ball<br />
+"$count ${item}s"</td>
+<td><span style="color: gray"><em>none</em></span></td>
+<td>$count = 3<br />
+$item = "ball"<br />
+"$count $($item)s"</td>
+</tr><tr><td><a href="#string-length">length</a></td>
+<td>s="hello"<br />
+${#s}</td>
+<td>set s to "hello"<br />
+count s</td>
+<td>$s = "hello"<br />
+$s.length</td>
+</tr><tr><td><a href="#string-comparison">string comparison</a></td>
+<td>[ $USER = foo ]<br />
+[ $USER != foo ]</td>
+<td></td>
+<td><span style="color: gray"># case insensitive:</span><br />
+-eq -ne -gt -lt -ge -le<br /><br /><span style="color: gray"># case sensitive:</span><br />
+-ceq -cne -cgt -clt -cge -cle</td>
+</tr><tr><td><a href="#index-substring">index of substring</a></td>
+<td><span style="color: gray"><em>none</em></span></td>
+<td>set s to "foo bar"<br />
+offset of "bar" in s</td>
+<td><span style="color: gray"><em>returns -1 if not found:</em></span><br />
+"foo bar".indexof("bar")</td>
+</tr><tr><td><a href="#extract-substring">extract substring</a></td>
+<td>s="foo bar"<br />
+${s:4:3}</td>
+<td>set s to "foo bar"<br />
+characters 5 thru 7 of s as text</td>
+<td>"foo bar".substring(4,3)</td>
+</tr><tr><td><a href="#string-concatenation">string concatenation</a></td>
+<td>c="hello, ""world"</td>
+<td>set c to "hello, " &amp; "world"</td>
+<td>$c = "hello, " + "world"</td>
+</tr><tr><td><a href="#string-replication">string replication</a></td>
+<td></td>
+<td></td>
+<td>$hbar = "-" * 80</td>
+</tr><tr><td><a href="#split">split</a></td>
+<td><span style="color: gray"><em>none</em></span></td>
+<td></td>
+<td>"foo,bar,baz" -split ","</td>
+</tr><tr><td><a href="#join">join</a></td>
+<td><span style="color: gray"><em>none</em></span></td>
+<td></td>
+<td>@("foo","bar","baz") -join ","</td>
+</tr><tr><td><a href="#sprintf">sprintf</a></td>
+<td><span style="white-space: pre-wrap;">`</span>printf "tie: %s %d %f" "Spain" 13 3.7<span style="white-space: pre-wrap;">`</span></td>
+<td></td>
+<td>$a = "Spain", 13, 3.7<br />
+"tie: {0} {1} {2}" -f $a</td>
+</tr><tr><td><a href="#case">case manipulation</a></td>
+<td>echo "hello" | tr [a-z] [A-Z]<br />
+echo "HELLO" | tr [A-Z] [a-z]<br />
+A=hello<br />
+echo -n ${A:0:1} | tr [a-z] [A-Z]; echo -n ${A:1}</td>
+<td></td>
+<td>"hello".toupper()<br />
+"HELLO".tolower()</td>
+</tr><tr><td><a href="#strip">strip</a></td>
+<td><span style="color: gray"><em>none</em></span></td>
+<td></td>
+<td>" hello ".trim()</td>
+</tr><tr><td><a href="#pad">pad on right, pad on left</a></td>
+<td><span style="white-space: pre-wrap;">`</span>printf "%-10s" "hello"<span style="white-space: pre-wrap;">`</span><br /><span style="white-space: pre-wrap;">`</span>printf "%10s" "hello"<span style="white-space: pre-wrap;">`</span></td>
+<td></td>
+<td>$s = "hello"<br />
+$s + " " * (10 - $s.length)<br />
+" " * (10 - $s.length) + $s</td>
+</tr><tr><td><a href="#string-to-number">string to number</a></td>
+<td>A="12"<br />
+$(( 7 + $A ))<br /><br />
+B=".037"<br /><span style="white-space: pre-wrap;">`</span>echo 73.9 + $B | bc<span style="white-space: pre-wrap;">`</span></td>
+<td>set a to "12"<br />
+7 + a as integer<br /><br />
+set b = ".037"<br />
+73.9 + b as real</td>
+<td>7 + "12"<br /><br />
+73.9 + ".037"</td>
+</tr><tr><td><a href="#number-to-string">number to string</a><br /><span style="white-space: pre-wrap;"> </span></td>
+<td><span style="color: gray"><em>all values are strings</em></span></td>
+<td>7 as text &amp; " items"</td>
+<td>[convert]::tostring(7) + " items"<br /><br /><span style="color: gray"># or use variable interpolation</span></td>
+</tr><tr><th colspan="4"><a name="regexes" id="regexes"></a><a href="#regex-note">regular expressions</a></th>
+</tr><tr><th></th>
+<th><a href="#posix">posix shell</a></th>
+<th><a href="#applescript">applescript</a></th>
+<th><a href="#powershell">powershell</a></th>
+</tr><tr><td><a name="regex-match" id="regex-match"></a><a href="#regex-match-note">regex match</a></td>
+<td>s=hello<br />
+rx='[a-z][a-z]*'<br />
+if expr $s : $rx &gt; /dev/null<br />
+then<br /><span style="white-space: pre-wrap;">  </span><span style="color: gray"><em>…</em></span><br />
+fi</td>
+<td></td>
+<td>if ("hello" -match "^[a-z][a-z]*$") {<br /><span style="white-space: pre-wrap;">  </span><span style="color: gray"><em>…</em></span><br />
+}</td>
+</tr><tr><td><a name="single-subst" id="single-subst"></a><a href="#single-subst-note">single substitution</a></td>
+<td>s='do re mi mi mi'<br />
+s=$(echo $s | sed s/mi/ma/)</td>
+<td></td>
+<td></td>
+</tr><tr><td><a name="global-subst" id="global-subst"></a><a href="#global-subst-note">global substitution</a></td>
+<td>s='do re mi mi mi'<br />
+s=$(echo $s | sed s/mi/ma/g)</td>
+<td></td>
+<td>$s = "do re mi mi mi"<br />
+$s = $s -replace "mi", "ma"</td>
+</tr><tr><th colspan="4"><a name="dates-time" id="dates-time"></a><a href="#dates-time-note">dates and time</a></th>
+</tr><tr><th></th>
+<th><a href="#posix">posix shell</a></th>
+<th><a href="#applescript">applescript</a></th>
+<th><a href="#powershell">powershell</a></th>
+</tr><tr><td>sleep</td>
+<td>sleep 10</td>
+<td>delay 10</td>
+<td></td>
+</tr><tr><th colspan="4"><a name="arrays" id="arrays"></a><a href="#array-note">arrays</a></th>
+</tr><tr><th></th>
+<th><a href="#posix">posix shell</a></th>
+<th><a href="#applescript">applescript</a></th>
+<th><a href="#powershell">powershell</a></th>
+</tr><tr><td><a href="#array-literal">array literal</a></td>
+<td>nums=(1 2 3 4)</td>
+<td>set nums to {1,2,3,4}</td>
+<td>$nums = 1,2,3,4<br />
+$nums = @(1,2,3,4)</td>
+</tr><tr><td><a href="#array-size">array size</a></td>
+<td>${#nums[@]}</td>
+<td>count nums<br />
+length of nums</td>
+<td>$nums.Length</td>
+</tr><tr><td><a href="#array-lookup">array lookup</a></td>
+<td>${nums[0]}</td>
+<td>item 1 of nums</td>
+<td>$nums[0]</td>
+</tr><tr><td><a href="#array-modification">array modification</a></td>
+<td>nums[1]=5</td>
+<td>set item 1 of nums to 5</td>
+<td>$nums[0] = 5</td>
+</tr><tr><td><a href="#array-slice">array slice</a></td>
+<td>${nums[@]:1:2}</td>
+<td>items 2 thru 3 of nums</td>
+<td>$nums[1..2]</td>
+</tr><tr><td><a href="#array-concatenation">concatenation</a></td>
+<td>a=(1 2 3)<br />
+b=(4 5 6)<br />
+c=(${a[@]} ${b[@]})</td>
+<td>{1,2,3} &amp; {4,5,6}</td>
+<td>@(1,2,3) + @(4,5,6)</td>
+</tr><tr><td><a href="#array-back">manipulate back of array</a></td>
+<td></td>
+<td>set a to {6,7,8}<br />
+set end of a to 9<br /><span style="color: gray"><em>cannot remove elements from a list</em></span></td>
+<td></td>
+</tr><tr><td><a href="#array-front">manipulate front of array</a></td>
+<td></td>
+<td>set a to {6,7,8}<br />
+set beginning of a to 5<br /><span style="color: gray"><em>cannot remove elements from a list</em></span></td>
+<td></td>
+</tr><tr><td><a href="#array-iteration">array iteration</a></td>
+<td>for i in ${nums[@]}<br />
+do echo $i<br />
+done</td>
+<td>repeat with i in nums<br /><span style="white-space: pre-wrap;">  </span>display dialog(i as text)<br />
+end repeat</td>
+<td>foreach ($i in $nums) {<br /><span style="white-space: pre-wrap;">  </span>write-host $i<br />
+}</td>
+</tr><tr><td><a href="#array-sort">sort</a></td>
+<td></td>
+<td><span style="color: gray"><em>none</em></span></td>
+<td>$a = 3,2,4,1<br />
+$b = $a | Sort-Object</td>
+</tr><tr><td><a href="#array-reverse">reverse</a></td>
+<td></td>
+<td>set a to {1,2,3}<br />
+set b to reverse of a</td>
+<td>$a = 1,2,3<br />
+[array]::reverse($a)</td>
+</tr><tr><th colspan="4"><a name="functions" id="functions"></a><a href="#functions-note">functions</a></th>
+</tr><tr><th></th>
+<th><a href="#posix">posix shell</a></th>
+<th><a href="#applescript">applescript</a></th>
+<th><a href="#powershell">powershell</a></th>
+</tr><tr><td><a href="#function-definition">function definition</a></td>
+<td>add() { echo $(( $1 + $2 )); }<br /><span style="color: gray"><em>or</em></span><br />
+function add { echo $(( $1 + $2 )); }</td>
+<td>on add(a, b)<br /><span style="white-space: pre-wrap;">  </span>return a + b<br />
+end add<br /><span style="color: gray"><em>or</em></span><br />
+to add(a, b)<br /><span style="white-space: pre-wrap;">  </span>return a + b<br />
+end add</td>
+<td>function add {<br /><span style="white-space: pre-wrap;">  </span>param ($a, $b)<br /><span style="white-space: pre-wrap;">  </span>$a + $b<br />
+}</td>
+</tr><tr><td><a href="#function-invocation">function invocation</a></td>
+<td>add 1 2</td>
+<td>add(1,2)</td>
+<td>add 1 2</td>
+</tr><tr><td><a href="#missing-argument">missing argument value</a></td>
+<td>''</td>
+<td><span style="color: gray"><em>error</em></span></td>
+<td>$null</td>
+</tr><tr><td><a href="#extra-arguments">extra arguments</a></td>
+<td><span style="color: gray"><em>ignored</em></span></td>
+<td><span style="color: gray"><em>ignored</em></span></td>
+<td><span style="color: gray"><em>ignored</em></span></td>
+</tr><tr><td><a href="#default-argument">default argument value</a></td>
+<td><span style="color: gray"><em>none</em></span></td>
+<td><span style="color: gray"><em>none</em></span></td>
+<td>function add {<br /><span style="white-space: pre-wrap;">  </span>param ($a=0, $b=0)<br /><span style="white-space: pre-wrap;">  </span>$a + $b<br />
+}</td>
+</tr><tr><td><a href="#named-parameters">named parameters</a></td>
+<td><span style="color: gray"><em>none</em></span></td>
+<td>to displayNums from x to y<br /><span style="white-space: pre-wrap;">  </span>set i to x<br /><span style="white-space: pre-wrap;">  </span>repeat while i &lt;= y<br /><span style="white-space: pre-wrap;">  </span><span style="white-space: pre-wrap;">  </span>display dialog (i as text)<br /><span style="white-space: pre-wrap;">  </span><span style="white-space: pre-wrap;">  </span>set i to i + 1<br /><span style="white-space: pre-wrap;">  </span>end repeat<br />
+end displayNums<br />
+displayNums to 5 from 1</td>
+<td></td>
+</tr><tr><td><a href="#variable-arguments">variable number of arguments</a></td>
+<td><span style="color: gray"><em>args in</em></span> $1, $2, … <span style="color: gray"><em>with number of args in</em></span> $#</td>
+<td><span style="color: gray"><em>none</em></span></td>
+<td></td>
+</tr><tr><td><a href="#return-value">return value</a></td>
+<td>return <span style="color: gray"><em>arg available in</em></span> $? <span style="color: gray"><em>variable if a positive integer smaller than 256</em></span></td>
+<td><span style="color: gray"><em>argument of</em> return <em>or value of last statement executed</em></span></td>
+<td></td>
+</tr><tr><td><a href="#lambda-declaration">lambda declaration</a></td>
+<td><span style="color: gray"><em>none</em></span></td>
+<td><span style="color: gray"><em>none</em></span></td>
+<td>$x = { write-host "foo" }</td>
+</tr><tr><td><a href="#lambda-invocation">lambda invocation</a></td>
+<td><span style="color: gray"><em>none</em></span></td>
+<td><span style="color: gray"><em>none</em></span></td>
+<td>&amp; $x<br /><span style="color: gray"><em>or</em></span><br />
+$x.invoke()</td>
+</tr><tr><td><a href="#default-scope">default scope</a></td>
+<td><span style="color: gray"><em>global</em></span></td>
+<td><span style="color: gray"><em>local</em></span></td>
+<td></td>
+</tr><tr><td><a href="#nested-functions">nested function definition</a></td>
+<td><span style="color: gray"><em>visible outside containing function</em></span></td>
+<td><span style="color: gray"><em>disallowed</em></span></td>
+<td></td>
+</tr><tr><th colspan="4"><a name="execution-control" id="execution-control"></a><a href="#execution-control-note">execution control</a></th>
+</tr><tr><th></th>
+<th><a href="#posix">posix shell</a></th>
+<th><a href="#applescript">applescript</a></th>
+<th><a href="#powershell">powershell</a></th>
+</tr><tr><td><a href="#if">if</a></td>
+<td>if [ $n -eq 0 ]<br />
+then echo "no hits"<br />
+elif [ $n -eq 1 ]<br />
+then echo "1 hit"<br />
+else echo $n " hits"<br />
+fi</td>
+<td>if n = 0 then<br /><span style="white-space: pre-wrap;">  </span>display dialog ("0 hits")<br />
+else if n = 1 then<br /><span style="white-space: pre-wrap;">  </span>display dialog ("1 hit")<br />
+else<br /><span style="white-space: pre-wrap;">  </span>set s to n as text &amp; " hits"<br /><span style="white-space: pre-wrap;">  </span>display dialog (s)<br />
+end if</td>
+<td>if ($n -eq 0) {<br /><span style="white-space: pre-wrap;">  </span>write-host "no hits"<br />
+} elseif ($n -eq 1) {<br /><span style="white-space: pre-wrap;">  </span>write-host "one hit"<br />
+} else {<br /><span style="white-space: pre-wrap;">  </span>write-host "$n hits"<br />
+}</td>
+</tr><tr><td><a href="#while">while</a></td>
+<td>i=0<br />
+while [ $i -lt 10 ]<br />
+do i=$(($i + 1))<br />
+echo $i<br />
+done</td>
+<td>set i to 0<br />
+repeat while i &lt; 10<br /><span style="white-space: pre-wrap;">  </span>set i to i + 1<br /><span style="white-space: pre-wrap;">  </span>display dialog (i as text)<br />
+end repeat</td>
+<td>$i = 0<br />
+while ($i -lt 10) {<br /><span style="white-space: pre-wrap;">  </span>write-host (++$i)<br />
+}</td>
+</tr><tr><td><a href="#break-continue">break/continue</a></td>
+<td>break continue</td>
+<td>exit <span style="color: gray"><em>none</em></span></td>
+<td>break continue</td>
+</tr><tr><td><a href="#for">for</a></td>
+<td>for i in 1 2 3<br />
+do echo $i<br />
+done</td>
+<td>repeat with i from 1 to 3<br /><span style="white-space: pre-wrap;">  </span>display dialog (i as text)<br />
+end repeat</td>
+<td>for ($i=1; $i -le 3; $i++) {<br /><span style="white-space: pre-wrap;">  </span>write-host $i<br />
+}</td>
+</tr><tr><th colspan="4"><a name="exceptions" id="exceptions"></a><a href="#exceptions-note">exceptions</a></th>
+</tr><tr><th></th>
+<th><a href="#posix">posix shell</a></th>
+<th><a href="#applescript">applescript</a></th>
+<th><a href="#powershell">powershell</a></th>
+</tr><tr><td><a href="#raise-exception">raise exception</a></td>
+<td><span style="color: gray"><em>return nonzero status</em></span></td>
+<td>error "bam!"</td>
+<td>throw "bam!"</td>
+</tr><tr><td><a href="#catch-exception">catch exception</a></td>
+<td>trap 'echo "risky failed"' ERR<br />
+risky</td>
+<td>try<br /><span style="white-space: pre-wrap;">  </span>error "bam!"<br />
+on error msg<br /><span style="white-space: pre-wrap;">  </span>display dialog ("error: " &amp; msg)<br />
+end try</td>
+<td>try {<br /><span style="white-space: pre-wrap;">  </span>throw "bam!"<br />
+}<br />
+catch {<br /><span style="white-space: pre-wrap;">  </span>write-host "caught!"<br />
+}</td>
+</tr><tr><td><a href="#uncaught-exception">uncaught exception behavior</a></td>
+<td><span style="color: gray"><em>stderr and continue</em></span></td>
+<td><span style="color: gray"><em>display error and exits</em></span></td>
+<td></td>
+</tr><tr><th colspan="4"><a name="files" id="files"></a><a href="#file-note">files</a></th>
+</tr><tr><th></th>
+<th><a href="#posix">posix shell</a></th>
+<th><a href="#applescript">applescript</a></th>
+<th><a href="#powershell">powershell</a></th>
+</tr><tr><td><a href="#print-to-stdout">print to standard out</a></td>
+<td>echo "hi world"</td>
+<td><span style="color: gray"><em>popup window:</em></span><br />
+display dialog("hi world")</td>
+<td>write-host "hi world"</td>
+</tr><tr><td><a href="#standard-filehandles">standard file handles</a></td>
+<td>/dev/stdin<br />
+/dev/stdout<br />
+/dev/stderr</td>
+<td><span style="color: gray"><em>none</em></span></td>
+<td></td>
+</tr><tr><td><a href="#read-line">read line</a></td>
+<td><span style="white-space: pre-wrap;">`</span>head -1 /etc/passwd<span style="white-space: pre-wrap;">`</span></td>
+<td>set f to POSIX file "/etc/passwd"<br />
+set a to read f as text using delimiter linefeed<br />
+item 1 of a</td>
+<td></td>
+</tr><tr><td><a href="#read-file">read file</a></td>
+<td><span style="white-space: pre-wrap;">`</span>cat /tmp/a<span style="white-space: pre-wrap;">`</span></td>
+<td>set f to POSIX file "/tmp/a"<br />
+set s to f as text</td>
+<td></td>
+</tr><tr><td><a href="#write-file">write to file</a></td>
+<td>echo "hello" &gt; /tmp/a</td>
+<td>set f to POSIX file "/tmp/a"<br />
+open for access f with write permission<br />
+write "hello" to f<br />
+close access f</td>
+<td></td>
+</tr><tr><td><a href="#append-file">append to file</a></td>
+<td>echo "hello" <span style="white-space: pre-wrap;">&gt;&gt;</span> /tmp/a</td>
+<td>set f to POSIX file "/tmp/a"<br />
+open for access f with write permission<br />
+write "hello" to f starting at eof<br />
+close access f</td>
+<td></td>
+</tr><tr><th colspan="4"><a name="directories" id="directories"></a><a href="#directories-note">directories</a></th>
+</tr><tr><th></th>
+<th><a href="#posix">posix shell</a></th>
+<th><a href="#applescript">applescript</a></th>
+<th><a href="#powershell">powershell</a></th>
+</tr><tr><th colspan="4"><a name="processes-environment" id="processes-environment"></a><a href="#processes-environment-note">processes and environment</a></th>
+</tr><tr><th></th>
+<th><a href="#posix">posix shell</a></th>
+<th><a href="#applescript">applescript</a></th>
+<th><a href="#powershell">powershell</a></th>
+</tr><tr><td><a href="#external-command">external command</a></td>
+<td>ls</td>
+<td>do shell script "ls"</td>
+<td>dir</td>
+</tr><tr><td><a href="#backticks">backticks</a></td>
+<td>s=<span style="white-space: pre-wrap;">`</span>ls<span style="white-space: pre-wrap;">`</span></td>
+<td>set s to do shell script "ls"</td>
+<td>$s=dir</td>
+</tr><tr><td><a href="#command-line-args">command line args</a></td>
+<td>$#<br />
+$1<br />
+$2<br /><span style="color: gray"><em>…</em></span></td>
+<td><span style="color: gray"><em>must declare run handler:</em></span><br />
+on run argv<br /><span style="white-space: pre-wrap;">  </span>length of argv<br /><span style="white-space: pre-wrap;">  </span>item 1 of argv<br /><span style="white-space: pre-wrap;">  </span>item 2 of argv<br /><span style="white-space: pre-wrap;">  </span><span style="color: gray"><em>…</em></span><br />
+end run</td>
+<td></td>
+</tr><tr><td><a href="#speech">speech</a></td>
+<td><span style="color: gray"><em>depends on OS</em></span></td>
+<td>say "I'm a Mac"</td>
+<td>$sp = new-object -comobject "SAPI.SpVoice"<br />
+$sp.speak("I'm a PC")</td>
+</tr><tr><td><a href="#environment-variable">environment variable</a></td>
+<td><span style="color: gray"><em>shell variables are environment variables</em></span><br />
+$HOME</td>
+<td>system attribute "HOME"</td>
+<td>$env:home</td>
+</tr><tr><td><a href="#command-path">command path</a></td>
+<td>which ping</td>
+<td></td>
+<td>get-command ping</td>
+</tr><tr><td><a href="#exit">exit</a></td>
+<td>exit 0</td>
+<td><span style="color: gray"><em>none</em></span></td>
+<td>exit</td>
+</tr><tr><td><a href="#set-signal-handler">set signal handler</a></td>
+<td>function int_handler {<br /><span style="white-space: pre-wrap;">  </span>echo "exiting…";<br /><span style="white-space: pre-wrap;">  </span>exit<br />
+}<br /><br />
+trap int_handler INT</td>
+<td><span style="color: gray"><em>none</em></span></td>
+<td></td>
+</tr><tr><td><a href="#start-background-job">start job in background</a></td>
+<td>sleep 1000 &amp;</td>
+<td><span style="color: gray"><em>none</em></span></td>
+<td></td>
+</tr><tr><td><a href="#suspend-job">suspend current job</a></td>
+<td><span style="color: gray"><em>^Z</em></span></td>
+<td><span style="color: gray"><em>none</em></span></td>
+<td></td>
+</tr><tr><td><a href="#list-jobs">list jobs</a></td>
+<td>jobs</td>
+<td><span style="color: gray"><em>none</em></span></td>
+<td></td>
+</tr><tr><td><a href="#background-suspended-job">background suspended job</a></td>
+<td>bg %1</td>
+<td><span style="color: gray"><em>none</em></span></td>
+<td></td>
+</tr><tr><td><a href="#foreground-background-job">bring background job into foreground</a></td>
+<td>fg %1</td>
+<td><span style="color: gray"><em>none</em></span></td>
+<td></td>
+</tr><tr><td><a href="#disown-job">disown job</a></td>
+<td>disown %1</td>
+<td><span style="color: gray"><em>none</em></span></td>
+<td></td>
+</tr><tr><th colspan="4"><a name="libraries-namespaces" id="libraries-namespaces"></a><a href="#libraries-namespaces-note">libraries and namespaces</a></th>
+</tr><tr><th></th>
+<th><a href="#posix">posix shell</a></th>
+<th><a href="#applescript">applescript</a></th>
+<th><a href="#powershell">powershell</a></th>
+</tr><tr><td><a href="#library">library</a></td>
+<td>$ cat foo.sh<br />
+function add() {<br /><span style="white-space: pre-wrap;">  </span>echo $(($1 + $2));<br />
+}</td>
+<td>$ cat foo.applescript<br />
+on showText(theText)<br /><span style="white-space: pre-wrap;">  </span>display dialog (theText)<br />
+end showText<br />
+$ osascript -o foo.scpt foo.applescript</td>
+<td></td>
+</tr><tr><td><a href="#import-library">import library</a></td>
+<td>source foo.sh<br />
+add 3 7</td>
+<td>set f to "/path/to/foo.scpt"<br />
+set foo to (load script POSIX file f)<br />
+tell foo to showText("bar")</td>
+<td></td>
+</tr><tr><td><a href="#library-path">library path</a></td>
+<td><span style="color: gray"><em>none</em></span></td>
+<td></td>
+<td></td>
+</tr><tr><td><a href="#library-path-env">library path environment variable</a></td>
+<td><span style="color: gray"><em>none</em></span></td>
+<td></td>
+<td></td>
+</tr><tr><td><a href="#namespace-declaration">namespace declaration</a></td>
+<td><span style="color: gray"><em>none</em></span></td>
+<td></td>
+<td></td>
+</tr><tr><td><a href="#namespace-separator">namespace separator</a></td>
+<td><span style="color: gray"><em>none</em></span></td>
+<td></td>
+<td></td>
+</tr><tr><th colspan="4"><a name="objects" id="objects"></a><a href="#objects-note">objects</a></th>
+</tr><tr><th></th>
+<th><a href="#posix">posix shell</a></th>
+<th><a href="#applescript">applescript</a></th>
+<th><a href="#powershell">powershell</a></th>
+</tr><tr><td><a href="#define-class">define class</a></td>
+<td></td>
+<td>on makeInt(val)<br /><span style="white-space: pre-wrap;">  </span>script theInt<br /><span style="white-space: pre-wrap;">  </span><span style="white-space: pre-wrap;">  </span>property value : val<br /><span style="white-space: pre-wrap;">  </span><span style="white-space: pre-wrap;">  </span>on addOne()<br /><span style="white-space: pre-wrap;">  </span><span style="white-space: pre-wrap;">  </span><span style="white-space: pre-wrap;">  </span>set value to value + 1<br /><span style="white-space: pre-wrap;">  </span><span style="white-space: pre-wrap;">  </span>end addOne<br /><span style="white-space: pre-wrap;">  </span>end script<br /><span style="white-space: pre-wrap;">  </span>return theInt<br />
+end makeInt</td>
+<td></td>
+</tr><tr><td><a href="#create-object">create object</a></td>
+<td></td>
+<td>set anInt to makeInt(7)</td>
+<td></td>
+</tr><tr><td><a href="#getter-setter">getter and setter</a></td>
+<td></td>
+<td>get value of anInt<br />
+set value of anInt to 9</td>
+<td></td>
+</tr><tr><td><a href="#invoke-method">invoke method</a></td>
+<td></td>
+<td>tell anInt to addOne()</td>
+<td></td>
+</tr><tr><th colspan="4"><a name="reflection" id="reflection"></a><a href="#reflection-note">reflection</a></th>
+</tr><tr><th></th>
+<th><a href="#posix">posix shell</a></th>
+<th><a href="#applescript">applescript</a></th>
+<th><a href="#powershell">powershell</a></th>
+</tr><tr><td><a href="#class">class</a></td>
+<td></td>
+<td>set s to "hello"<br />
+display dialog class of s</td>
+<td></td>
+</tr><tr><td><a href="#list-variables">list defined variables</a></td>
+<td>printenv</td>
+<td></td>
+<td>get-variable</td>
+</tr><tr><th></th>
+<th><span style="color: #efefef"><span style="white-space: pre-wrap;">__________________________________________________________</span></span></th>
+<th><span style="color: #efefef"><span style="white-space: pre-wrap;">__________________________________________________________</span></span></th>
+<th><span style="color: #efefef"><span style="white-space: pre-wrap;">__________________________________________________________</span></span></th>
+</tr></table><p><a name="general-note" id="general-note"></a></p>
+<h1 id="toc0"><span><a href="#general">General</a></span></h1>
+<p><a name="version-used-note" id="version-used-note"></a></p>
+<h2 id="toc1"><span><a href="#version-used">version used</a></span></h2>
+<p>The version of the language used for verifying the examples in the reference sheet.</p>
+<p><a name="version-note" id="version-note"></a></p>
+<h2 id="toc2"><span><a href="#version">show version</a></span></h2>
+<p>How to get the version.</p>
+<p><a name="grammar-invocation-note" id="grammar-invocation-note"></a></p>
+<h1 id="toc3"><span><a href="#grammar-invocation">Grammar and Invocation</a></span></h1>
+<p><a name="interpreter-note" id="interpreter-note"></a></p>
+<h2 id="toc4"><span><a href="#interpreter">interpreter</a></span></h2>
+<p>The customary name of the interpreter and how to invoke it.</p>
+<p><strong>posix shell:</strong></p>
+<p>On Unix, scripts are executing by passing the file containing the script to the interpreter as an argument:</p>
+<div class="code">
+<pre>
+<code>$ dash ~/configure.sh</code>
+</pre></div>
+<p>If the executable bit is set, the file can be run directly:</p>
+<div class="code">
+<pre>
+<code>$ ~/configure.sh</code>
+</pre></div>
+<p>To determine the name of the interpreter that will process the script, Unix will look for the presence of a shebang (#!) at the start of the file. If the pathname to a command follows the shebang, it will be used to interpret the script. If no shebang is present, the script will be interpreted with <tt>/bin/sh</tt> which is <tt>bash</tt> on Mac OS X and Cygwin and <tt>dash</tt> on Ubuntu.</p>
+<p>Command line arguments which set the positional parameters $1, $2, and so on can be set upon invocation as follows:</p>
+<div class="code">
+<pre>
+<code>$ dash ~/configure.sh arg1 arg2
+$ ~/configure.sh arg1 arg2</code>
+</pre></div>
+<p>Arguments can also be put on the shebang line, but this is only useful for passing options to the shell. If the file <tt>foo.sh</tt> contains</p>
+<div class="code">
+<pre>
+<code>#!/bin/sh -x</code>
+</pre></div>
+<p>then invoking it as</p>
+<div class="code">
+<pre>
+<code>./foo.sh</code>
+</pre></div>
+<p>is equivalent to</p>
+<div class="code">
+<pre>
+<code>/bin/sh -x foo.sh</code>
+</pre></div>
+<p>Hardcoding a full path in a shebang is a common cause of portability problems because different systems may install the interpreter in different locations. The <tt>env</tt> command avoids the problem by searching the PATH directories for the command:</p>
+<div class="code">
+<pre>
+<code>#!/usr/bin/env lua</code>
+</pre></div>
+<p><strong>powershell:</strong></p>
+<p>On Windows, a file is a PowerShell script if it has a <tt>.ps1</tt> suffix. There is no need to mark the script as executable. However, PowerShell is not configured to run scripts by default. To change the configuration, start a PowerShell as an Administrator and run the following command:</p>
+<div class="code">
+<pre>
+<code>set-executionpolicy remotesigned</code>
+</pre></div>
+<p>It is possible to invoke a PowerShell script by specifying the PowerShell interpreter as the command and the script as an argument, but the suffix of the file must still be <tt>ps1</tt>:</p>
+<div class="code">
+<pre>
+<code>powershell -file .\test.ps1</code>
+</pre></div>
+<p><a name="repl-note" id="repl-note"></a></p>
+<h2 id="toc5"><span><a href="#repl">repl</a></span></h2>
+<p>How to invoke the REPL.</p>
+<p><strong>applescript:</strong></p>
+<p>The closest to a AppleScript REPL is to launch the AppleScript Editor. Snippets of AppleScript code can be entered into the upper pane. When the <em>Run</em> button is clicked, the return value of the last statement executed will be displayed in the lower pane.</p>
+<p><a name="exec-and-exit-note" id="exec-and-exit-note"></a></p>
+<h2 id="toc6"><span><a href="#exec-and-exit">execute command and exit</a></span></h2>
+<p>How to pass a single command to be executed as a command line argument.</p>
+<p><a name="stmt-separator-note" id="stmt-separator-note"></a></p>
+<h2 id="toc7"><span><a href="#stmt-separator">statement separator</a></span></h2>
+<p>How the parser determines the end of a statement.</p>
+<p><strong>posix shell:</strong></p>
+<p>A posix shell <em>simple command</em> consists of optional variable assignments, followed by a command and zero or more arguments and redirections. The command can be an external command, user defined function, or built-in.</p>
+<p>A posix shell <em>pipeline</em> is a sequence of one or more <em>simple commands</em> joined by pipes |. The shell executes the commands in parallel and redirects the stdout of each command to the stdin of the following command. The exit status is the status of the last command.</p>
+<p>The <em>control operators</em> ; &amp; &amp;&amp; || are <em>pipeline</em> separators. The semicolon ; enforces sequential execution. The ampersand &amp; executes in parallel. The &amp;&amp; executes to the first <em>pipeline</em> that returns a nonzero status. The || executes to the first <em>pipeline</em> that returns a zero status.</p>
+<p>A <em>list</em> is one or more <em>pipelines</em> joined by <em>control operators</em>. A <em>list</em> can have a semicolon ; or ampersand &amp; at the end. A <em>list</em> is terminated by a newline.</p>
+<p>A newline does not terminate a <em>list</em> when:</p>
+<ul><li>inside single quotes '', double quotes "", backticks <span style="white-space: pre-wrap;">``</span>, or parens ()</li>
+<li>inside a block started by the keywords: for, select, case, if, while, until</li>
+</ul><p>A newline that would normally terminate a statement can be escaped with a backslash.</p>
+<p>Multiple lists can be grouped inside parens ( ) or curly brackets { }. When grouped inside parens, the lists are executed inside a subshell. The curly brackets, but not the parens, must be separated from their contents by white space. Also, within curly brackets, but not within parens, the last list must be terminated by a semicolon or newline.</p>
+<p><a name="word-separator-note" id="word-separator-note"></a></p>
+<h2 id="toc8"><span><a href="#word-separator">word separators</a></span></h2>
+<p><a name="block-delimiters-note" id="block-delimiters-note"></a></p>
+<h2 id="toc9"><span><a href="#block-delimiters">block delimiters</a></span></h2>
+<p>How blocks are delimited.</p>
+<p><strong>bash:</strong></p>
+<p>Blocks can be delimited with {}, (), or the <em>do</em>,<em>done</em> keywords.</p>
+<p>If a block is started with an open curly bracket {, then the block must be terminated with a line containing a close curly bracket by itself }.</p>
+<p>If a block is delimited by (), then the commands in the block are executed in a subshell.</p>
+<p>A block is delimited by <em>do</em> and <em>done</em> when using the execution control keywords <em>for</em>, <em>select</em>, <em>while</em>, and <em>until</em>.</p>
+<p>The <em>then</em> and <em>else</em> keywords of an <em>if</em> statement start blocks which are terminated by a following <em>elif</em>, <em>else</em>, or <em>fi</em>.</p>
+<p>The <em>function</em> and <em>if</em> keywords open blocks which are terminated by <em>end</em> keywords. The <em>repeat</em> keyword opens a block which is terminated by <em>until</em>.</p>
+<p><a name="comment-note" id="comment-note"></a></p>
+<h2 id="toc10"><span><a href="#comment">to end-of-line comment</a></span></h2>
+<p>How to make the remainder of the line a comment.</p>
+<p><strong>zsh:</strong></p>
+<p>The # syntax for comments is only available in non-interactive shells unless the <tt>INTERACTIVE_COMMENTS</tt> option is set. If an interactive shell encounters a # where a command is expected a <tt>command not found</tt> error will result.</p>
+<p><a name="multiline-comment-note" id="multiline-comment-note"></a></p>
+<h2 id="toc11"><span><a href="#multiline-comment">multiline comment</a></span></h2>
+<p>How to comment out multiple lines.</p>
+<p><strong>bash:</strong></p>
+<p>The method described is the syntax for a here document, which is a multiline string literal.</p>
+<p><a name="var-expr-note" id="var-expr-note"></a></p>
+<h1 id="toc12"><span><a href="#var-expr">Variables and Expressions</a></span></h1>
+<p><a name="assignment-note" id="assignment-note"></a></p>
+<h2 id="toc13"><span><a href="#assignment">assignment</a></span></h2>
+<p>How to assign a value to a variable.</p>
+<p><strong>applescript:</strong></p>
+<p><tt>set</tt> and <tt>copy</tt> are not synonyms when operating on lists, records, or objects. The <tt>set</tt> command makes the left variable an alias of the right variable: the two variables then refer to the same array, record, or object. The <tt>copy</tt> command will put a copy of the array, record, or object contained in the left variable.</p>
+<p><a name="parallel-assignment-note" id="parallel-assignment-note"></a></p>
+<h2 id="toc14"><span><a href="#parallel-assignment">parallel assignment</a></span></h2>
+<p>How to assign values to variables in parallel.</p>
+<p><a name="swap-note" id="swap-note"></a></p>
+<h2 id="toc15"><span><a href="#swap">swap</a></span></h2>
+<p>How to exchange the values held by two variables.</p>
+<p><a name="compound-assignment-note" id="compound-assignment-note"></a></p>
+<h2 id="toc16"><span><a href="#compound-assignment">compound assignment operators: arithmetic, string, bit</a></span></h2>
+<p>The compound assignment operators for arithmetic, string, and bit operations</p>
+<p><strong>powershell</strong></p>
+<p>Note that <tt>/=</tt> performs float division, even when both operands are integers.</p>
+<p>When the left operand is a string, <tt>+=</tt> concatenates the right operand to the left operand.</p>
+<p>When the left operand is a string and the right operand an integer, <tt>*=</tt> concatenates the left operand with itself <em>right operand</em> times.</p>
+<p><a name="incr-decr-note" id="incr-decr-note"></a></p>
+<h2 id="toc17"><span><a href="#incr-decr">increment and decrement</a></span></h2>
+<p>The C-style increment and decrement operators which can be used in expressions.</p>
+<p><a name="var-decl-note" id="var-decl-note"></a></p>
+<h2 id="toc18"><span><a href="#var-decl">variable declaration</a></span></h2>
+<p>How to declare a variable.</p>
+<p><strong>bash:</strong></p>
+<p>The following three lines have identical behavior:</p>
+<div class="code">
+<pre>
+<code>A="hello, world"
+declare A="hello, world"
+typeset A="hello, world"</code>
+</pre></div>
+<p>It is possible to make a read only variable. Again there are three ways:</p>
+<div class="code">
+<pre>
+<code>readonly A="can't change"
+declare -r A="can't change"
+typeset -r A="can't change"</code>
+</pre></div>
+<p>Variables are not exported to subprocesses unless declared to be exported:</p>
+<div class="code">
+<pre>
+<code>export A="exported to subprocess"
+declare -x A="exported to subprocess"
+typeset -x A="exported to subprocess"</code>
+</pre></div>
+<p>Variables assigned on the same line as a command are not created, only exported to the subprocess that instantiates the command:</p>
+<div class="code">
+<pre>
+<code>EDITOR=emacs svn commit</code>
+</pre></div>
+<p>By default variables defined inside functions are global. They can be declared to be local:</p>
+<div class="code">
+<pre>
+<code>function foo () {
+  local b=17
+  # echoes 17:
+  echo $b
+}
+# echoes nothing:
+echo $b</code>
+</pre></div>
+<p><strong>applescript:</strong></p>
+<p>Variables can be declared as <tt>local</tt> or <tt>global</tt>. It is not possible to initialize a variable in a declaration. Undeclared variables are <tt>local</tt>: in the example below, <tt>c</tt> and <tt>e</tt> are not visible outside the function <tt>foo</tt>:</p>
+<div class="code">
+<pre>
+<code>on foo(a,b)
+  local c
+  global d
+  set c to a+b
+  set d to a+b
+  set e to a+b
+end foo</code>
+</pre></div>
+<p><a name="identifiers-case-sensitive-note" id="identifiers-case-sensitive-note"></a></p>
+<h2 id="toc19"><span><a href="#identifiers-case-sensitive">are identifiers case sensitive?</a></span></h2>
+<p><strong>applescript:</strong></p>
+<p>In AppleScript, identifiers are case insensitive. This holds for reserved keywords as well as user defined variable names. The AppleScript Editor converts all keywords and identifiers in the source code to lower case when it is compiled.</p>
+<p><strong>powershell:</strong></p>
+<p>PowerShell identifiers are case insensitive.</p>
+<p><a name="null-note" id="null-note"></a></p>
+<h2 id="toc20"><span><a href="#null">null</a></span></h2>
+<p>The null literal.</p>
+<p><a name="null-test-note" id="null-test-note"></a></p>
+<h2 id="toc21"><span><a href="#null-test">null test</a></span></h2>
+<p>How to test if a value is null.</p>
+<p><a name="undef-access-note" id="undef-access-note"></a></p>
+<h2 id="toc22"><span><a href="#undef-access">undefined variable access</a></span></h2>
+<p>The value of an undefined variable, or the system behavior if there is no such value.</p>
+<p><a name="undef-test-note" id="undef-test-note"></a></p>
+<h2 id="toc23"><span><a href="#undef-test">undefined test</a></span></h2>
+<p>How to determine if a variable is undefined.</p>
+<p><strong>posix shell:</strong></p>
+<p>The expression ${<span style="color: gray"><em>var</em></span>+<span style="color: gray"><em>val</em></span>} is <span style="color: gray"><em>val</em></span> if <span style="color: gray"><em>var</em></span> is defined, otherwise it is the empty string ''.</p>
+<p>The expression ${<span style="color: gray"><em>var</em></span>:+<span style="color: gray"><em>val</em></span>} is <span style="color: gray"><em>val</em></span> if <span style="color: gray"><em>var</em></span> is defined and not null, otherwise it is the empty string ''.</p>
+<p><a name="arithmetic-logic-note" id="arithmetic-logic-note"></a></p>
+<h1 id="toc24"><span><a href="#arithmetic-logic">Arithmetic and Logic</a></span></h1>
+<p><strong>posix shell:</strong></p>
+<p>The POSIX shell provides at least three different environments for logical expressions, each with their own operators and values for true and false.</p>
+<p>Logical expressions are usually encountered in the conditionals of <tt>if</tt>, <tt>elif</tt>, <tt>while</tt>, and <tt>until</tt>. A command is expected as the conditional expression. The command is executed, and a return value of zero is treated as true and nonzero as false.</p>
+<table class="wiki-content-table"><tr><th></th>
+<th>status codes</th>
+<th>[ ]</th>
+<th>$(( ))</th>
+</tr><tr><td>where used</td>
+<td>command</td>
+<td>command</td>
+<td>argument</td>
+</tr><tr><td>true</td>
+<td>true</td>
+<td><span style="color: gray"><em>no canonical true value</em></span></td>
+<td>1</td>
+</tr><tr><td>false</td>
+<td>false</td>
+<td>''</td>
+<td>0</td>
+</tr><tr><td>falsehoods</td>
+<td><span style="color: gray"><em>nonzero exit status</em></span></td>
+<td>''</td>
+<td>0</td>
+</tr><tr><td>logical operators</td>
+<td>&amp;&amp; <span style="white-space: pre-wrap;">||</span> !</td>
+<td>-a -o !</td>
+<td>&amp;&amp; <span style="white-space: pre-wrap;">||</span> !</td>
+</tr><tr><td>grouping</td>
+<td>{ }</td>
+<td>\( \)</td>
+<td>( )</td>
+</tr><tr><td>string relational operators</td>
+<td><span style="color: gray"><em>none</em></span></td>
+<td>= != \&lt; \&gt;</td>
+<td><span style="color: gray"><em>none</em></span></td>
+</tr><tr><td>arithmetic relational operators</td>
+<td><span style="color: gray"><em>none</em></span></td>
+<td>-eq -ne -lt -gt -le -ge</td>
+<td>== != &lt; &gt; &lt;= &gt;=</td>
+</tr><tr><td>arithmetic operators</td>
+<td><span style="color: gray"><em>none</em></span></td>
+<td><span style="color: gray"><em>none</em></span></td>
+<td>+ - * / % **</td>
+</tr><tr><td>bit operators</td>
+<td><span style="color: gray"><em>none</em></span></td>
+<td><span style="color: gray"><em>none</em></span></td>
+<td><span style="white-space: pre-wrap;"> &lt;&lt; </span> <span style="white-space: pre-wrap;"> &gt;&gt; </span> &amp; | ^ ~</td>
+</tr></table><p><strong>posix shell: status codes:</strong></p>
+<p>Logical expressions can be formed using status codes returned by commands. The commands can be external, built-in, or user defined functions. A status code of zero is used to indicate success, and for the purpose of logic zero is treated as true and all other status codes as false.</p>
+<p>The &amp;&amp; and <span style="white-space: pre-wrap;">||</span> operators are short circuit operators. An exclamation point ! can be used to negate the status code of a command. It is not necessary to separate &amp;&amp; and <span style="white-space: pre-wrap;">||</span> from their operands with whitespace, but it is necessary to mark off a ! used as negation with whitespace.</p>
+<p><strong>posix shell: test command:</strong></p>
+<p><strong>posix shell: arithmetic expansion:</strong></p>
+<p><a name="true-false-note" id="true-false-note"></a></p>
+<h2 id="toc25"><span><a href="#true-false">true and false</a></span></h2>
+<p>The literals for true and false.</p>
+<p><a name="falsehoods-note" id="falsehoods-note"></a></p>
+<h2 id="toc26"><span><a href="#falsehoods">falsehoods</a></span></h2>
+<p>Values which are false in conditional expressions.</p>
+<p><a name="logical-ops-note" id="logical-ops-note"></a></p>
+<h2 id="toc27"><span><a href="#logical-ops">logical operators</a></span></h2>
+<p>Logical and, or, and not.</p>
+<p><strong>bash:</strong></p>
+<p>&amp;&amp; || and ! are available inside [[ ]], (( )), and $(( )) expressions. Inside [ ] expressions use -a, -o, and !.</p>
+<p><a name="conditional-expr-note" id="conditional-expr-note"></a></p>
+<h2 id="toc28"><span><a href="#conditional-expr">conditional expression</a></span></h2>
+<p>The syntax for a conditional expression.</p>
+<p><a name="expression-statement" id="expression-statement"></a></p>
+<h2 id="toc29"><span>are expressions statements</span></h2>
+<p>Whether an expression can be used where a statement is expected.</p>
+<p><a name="relational-expr" id="relational-expr"></a></p>
+<h2 id="toc30"><span>relational expressions</span></h2>
+<p><strong>bash:</strong></p>
+<p>Bash has three types of relational expressions: [[ ]], [ ], and (( )). For a description of [ ], read the <a href="http://www.google.com/search?q=man+test">man page for test</a>.</p>
+<p>(( )) evaluates its contents in the same manner as the arithmetic expansion $(( )). If the result is zero, it returns 1 (false). Otherwise it returns 0 (true).</p>
+<p>[[ $a == <span style="color: gray"><em>pattern</em></span> ]] and [[ $a != <span style="color: gray"><em>pattern</em></span> ]] interpret * and ? on the right side as patterns. Thus "hello" == "hell*" is true. For numeric comparison, use [ $a -eq <span style="color: gray"><em>num</em></span> ] or [ $a -ne <span style="color: gray"><em>num</em></span> ].</p>
+<p><a href="#bash-expressions">Bash expressions</a> discusses the different types of bash expressions in more detail.</p>
+<p><a name="relational-operators" id="relational-operators"></a></p>
+<h2 id="toc31"><span>relational operators</span></h2>
+<p><strong>bash:</strong></p>
+<p>If == and =! have an unquoted string on the right, then * and ? within the string will be treated as wild cards for matching.</p>
+<p><strong>applescript:</strong></p>
+<p>Verbal synonyms for the relational operators are provided. For <tt>=</tt> the synonyms are <tt>equals</tt>, <tt>is equal</tt>, <tt>equal to</tt>, and <tt>is equal to</tt>.</p>
+<p><a name="string-to-number" id="string-to-number"></a></p>
+<h2 id="toc32"><span>convert from string</span></h2>
+<p><strong>bash:</strong></p>
+<p>All values are strings. The $(( )) operator will interpolate any variables and then evaluate the resulting string as an arithmetic expression composed of integers. The variables are not limited to containing integers. The following script outputs 10:</p>
+<div class="code">
+<pre>
+<code>A=7+3
+echo $(($A))</code>
+</pre></div>
+<p>To perform floating point arithmetic, bash must shell out to a floating point utility such as <em>bc</em>.</p>
+<p><a name="number-to-string" id="number-to-string"></a></p>
+<h2 id="toc33"><span>convert to string</span></h2>
+<p><a name="arithmetic-expr" id="arithmetic-expr"></a></p>
+<h2 id="toc34"><span>arithmetic expressions</span></h2>
+<p>How to evaluate an arithmetic expression.</p>
+<p><strong>bash:</strong></p>
+<p>Bash arithmetic is available within $(( )) and (( )). The latter form evaluates the arithmetic expression and returns status 1 if the result zero, and 0 otherwise.</p>
+<p>Bash only has integer arithmetic. For floating point arithmetic, use the external commands <em>bc</em> or <em>dc</em>.</p>
+<p><a name="arithmetic-operators" id="arithmetic-operators"></a></p>
+<h2 id="toc35"><span>arithmetic operators</span></h2>
+<p>The operators for addition, subtraction, multiplication, float division, integer division, modulus, and exponentiation. Some languages provide a function <em>pow</em> instead of an operator for exponentiation.</p>
+<p><strong>bash:</strong></p>
+<p>arithmetic operators are available in $(( )) and (( )).</p>
+<p><a name="integer-division" id="integer-division"></a></p>
+<h2 id="toc36"><span>integer division</span></h2>
+<p>How to perform integer division.</p>
+<p><a name="float-division" id="float-division"></a></p>
+<h2 id="toc37"><span>float division</span></h2>
+<p>How to perform floating point division, even if the operands might be integers.</p>
+<p><strong>bash:</strong></p>
+<p>The bash shell lacks built-in floating point arithmetic. <em>bc</em> is an arbitrary precision calculator, and <em>scale</em> is the number of digits to the right of the decimal point. If scale is not specified, it defaults to zero, which results in integer division.</p>
+<p>It is also possible to use <em>dc</em>, which is a reverse polish notation arbitrary precision calculator:</p>
+<div class="code">
+<pre>
+<code>`echo " 5 k $a $b / p " | dc`</code>
+</pre></div>
+<p><a name="arithmetic-functions" id="arithmetic-functions"></a></p>
+<h2 id="toc38"><span>arithmetic functions</span></h2>
+<p>Functions for computing square root, natural exponent, natural logarithm, sine, cosine, tangent, arcsine, arccosine, arctangent, and <em>atan2</em>.</p>
+<p>The trigonometric functions are all in radians. <em>atan2</em> takes two arguments which are the x and y co-ordinates of a vector in the Cartesian plane. It returns<br />
+the angle to the positive x-axis made by the vector.</p>
+<p><strong>zsh:</strong></p>
+<p>There is a zsh module which provides the standard transcendental math functions. It is not installed by default on Mac OS X, the CentOS distribution of Linux, or Cygwin. The module can be compiled into the zsh, or it can be in a shared library which is loaded with the command <tt>zmodload mathfunc</tt>.</p>
+<p><a name="arithmetic-truncation" id="arithmetic-truncation"></a></p>
+<h2 id="toc39"><span>arithmetic truncation</span></h2>
+<p><a name="division-zero" id="division-zero"></a></p>
+<h2 id="toc40"><span>division by zero</span></h2>
+<p><a name="integer-overflow" id="integer-overflow"></a></p>
+<h2 id="toc41"><span>integer overflow</span></h2>
+<p><a name="float-overflow" id="float-overflow"></a></p>
+<h2 id="toc42"><span>float overflow</span></h2>
+<p><a name="sqrt-negative-two" id="sqrt-negative-two"></a></p>
+<h2 id="toc43"><span>sqrt -2</span></h2>
+<p>The result of taking the square root of -2.</p>
+<p><a name="random" id="random"></a></p>
+<h2 id="toc44"><span>random integer, uniform float</span></h2>
+<p>The examples show how to generate a uniform random integer in the range from 0 to 99, inclusive; how to generate a uniform float in the range 0.0 to 1.0; how to generate a float from a standard normal distribution</p>
+<p><strong>bash:</strong></p>
+<p>$RANDOM evaluates to a random integer between 0 and 32767 inclusive.</p>
+<p><strong>zsh:</strong></p>
+<p>$RANDOM evaluates to a random integer between 0 and 32767 inclusive.</p>
+<p><a name="seed-random" id="seed-random"></a></p>
+<h2 id="toc45"><span>seed random numbers</span></h2>
+<p><strong>bash:</strong></p>
+<p>Bash 3.2.48 seeds the random number at start up using the current time and the PID:</p>
+<div class="code">
+<pre>
+<code>  /* Seed the random number generator. */
+  sbrand (dollar_dollar_pid + shell_start_time);</code>
+</pre></div>
+<p>Here is the random number generation code:</p>
+<div class="code">
+<pre>
+<code>/* A linear congruential random number generator based on the example
+   one in the ANSI C standard.  This one isn't very good, but a more
+   complicated one is overkill. */
+
+/* Returns a pseudo-random number between 0 and 32767. */
+static int
+brand ()
+{
+  rseed = rseed * 1103515245 + 12345;
+  return ((unsigned int)((rseed &gt;&gt; 16) &amp; 32767));    /* was % 32768 */
+}</code>
+</pre></div>
+<p><strong>zsh:</strong></p>
+<p>Zsh <tt>rand</tt> and <tt>srand</tt> from the standard C library to generate random numbers. It uses the current time at startup to seed the random number generator. Here is the source code from zsh 4.3.9:</p>
+<div class="code">
+<pre>
+<code>    gettimeofday(&amp;shtimer, &amp;dummy_tz);    /* init $SECONDS */
+    srand((unsigned int)(shtimer.tv_sec + shtimer.tv_usec)); /* seed $RANDOM */</code>
+</pre></div>
+<p><strong>applescript:</strong></p>
+<p>The initial seed is set to a value that varies each time AppleScript is started up.</p>
+<p>If a repeatable sequence of random numbers is desired, the seed can be set to a specific value using the <tt>with seed</tt> parameter on the first call to <tt>random</tt>.</p>
+<p><strong>powershell:</strong></p>
+<p>The initial seed is set to a value that varies each time PowerShell is started up.</p>
+<p>If a repeatable sequence of random numbers is desired, the seed can be set to a specific value using the <tt>-setseed</tt> option on the first call to <tt>random</tt>.</p>
+<p><a name="bit-operators" id="bit-operators"></a></p>
+<h2 id="toc46"><span>bit operators</span></h2>
+<p><strong>bash:</strong></p>
+<p>The bit operators are available in $(( )) and (( )).</p>
+<p><a name="strings-note" id="strings-note"></a></p>
+<h1 id="toc47"><span><a href="#strings">Strings</a></span></h1>
+<p><a name="string-literal" id="string-literal"></a></p>
+<h2 id="toc48"><span>string literal</span></h2>
+<p>The syntax for a string literal and how to escape the delimiter.</p>
+<p><a name="string-literal-newline" id="string-literal-newline"></a></p>
+<h2 id="toc49"><span>newline in literal</span></h2>
+<p>Whether a newline character sequence can be included in a string.</p>
+<p>For all the languages described in this reference sheet a string literal is permitted to encompass multiple lines in the source code and the resulting string will contain the same number of lines.</p>
+<p><a name="string-escapes" id="string-escapes"></a></p>
+<h2 id="toc50"><span>escapes</span></h2>
+<p>Character escape sequences which can be used in string literals.</p>
+<p><a name="variable-interpolation" id="variable-interpolation"></a></p>
+<h2 id="toc51"><span>variable interpolation</span></h2>
+<p>How to interpolate variables in a string.</p>
+<p><strong>bash:</strong></p>
+<p>A dollar sign <tt>$</tt> can be backslash escaped to prevent variable interpolation:</p>
+<div class="code">
+<pre>
+<code>echo "the value of \$a is $a"</code>
+</pre></div>
+<p><strong>powershell:</strong></p>
+<p>A dollar sign <tt>$</tt> can be backtick escaped to prevent variable interpolation:</p>
+<div class="code">
+<pre>
+<code>write-host "the value of @@`@@$a is $a"</code>
+</pre></div>
+<p><a name="string-length" id="string-length"></a></p>
+<h2 id="toc52"><span>length</span></h2>
+<p>How to get the length of a string.</p>
+<p><a name="string-comparison" id="string-comparison"></a></p>
+<h2 id="toc53"><span>string comparison</span></h2>
+<p>How to determine if two strings are equal or unequal.</p>
+<p><a name="index-substring" id="index-substring"></a></p>
+<h2 id="toc54"><span>index substring</span></h2>
+<p>How to find the index of the start of a substring in a string.</p>
+<p><a name="extract-substring" id="extract-substring"></a></p>
+<h2 id="toc55"><span>extract substring</span></h2>
+<p><a name="string-concatenation" id="string-concatenation"></a></p>
+<h2 id="toc56"><span>string concatenation</span></h2>
+<p>The string concatenation operator.</p>
+<p><a name="split" id="split"></a></p>
+<h2 id="toc57"><span>split</span></h2>
+<p>How to split a string into an array of strings.</p>
+<p><strong>powershell:</strong></p>
+<p>When splitting a string into words, no delimiter need be specified and the string to be split can follow the <tt>-split</tt> operator:</p>
+<div class="code">
+<pre>
+<code>-split "foo bar baz"</code>
+</pre></div>
+<p><a name="join" id="join"></a></p>
+<h2 id="toc58"><span>join</span></h2>
+<p>How to concatenate the elements of an array into a string with a separator.</p>
+<p><a name="scan" id="scan"></a></p>
+<h2 id="toc59"><span>scan</span></h2>
+<p><a name="sprintf" id="sprintf"></a></p>
+<h2 id="toc60"><span>sprintf</span></h2>
+<p>How to create a string using a printf style format.</p>
+<p><a name="case" id="case"></a></p>
+<h2 id="toc61"><span>case manipulation</span></h2>
+<p><a name="strip" id="strip"></a></p>
+<h2 id="toc62"><span>strip</span></h2>
+<p><a name="pad" id="pad"></a></p>
+<h2 id="toc63"><span>pad on right, pad on left</span></h2>
+<p><a name="regex-note" id="regex-note"></a></p>
+<h1 id="toc64"><span><a href="#regexes">Regular Expressions</a></span></h1>
+<p><a name="regex-match-note" id="regex-match-note"></a></p>
+<h2 id="toc65"><span><a href="#regex-match">regex match</a></span></h2>
+<p>How to test whether a regular expression matches a string.</p>
+<p><strong>posix shell:</strong></p>
+<p>The double square bracket operator <tt>[[ ]]</tt> is not part of the POSIX standard but it is a feature of <tt>bash</tt>, <tt>ksh</tt>, and <tt>zsh</tt>. It supports a match test operator:</p>
+<div class="code">
+<pre>
+<code>if [[ "hello" =~ ^[a-z][a-z]*$ ]]; then</code>
+</pre></div>
+<p><a name="single-subst-note" id="single-subst-note"></a></p>
+<h2 id="toc66"><span><a href="#single-subst">single substitution</a></span></h2>
+<p>How to replace the first occurrence of a pattern in a string.</p>
+<p><strong>posix shell:</strong></p>
+<p>The following parameter expansion is not part of the POSIX standard but provided by <tt>bash</tt>, <tt>ksh</tt>, and <tt>zsh</tt>:</p>
+<div class="code">
+<pre>
+<code>str='do re mi mi mi'
+echo ${str/mi/ma}</code>
+</pre></div>
+<p><a name="global-subst-note" id="global-subst-note"></a></p>
+<h2 id="toc67"><span><a href="#global-subst">global substitution</a></span></h2>
+<p>How to replace all occurrences of a pattern in a string.</p>
+<p><strong>posix shell:</strong></p>
+<p>The following parameter expansion is not part of the POSIX standard but provided by <tt>bash</tt>, <tt>ksh</tt>, and <tt>zsh</tt>:</p>
+<div class="code">
+<pre>
+<code>str='do re mi mi mi'
+echo ${str//mi/ma}</code>
+</pre></div>
+<p><a name="dates-time-note" id="dates-time-note"></a></p>
+<h1 id="toc68"><span><a href="#dates-time">Dates and Time</a></span></h1>
+<p><a name="array-note" id="array-note"></a></p>
+<h1 id="toc69"><span><a href="#arrays">Arrays</a></span></h1>
+<table class="wiki-content-table"><tr><th></th>
+<th>bash</th>
+<th>zsh</th>
+<th>applescript</th>
+<th>powershell</th>
+</tr><tr><td><a href="#array-literal">array</a></td>
+<td></td>
+<td></td>
+<td>list</td>
+<td>array</td>
+</tr><tr><td><a href="#dictionary-literal">dictionary</a></td>
+<td></td>
+<td></td>
+<td>record</td>
+<td></td>
+</tr></table><p><a name="array-literal" id="array-literal"></a></p>
+<h2 id="toc70"><span>array literal</span></h2>
+<p>Array literal syntax.</p>
+<p><a name="array-size" id="array-size"></a></p>
+<h2 id="toc71"><span>array size</span></h2>
+<p>How to get the number of elements in an array.</p>
+<p><a name="array-lookup" id="array-lookup"></a></p>
+<h2 id="toc72"><span>array lookup</span></h2>
+<p>How to access a value in an array by index.</p>
+<p><a name="array-slice" id="array-slice"></a></p>
+<h2 id="toc73"><span>array slice</span></h2>
+<p>How to slice a subarray from an array.</p>
+<p><a name="array-iteration" id="array-iteration"></a></p>
+<h2 id="toc74"><span>array iteration</span></h2>
+<p><a name="membership" id="membership"></a></p>
+<h2 id="toc75"><span>membership</span></h2>
+<p>How to test for membership in an array.</p>
+<p><a name="intersection" id="intersection"></a></p>
+<h2 id="toc76"><span>intersection</span></h2>
+<p>How to compute an intersection.</p>
+<p><a name="union" id="union"></a></p>
+<h2 id="toc77"><span>union</span></h2>
+<p><a name="map" id="map"></a></p>
+<h2 id="toc78"><span>map</span></h2>
+<p><a name="filter" id="filter"></a></p>
+<h2 id="toc79"><span>filter</span></h2>
+<p><a name="reduce" id="reduce"></a></p>
+<h2 id="toc80"><span>reduce</span></h2>
+<p><a name="universal-predicate" id="universal-predicate"></a></p>
+<h2 id="toc81"><span>universal predicate</span></h2>
+<p>How to test whether a condition holds for all members of an array. Always true for an empty array.</p>
+<p><a name="existential-predicate" id="existential-predicate"></a></p>
+<h2 id="toc82"><span>existential predicate</span></h2>
+<p>How to test whether an item in an array exists for which a condition holds. Always false for an empty array.</p>
+<p><a name="dictionary-literal" id="dictionary-literal"></a></p>
+<h2 id="toc83"><span>dictionary literal</span></h2>
+<p><a name="dictionary-size" id="dictionary-size"></a></p>
+<h2 id="toc84"><span>dictionary size</span></h2>
+<p><a name="dictionary-lookup" id="dictionary-lookup"></a></p>
+<h2 id="toc85"><span>dictionary lookup</span></h2>
+<p><a name="dictionary-iteration" id="dictionary-iteration"></a></p>
+<h2 id="toc86"><span>dictionary iteration</span></h2>
+<p><a name="out-of-bounds" id="out-of-bounds"></a></p>
+<h2 id="toc87"><span>out of bounds behavior</span></h2>
+<p><a name="functions-note" id="functions-note"></a></p>
+<h1 id="toc88"><span><a href="#functions">Functions</a></span></h1>
+<p>Python has both functions and methods. Ruby only has methods: functions defined at the top level are in fact methods on a special main object. Perl subroutines can be invoked with a function syntax or a method syntax.</p>
+<p><a name="function-definition" id="function-definition"></a></p>
+<h2 id="toc89"><span>function definition</span></h2>
+<p><strong>bash:</strong></p>
+<p>A bash function definition can alternately be preceded by the keyword <em>function</em>, and when used, the parens following the function name are prohibited.</p>
+<p><strong>zsh:</strong></p>
+<p>A zsh function can be defined with the preceding keyword <em>function</em>, the trailing parens, or both.</p>
+<p><strong>applescript:</strong></p>
+<p>Functions are called <em>handlers</em> in AppleScript.</p>
+<p><a name="function-invocation" id="function-invocation"></a></p>
+<h2 id="toc90"><span>function invocation</span></h2>
+<p><strong>bash:</strong></p>
+<p>The syntax for invoking a function is the same as the syntax for invoking a command. If a function is defined with the same name as a command in the search path, the function will be executed.</p>
+<p><a name="missing-argument" id="missing-argument"></a></p>
+<h2 id="toc91"><span>missing argument value</span></h2>
+<p>Value of an argument variable if a function is invoked with fewer arguments than are declared.</p>
+<p><a name="extra-arguments" id="extra-arguments"></a></p>
+<h2 id="toc92"><span>extra arguments</span></h2>
+<p>If a function is invoked with more arguments than are declared, how the function can access them.</p>
+<p><a name="default-argument" id="default-argument"></a></p>
+<h2 id="toc93"><span>default argument value</span></h2>
+<p>How to declare a default value for an argument.</p>
+<p><a name="variable-arguments" id="variable-arguments"></a></p>
+<h2 id="toc94"><span>variable number of arguments</span></h2>
+<p>How to write a function which accepts a variable number of argument.</p>
+<p><a name="named-parameters" id="named-parameters"></a></p>
+<h2 id="toc95"><span>named parameters</span></h2>
+<p>How to write a function which uses named parameters.</p>
+<p><strong>applescript:</strong></p>
+<p>Named parameters are called <em>labeled parameters</em> in the AppleScript documentation. The label must be one of the following prepositions:</p>
+<blockquote>
+<p>about, above, against, apart from, around, aside from, at, below, beneath, beside, between, by, for, from,<br />
+instead of, into, on, onto, out of, over, since, thru/through, to, under</p>
+</blockquote>
+<p>For readability the definite article <tt>the</tt> can be inserted in between the label and the argument in either the function definition or the invocation.</p>
+<p>To use other names for parameters, the <tt>given</tt> keyword can be used in conjunction with colon syntax:</p>
+<div class="code">
+<pre>
+<code>on displayNums given startAt:x, endAt:y
+  set i to x
+  repeat while i &lt;= y
+    display dialog (i as text)
+    set i to i + 1
+  end repeat
+end displayNums
+
+displayNums given startAt:1, endAt:5</code>
+</pre></div>
+<p>When a <tt>given</tt> parameter takes a boolean value as an argument, the <tt>with</tt> or <tt>without</tt> keywords can be used when the handler is invoked. Consider the following handler definition:</p>
+<div class="code">
+<pre>
+<code>on foo given flagLabel:flag
+  ...
+end foo</code>
+</pre></div>
+<p>Here are two ways to invoke <tt>foo</tt> with <tt>flag</tt> set to true:</p>
+<div class="code">
+<pre>
+<code>foo given flagLabel:true
+foo with flagLabel</code>
+</pre></div>
+<p>Here are two ways to invoke <tt>foo</tt> with <tt>flag</tt> set to false:</p>
+<div class="code">
+<pre>
+<code>foo given flagLabel:false
+foo without flagLabel</code>
+</pre></div>
+<p><a name="return-value" id="return-value"></a></p>
+<h2 id="toc96"><span>return value</span></h2>
+<p><strong>bash:</strong></p>
+<p>Bash functions can only return small integers via return. However, a function can echo to stdout and the caller can invoke it with backticks to get a string value.</p>
+<p><a name="lambda-declaration" id="lambda-declaration"></a></p>
+<h2 id="toc97"><span>lambda declaration</span></h2>
+<p>How to define a lambda function.</p>
+<p><a name="lambda-invocation" id="lambda-invocation"></a></p>
+<h2 id="toc98"><span>lambda invocation</span></h2>
+<p><a name="default-scope" id="default-scope"></a></p>
+<h2 id="toc99"><span>default scope</span></h2>
+<p><strong>bash:</strong></p>
+<p>By default, bash and variables inside functions have global scope.</p>
+<p><a name="execution-control-note" id="execution-control-note"></a></p>
+<h1 id="toc100"><span><a href="#execution-control">Execution Control</a></span></h1>
+<p><a name="if" id="if"></a></p>
+<h2 id="toc101"><span>if</span></h2>
+<p>Some optional branching constructs:</p>
+<p><strong>bash:</strong></p>
+<div class="code">
+<pre>
+<code>case $a in (0) echo "no";; (1) echo "yes";; (2) echo "maybe";; (*) echo "error";; esac</code>
+</pre></div>
+<p><a name="while" id="while"></a></p>
+<h2 id="toc102"><span>while</span></h2>
+<p><strong>bash:</strong></p>
+<p>Also has an <em>until</em> loop.</p>
+<p><a name="break-continue" id="break-continue"></a></p>
+<h2 id="toc103"><span>break/continue/redo</span></h2>
+<p><em>break</em> exits a <em>for</em> or <em>while</em> loop immediately. <em>continue</em> goes to the next iteration of the loop. <em>redo</em> goes back to the beginning of the current iteration.</p>
+<p><a name="for" id="for"></a></p>
+<h2 id="toc104"><span>for</span></h2>
+<p><strong>bash:</strong></p>
+<p>A C-style for loop:</p>
+<div class="code">
+<pre>
+<code>for ((i=0; i&lt;10; i++ )); do echo $i; done</code>
+</pre></div>
+<p><strong>applescript:</strong></p>
+<p>If a block of code needs to be executed a set number of times but no index variable is needed, AppleScript provides this alternate syntax:</p>
+<div class="code">
+<pre>
+<code>repeat 3 times
+    display dialog ("tut")
+end repeat</code>
+</pre></div>
+<p><a name="exceptions-note" id="exceptions-note"></a></p>
+<h1 id="toc105"><span><a href="#exceptions">Exceptions</a></span></h1>
+<p><a name="raise-exception" id="raise-exception"></a></p>
+<h2 id="toc106"><span>raise exception</span></h2>
+<p>How to raise an exception.</p>
+<p><strong>applescript:</strong></p>
+<p>It is possible to associate an error code with the error using the <tt>number</tt> label:</p>
+<div class="code">
+<pre>
+<code>error "bam!" number 7</code>
+</pre></div>
+<p>If no error number is specified, then the value -2700 is used.</p>
+<p><a name="catch-exception" id="catch-exception"></a></p>
+<h2 id="toc107"><span>catch exception</span></h2>
+<p>How to handle an exception.</p>
+<p><strong>applescript:</strong></p>
+<p>If a variable name is specified after <tt>on error</tt> the error message is stored in it. There can only be one error clause and it catches all errors. To perform conditional error handling, use the <tt>number</tt> label and provide a variable name after it. The error code will be stored in that variable.</p>
+<div class="code">
+<pre>
+<code>try
+  error "bam!" number 7
+on error msg number errorCode
+  if errorCode = 7 then
+    display dialog ("error: " &amp; msg)
+  else
+    display dialog ("unknown error")
+  end if
+end try</code>
+</pre></div>
+<p>A <tt>try</tt> block can be closed by <tt>end error</tt> in addition to <tt>end try</tt>.</p>
+<p><a name="uncaught-exception" id="uncaught-exception"></a></p>
+<h2 id="toc108"><span>uncaught exception behavior</span></h2>
+<p>System behavior if an exception goes uncaught. Most interpreters print the exception message to stderr and exit with a nonzero status.</p>
+<p><strong>bash:</strong></p>
+<p>The bash interpreter writes a message to stderr whenever a command returns a nonzero status. By default, the interpreter does not exit, but if this behavior is desired, then the following should be put at the top of the script:</p>
+<div class="code">
+<pre>
+<code>trap exit ERR</code>
+</pre></div>
+<p><a name="wait-on-thread" id="wait-on-thread"></a></p>
+<h2 id="toc109"><span>wait on thread</span></h2>
+<p><a name="file-note" id="file-note"></a></p>
+<h1 id="toc110"><span><a href="#files">Files</a></span></h1>
+<p><a name="print-to-stdout" id="print-to-stdout"></a></p>
+<h2 id="toc111"><span>print to standard out</span></h2>
+<p><strong>bash:</strong></p>
+<p>To prevent <em>echo</em> from appending a newline to the output, use</p>
+<div class="code">
+<pre>
+<code>echo -n "hello"</code>
+</pre></div>
+<p><a name="standard-filehandles" id="standard-filehandles"></a></p>
+<h2 id="toc112"><span>standard filehandles</span></h2>
+<p><strong>applescript:</strong></p>
+<p>AppleScript does not in general run with stdin and stdout filehandles. When <tt>osascript</tt> is invoked as a shebang it is possible to read from stdin and write to stdout, however:</p>
+<div class="code">
+<pre>
+<code>#!/usr/bin/env osascript 
+set stdin to do shell script "cat" 
+"Received from stdin: " &amp; stdin</code>
+</pre></div>
+<p>Here is how the above script would be invoked:</p>
+<div class="code">
+<pre>
+<code>$ echo "foo" | ./stdin-example.sh 
+Received from stdin: foo</code>
+</pre></div>
+<p><a name="read-line" id="read-line"></a></p>
+<h2 id="toc113"><span>read line</span></h2>
+<p><a name="read-file" id="read-file"></a></p>
+<h2 id="toc114"><span>read file</span></h2>
+<p><a name="write-file" id="write-file"></a></p>
+<h2 id="toc115"><span>write to file</span></h2>
+<p><a name="append-file" id="append-file"></a></p>
+<h2 id="toc116"><span>append to file</span></h2>
+<p><a name="directories-note" id="directories-note"></a></p>
+<h1 id="toc117"><span><a href="#directories">Directories</a></span></h1>
+<p><a name="processes-environment-note" id="processes-environment-note"></a></p>
+<h1 id="toc118"><span><a href="#processes-environment">Processes and Environment</a></span></h1>
+<p><a name="external-command" id="external-command"></a></p>
+<h2 id="toc119"><span>external command</span></h2>
+<p><strong>bash:</strong></p>
+<p>The syntax for calling an external command is the same as the syntax for invoking a function. If a function is defined with the same name as an external command in the search path, the function is invoked.</p>
+<p><a name="backticks" id="backticks"></a></p>
+<h2 id="toc120"><span>backticks</span></h2>
+<p><a name="command-line-args" id="command-line-args"></a></p>
+<h2 id="toc121"><span>command line args</span></h2>
+<p><a name="speech" id="speech"></a></p>
+<h2 id="toc122"><span>speech</span></h2>
+<p>How to make the computer talk.</p>
+<p><strong>bash, zsh:</strong></p>
+<p>On Mac OSX the command <tt>say</tt> can also be executed from the bash or zsh prompt:</p>
+<div class="code">
+<pre>
+<code>say "I'm a Mac"</code>
+</pre></div>
+<p>On Ubuntu Linux this command can be used:</p>
+<div class="code">
+<pre>
+<code>espeak "I'm Unix"</code>
+</pre></div>
+<p><a name="environment-variable" id="environment-variable"></a></p>
+<h2 id="toc123"><span>environment variable</span></h2>
+<p><a name="command-path" id="command-path"></a></p>
+<h2 id="toc124"><span>command path</span></h2>
+<p>The directory containing a command. Also indicates if the command is a built-in, alias, or function. Shows the definition of aliases and functions.</p>
+<p><strong>zsh:</strong></p>
+<p><tt>zsh</tt> has both <tt>which</tt> and <tt>which -a</tt>. The latter shows all occurrences of a command in the search path.</p>
+<p><a name="exit" id="exit"></a></p>
+<h2 id="toc125"><span>exit</span></h2>
+<p><strong>bash:</strong></p>
+<p>The exit status of a bash script is the return status of the last command executed, or the argument of <em>exit</em>.</p>
+<p><a name="set-signal-handler" id="set-signal-handler"></a></p>
+<h2 id="toc126"><span>set signal handler</span></h2>
+<p><a name="libraries-namespaces-note" id="libraries-namespaces-note"></a></p>
+<h1 id="toc127"><span><a href="#libraries-namespaces">Libraries and Namespaces</a></span></h1>
+<p><a name="library" id="library"></a></p>
+<h2 id="toc128"><span>library</span></h2>
+<p>What a library looks like.</p>
+<p><a name="import-library" id="import-library"></a></p>
+<h2 id="toc129"><span>import library</span></h2>
+<p><a name="library-path" id="library-path"></a></p>
+<h2 id="toc130"><span>library path</span></h2>
+<p><a name="namespace-declaration" id="namespace-declaration"></a></p>
+<h2 id="toc131"><span>namespace declaration</span></h2>
+<p><a name="namespace-separator" id="namespace-separator"></a></p>
+<h2 id="toc132"><span>namespace separator</span></h2>
+<p><a name="objects-note" id="objects-note"></a></p>
+<h1 id="toc133"><span><a href="#objects">Objects</a></span></h1>
+<p><a name="define-class" id="define-class"></a></p>
+<h2 id="toc134"><span>define class</span></h2>
+<p><a name="create-object" id="create-object"></a></p>
+<h2 id="toc135"><span>create object</span></h2>
+<p><a name="constructor" id="constructor"></a></p>
+<h2 id="toc136"><span>constructor</span></h2>
+<p><a name="define-method" id="define-method"></a></p>
+<h2 id="toc137"><span>define method</span></h2>
+<p><a name="invoke-method" id="invoke-method"></a></p>
+<h2 id="toc138"><span>invoke method</span></h2>
+<p><a name="destructor" id="destructor"></a></p>
+<h2 id="toc139"><span>destructor</span></h2>
+<p><a name="default-method" id="default-method"></a></p>
+<h2 id="toc140"><span>default method</span></h2>
+<p><a name="inheritance" id="inheritance"></a></p>
+<h2 id="toc141"><span>inheritance</span></h2>
+<p><a name="reflection-note" id="reflection-note"></a></p>
+<h1 id="toc142"><span><a href="#reflection">Reflection</a></span></h1>
+<p><a name="class" id="class"></a></p>
+<h2 id="toc143"><span>class</span></h2>
+<p><a name="posix" id="posix"></a></p>
+<h1 id="toc144"><span>POSIX Shell</span></h1>
+<p><a href="http://pubs.opengroup.org/onlinepubs/9699919799/">POSIX 2008</a><br /><a href="http://linux.die.net/man/1/dash">dash man page</a><br /><a href="http://linux.die.net/man/1/ksh">ksh man page</a><br /><a href="http://linux.die.net/man/1/bash">bash man Page</a></p>
+<p>On most modern systems if you invoke /bin/sh you get the bash shell. If your script might get run by the older Bourne shell (1977), here are the <a href="http://www.gnu.org/software/bash/manual/bashref.html#Major-Differences-From-The-Bourne-Shell">differences</a> to think about.</p>
+<p>A function and a variable can have the same name. User defined variable identifiers cannot start with a digit. Variables are normally global, but can be made local to a function with the local keyword, which is useful for recursive functions.</p>
+<p>The behavior of a shell script is dependent on its environment. All environment variables that existed when the shell process starts become variables in the script’s namespace. If the name of a command does not resolve to a shell built-in command or a function defined by the script, the shell searches the $PATH variable for an external command to run. The shell will expand ?, *, and ~ in words using the local file system.</p>
+<p>The shell is good at launching external processes and redirecting their stdin and stdout to files or other processes with &gt;, <span style="white-space: pre-wrap;">&gt;&gt;</span>, ,<span style="white-space: pre-wrap;"> 2&gt;&gt;</span>, or 2&gt;&amp;1.</p>
+<p><a name="applescript" id="applescript"></a></p>
+<h1 id="toc145"><span>AppleScript</span></h1>
+<ul><li><a href="http://developer.apple.com/library/mac/#documentation/AppleScript/Conceptual/AppleScriptLangGuide/introduction/ASLR_intro.html">AppleScript Language Guide</a></li>
+</ul><ul><li>AppleScript Editor, osacompile, oascript</li>
+<li>getting dictionary for application, sending commands to an application</li>
+<li>I/O (display dialog, say, log)</li>
+<li>applications, windows, tabs</li>
+<li>open scripting architecture (OSA)</li>
+</ul><p><a name="powershell" id="powershell"></a></p>
+<h1 id="toc146"><span>PowerShell</span></h1>
+<ul><li><a href="http://msdn.microsoft.com/en-us/library/dd835506(VS.85).aspx">PowerShell: Getting Started</a></li>
+</ul></div>
+        </div>
+      </div>
+      <div id="license-area" class="license-area">
+        content of this page licensed under
+        <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">
+        creative commons attribution-sharealike 3.0</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-17129977-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</body>
+</html>
